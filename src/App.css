@@ -1,3 +1,4 @@
+/* General */
 * {
   font-family: "Nunito", sans-serif;
 }
@@ -8,6 +9,7 @@ html {
   background-size: cover;
 }
 
+/* Nav/Menu */
 .logo {
   width: 90%;
   margin: auto;
@@ -84,16 +86,27 @@ html {
   font-size: 2.2rem;
 }
 
+/* Slider */
 .banner {
   max-width: 97%;
   display: grid !important;
   width: 100%;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   outline: none !important;
+  /* border-radius: 7px; */
+  /* border: 3px solid rgba(255, 255, 255, 0.2); */
+  transition: 0.3s;
+  border-radius: 7px;
+  border: 3px solid transparent;
+}
+
+.banner:hover {
+  border-radius: 7px;
+  border: 3px solid rgba(255, 255, 255, 0.8);
 }
 
 .banner img {
-  border-radius: 7px;
+  border-radius: 4px;
   max-width: 100% !important;
   object-fit: contain;
   outline: none !important;
@@ -107,4 +120,33 @@ html {
 .slick-dots li button:before {
   opacity: 1 !important;
   color: white !important;
+}
+
+/* Studio Cards */
+.studios {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  justify-content: space-around;
+  gap: 50px;
+  margin: 70px;
+}
+
+.studio {
+  background: linear-gradient(rgb(48, 50, 62), rgb(30, 31, 42));
+  border-radius: 12px;
+  display: grid;
+  height: 100px;
+  align-content: center;
+  padding: 8px 0px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  transition: 0.3s;
+}
+
+.studio:hover {
+  transform: scale(1.05);
+  border: 3px solid white;
+}
+
+.studio img {
+  width: 100%;
 }
