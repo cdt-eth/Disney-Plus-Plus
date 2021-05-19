@@ -1,38 +1,84 @@
-.App {
-  text-align: center;
+* {
+  font-family: "Nunito", sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html {
+  background: url(https://prod-static.disney-plus.net/us-east-1/disneyPlus/app/builds/c63ccc8fd2db4ed1a616b4bb8729a79d30927bd9/disneyPlus/app/assets/dss-junglebook/components/themes/images/background.png)
+    no-repeat center center fixed;
+  background-size: cover;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.logo {
+  width: 90%;
+  margin: auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.nav {
+  padding: 10px 30px;
+  display: grid;
+  grid-template-columns: 0.5fr 6fr 1fr;
+  column-gap: 30px;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+.menu {
   color: white;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
 }
 
-.App-link {
-  color: #61dafb;
+.menu li {
+  text-transform: uppercase;
+  list-style-type: none;
+  cursor: pointer;
+  width: min-content;
+  letter-spacing: 2px;
+  border-bottom: 1px solid transparent;
+  padding: 5px 0px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  gap: 8px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.menu li svg {
+  align-self: baseline;
+}
+
+.menu span:after {
+  display: block;
+  padding-bottom: 4px;
+  content: "";
+  border-bottom: solid 2px white;
+  transform: scaleX(0);
+  transition: transform 250ms ease-in-out;
+}
+
+.menu span:hover:after {
+  transform: scaleX(1);
+}
+
+.menu span:after {
+  transform-origin: 0% 50%;
+}
+
+.login {
+  text-decoration: none;
+  cursor: pointer;
+  color: white;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+}
+
+.login p {
+  justify-self: end;
+  padding-right: 7px;
+  font-weight: 200;
+}
+
+.login svg {
+  font-size: 2.2rem;
 }
