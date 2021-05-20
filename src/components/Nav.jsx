@@ -15,7 +15,7 @@ export default function Nav() {
       <a href="www.com" className="logo">
         <img
           src="https://prod-static.disney-plus.net/us-west-2/builds/e76798ab2a732a884562763cbd19b969a80dcd5b_1606148151180/images/logo.svg"
-          alt=""
+          alt="logo"
         />
       </a>
 
