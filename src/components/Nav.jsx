@@ -1,5 +1,11 @@
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "../pages/Home";
+import Search from "../pages/Search";
+import Watchlist from "../pages/Watchlist";
+import Originals from "../pages/Originals";
+import Movies from "../pages/Movies";
+import Series from "../pages/Watchlist";
+
 import {
   MdAccountCircle as LoginIcon,
   MdHome as HomeIcon,
@@ -89,24 +95,4 @@ export default function Nav() {
       </div>
     </Router>
   );
-}
-
-function Search() {
-  return <h2>Search</h2>;
-}
-
-function Watchlist() {
-  return <h2>Watchlist</h2>;
-}
-
-function Originals() {
-  return <h2>Originals</h2>;
-}
-
-function Movies() {
-  return <h2>Movies</h2>;
-}
-
-function Series() {
-  return <h2>Series</h2>;
 }

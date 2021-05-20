@@ -246,3 +246,14 @@ h3 {
   font-weight: 200;
   font-size: 0.65rem;
 }
+
+/* Page Template */
+.page {
+  margin: 50px;
+  margin-bottom: 100px;
+}
+
+.pageTitle {
+  font-size: 3rem;
+  font-weight: 600;
+}
