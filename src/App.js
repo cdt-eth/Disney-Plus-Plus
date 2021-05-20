@@ -3,6 +3,7 @@ import Nav from "./components/Nav";
 import HomeSlider from "./components/HomeSlider";
 import Studios from "./components/Studios";
 import Recommendations from "./components/Recommendations";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Recommendations title={"Originals"} />
       <Recommendations title={"Trending"} />
       <Recommendations title={"Comedies"} />
+      <Footer />
     </div>
   );
 }

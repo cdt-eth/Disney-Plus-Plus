@@ -170,6 +170,7 @@ h3 {
 }
 .recommendationSection h3 {
   padding: 6px;
+  margin-bottom: 0px;
 }
 
 .recommendationVideo {
@@ -190,4 +191,46 @@ h3 {
 .recommendationVideo img:hover {
   transform: scale(1.02);
   border: 4px solid white;
+}
+
+/* Footer */
+.footer {
+  background: black;
+  padding: 20px;
+  display: grid;
+}
+
+.footerLogo {
+  width: 8%;
+  margin: 0 auto;
+}
+
+.footerList {
+  list-style-type: none;
+  /* display: grid;
+  grid-template-columns: repeat(8, 1fr); */
+  text-align: center;
+}
+
+.footerItem {
+  font-weight: 200;
+  padding: 20px 0px;
+  display: inline-block;
+  width: 12%;
+}
+
+.footerItem a {
+  text-decoration: none;
+  transition: 0.4s;
+}
+
+.footerItem a:hover {
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: underline;
+}
+
+.copyright {
+  margin: 0 auto;
+  font-weight: 200;
 }
