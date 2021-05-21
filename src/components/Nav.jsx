@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "../pages/Home";
 import Search from "../pages/Search";
 import Watchlist from "../pages/Watchlist";
-import Originals from "../pages/Originals";
+import Originals from "../pages/Originals/Originals";
 import Movies from "../pages/Movies";
 import Series from "../pages/Watchlist";
 

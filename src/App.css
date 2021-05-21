@@ -345,3 +345,24 @@ h3 {
   font-size: 9rem;
   justify-self: center;
 }
+
+/* Watchlist */
+.originalsTitle {
+  padding: 30px 0px 60px 0px;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: Avenir-heavy;
+  font-size: 2.7rem;
+  letter-spacing: 1rem;
+}
+
+.originalsList {
+  padding-left: 30px;
+}
+
+.originalsList h4 {
+  font-weight: 200;
+  font-family: Avenir-Heavy, sans-serif;
+  font-size: 20px;
+  padding-left: 5px;
+}
