@@ -3,6 +3,7 @@
 * {
   font-family: "Nunito Sans";
   color: white;
+  color: rgb(249, 249, 249);
 }
 
 html {
@@ -245,6 +246,7 @@ h3 {
 .footerItem a {
   text-decoration: none;
   transition: 0.4s;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .footerItem a:hover {
@@ -323,4 +325,23 @@ h3 {
   transform: scale(1.02);
   cursor: pointer;
   border: 4px solid white;
+}
+
+/* Watchlist */
+.watchlistWrapper {
+  margin-top: 80px;
+  display: grid;
+  text-align: center;
+  justify-self: center;
+  font-weight: 200;
+}
+.watchlistWrapper h3 {
+  margin-bottom: 0;
+  font-size: 1.4rem;
+}
+
+.watchlistWrapper svg {
+  fill: rgb(255, 255, 255, 0.2);
+  font-size: 9rem;
+  justify-self: center;
 }
