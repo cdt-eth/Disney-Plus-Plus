@@ -1,3 +1,5 @@
+import "./Series.css";
+
 export default function Series() {
   return (
     <div className="page">

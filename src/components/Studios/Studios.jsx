@@ -1,4 +1,4 @@
-import React from "react";
+import "./Studios.css";
 
 export default function Studios() {
   return (

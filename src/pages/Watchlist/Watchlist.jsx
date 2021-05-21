@@ -1,3 +1,4 @@
+import "./Watchlist.css";
 import { MdAddCircleOutline as AddIcon } from "react-icons/md";
 
 export default function Watchlist() {

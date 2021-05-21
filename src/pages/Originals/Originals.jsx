@@ -1,4 +1,4 @@
-import Recommendations from "../../components/Recommendations";
+import Recommendations from "../../components/Recommendations/Recommendations";
 import "./Originals.css";
 
 export default function Originals() {

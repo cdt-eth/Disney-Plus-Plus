@@ -1,0 +1,28 @@
+.recommendationSection {
+  margin: 20px 0px 50px 70px;
+}
+
+.recommendationSection h3 {
+  padding: 6px;
+  margin-bottom: 0px;
+}
+
+.recommendationVideo {
+  margin-right: 25px;
+  width: 93% !important;
+  padding: 3px;
+  outline: none !important;
+}
+
+.recommendationVideo img {
+  transition: 0.3s;
+  border-radius: 7px;
+  max-width: 100% !important;
+  object-fit: contain;
+  border: 4px solid transparent;
+}
+
+.recommendationVideo img:hover {
+  transform: scale(1.02);
+  border: 4px solid white;
+}

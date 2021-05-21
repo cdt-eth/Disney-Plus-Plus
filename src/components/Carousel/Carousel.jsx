@@ -1,8 +1,9 @@
+import "./Carousel.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-export default function HomeSlider() {
+export default function Carousel() {
   const settings = {
     dots: true,
     infinite: true,

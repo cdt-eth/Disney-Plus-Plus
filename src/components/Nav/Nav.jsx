@@ -1,10 +1,11 @@
+import "./Nav.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Home from "../pages/Home";
-import Search from "../pages/Search";
-import Watchlist from "../pages/Watchlist";
-import Originals from "../pages/Originals/Originals";
-import Movies from "../pages/Movies";
-import Series from "../pages/Watchlist";
+import Home from "../../pages/Home";
+import Search from "../../pages/Search/Search";
+import Watchlist from "../../pages/Watchlist/Watchlist";
+import Originals from "../../pages/Originals/Originals";
+import Movies from "../../pages/Movies/Movies";
+import Series from "../../pages/Series/Series";
 
 import {
   MdAccountCircle as LoginIcon,

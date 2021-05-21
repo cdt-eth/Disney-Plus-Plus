@@ -1,0 +1,90 @@
+.logo {
+  width: 90%;
+  margin: auto;
+}
+
+.nav {
+  padding: 10px 30px;
+  display: grid;
+  grid-template-columns: 0.5fr 6fr 1fr;
+  column-gap: 30px;
+  align-items: center;
+  text-align: center;
+  font-size: 0.85rem;
+  padding-bottom: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.03) 15%,
+    rgba(0, 0, 0, 0.125) 30%,
+    rgba(0, 0, 0, 0.25) 46%,
+    rgba(0, 0, 0, 0.4) 61%,
+    rgba(0, 0, 0, 0.553) 75%,
+    rgba(0, 0, 0, 0.694) 88%,
+    rgba(0, 0, 0, 0.8)
+  );
+}
+
+.menu {
+  color: white;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+}
+
+.menu li {
+  text-transform: uppercase;
+  list-style-type: none;
+  cursor: pointer;
+  width: min-content;
+  letter-spacing: 2px;
+  border-bottom: 1px solid transparent;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  gap: 8px;
+  padding: 15px;
+}
+
+.menu li a {
+  text-decoration: none;
+}
+
+.menu li svg {
+  align-self: baseline;
+}
+
+.menu span:after {
+  display: block;
+  padding-bottom: 4px;
+  content: "";
+  border-bottom: solid 2px white;
+  transform: scaleX(0);
+  transition: transform 250ms ease-in-out;
+}
+
+.menu span:hover:after {
+  transform: scaleX(1);
+}
+
+.menu span:after {
+  transform-origin: 0% 50%;
+}
+
+.login {
+  text-decoration: none;
+  cursor: pointer;
+  color: white;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+}
+
+.login p {
+  justify-self: end;
+  padding-right: 7px;
+  font-weight: 200;
+}
+
+.login svg {
+  font-size: 2.2rem;
+}

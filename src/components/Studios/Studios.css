@@ -1,0 +1,36 @@
+.studios {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  justify-content: space-around;
+  gap: 50px;
+  margin: 70px;
+}
+
+.studio {
+  background: linear-gradient(rgb(48, 50, 62), rgb(30, 31, 42));
+  border-radius: 12px;
+  display: grid;
+  align-content: center;
+  padding: 8px 0px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  transition: 0.3s;
+}
+
+.studio:hover {
+  transform: scale(1.05);
+  border: 3px solid white;
+}
+
+.studio img {
+  width: 100%;
+}
+
+/* @media (min-device-width: 690px) and (max-device-width: 1050px) {
+  .studio {
+    height: 40px !important;
+    width: 100px !important;
+  }
+  .studios {
+    gap: 30px !important;
+  }
+} */
