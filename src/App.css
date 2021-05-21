@@ -30,6 +30,18 @@ h3 {
   align-items: center;
   text-align: center;
   font-size: 0.85rem;
+  padding-bottom: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.03) 15%,
+    rgba(0, 0, 0, 0.125) 30%,
+    rgba(0, 0, 0, 0.25) 46%,
+    rgba(0, 0, 0, 0.4) 61%,
+    rgba(0, 0, 0, 0.553) 75%,
+    rgba(0, 0, 0, 0.694) 88%,
+    rgba(0, 0, 0, 0.8)
+  );
 }
 
 .menu {
@@ -256,4 +268,59 @@ h3 {
 .pageTitle {
   font-size: 3rem;
   font-weight: 600;
+}
+
+/* Search */
+.input {
+  width: 100%;
+  height: 60px;
+  padding: 20px;
+  padding-left: 50px;
+  font-size: 2.5rem;
+  background: rgb(75, 78, 90);
+  border: none;
+  color: rgb(249, 249, 249);
+  font-family: avenir-heavy;
+  letter-spacing: 1.17px;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
+}
+
+.input:focus {
+  background: rgb(98, 102, 118);
+  outline: none;
+  color: white;
+}
+.input::placeholder {
+  color: rgb(255, 255, 255, 0.5);
+}
+.input:focus::placeholder {
+  color: rgb(255, 255, 255, 0.8);
+}
+
+.results {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+.result {
+  display: grid;
+  width: 100%;
+
+  /* box-shadow: rgb(0 0 0 / 0%) 0px 26px 30px -10px,
+    rgb(0 0 0 / 73%) 0px 18px 10px -12px; */
+}
+
+.result img {
+  border-radius: 6px;
+  border: 4px solid transparent;
+  max-width: 100% !important;
+  object-fit: contain;
+  transition: 0.7s;
+}
+
+.result img:hover {
+  transform: scale(1.02);
+  cursor: pointer;
+  border: 4px solid white;
 }
