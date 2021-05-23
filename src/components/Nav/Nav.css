@@ -23,6 +23,9 @@
     rgba(0, 0, 0, 0.694) 88%,
     rgba(0, 0, 0, 0.8)
   );
+  position: fixed;
+  top: 0;
+  z-index: 1000;
 }
 
 .menu {

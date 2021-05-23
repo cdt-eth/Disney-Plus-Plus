@@ -3,7 +3,7 @@ import { MdAddCircleOutline as AddIcon } from "react-icons/md";
 
 export default function Watchlist() {
   return (
-    <div className="page">
+    <div className="wrapper">
       {/* <h1 className="pageTitle">Watchlist</h1> */}
 
       <div className="watchlistWrapper">

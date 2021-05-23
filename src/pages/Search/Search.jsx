@@ -2,7 +2,7 @@ import "./Search.css";
 
 export default function Search() {
   return (
-    <div>
+    <div className="wrapper">
       <form action="submit" className="form">
         <input
           placeholder="Search by title, character, or genre"

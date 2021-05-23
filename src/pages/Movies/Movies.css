@@ -1,0 +1,55 @@
+.pageTitle {
+  width: min-content;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 30px;
+}
+
+.fixedBanner {
+  z-index: 5;
+  position: fixed;
+  background-color: rgb(26, 29, 41);
+  top: 0px;
+  width: 100%;
+  padding: 60px 0px 0px 50px;
+}
+
+select {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.selectWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.selectWrapper::after {
+  content: "▼";
+  font-size: 0.7rem;
+  right: 25px;
+  position: relative;
+}
+
+.dropdown {
+  background: darkslategray;
+  padding: 10px 20px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: 0.4s;
+  height: fit-content;
+  padding-right: 40px;
+  /* justify-self: flex-start;
+  align-self: center; */
+  display: inline-block;
+}
+
+.dropdown:hover {
+  background: black;
+}
+
+.movieList {
+  padding: 50px;
+  padding-top: 200px;
+}

@@ -7,9 +7,17 @@
 }
 
 html {
-  background: url(https://prod-static.disney-plus.net/us-east-1/disneyPlus/app/builds/c63ccc8fd2db4ed1a616b4bb8729a79d30927bd9/disneyPlus/app/assets/dss-junglebook/components/themes/images/background.png)
-    no-repeat center center fixed;
-  background-size: cover;
+  /* background: url(https://prod-static.disney-plus.net/us-east-1/disneyPlus/app/builds/c63ccc8fd2db4ed1a616b4bb8729a79d30927bd9/disneyPlus/app/assets/dss-junglebook/components/themes/images/background.png)
+  no-repeat center center fixed; */
+  /* background-size: cover; */
+  background-color: rgb(26, 29, 41);
+}
+.App {
+  padding-top: 50px;
+}
+
+.wrapper {
+  padding-top: 50px;
 }
 
 h3 {

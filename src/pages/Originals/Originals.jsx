@@ -3,8 +3,10 @@ import "./Originals.css";
 
 export default function Originals() {
   return (
-    <div className="page">
-      <h1 className="originalsTitle">Originals</h1>
+    <div className="page2">
+      <div className="fixedBannerOriginals">
+        <h1 className="originalsTitle">Originals</h1>
+      </div>
 
       <div className="originalsList">
         <h4>Featured</h4>
