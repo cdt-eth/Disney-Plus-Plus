@@ -18,10 +18,20 @@ import {
 } from "react-icons/md";
 
 export default function Nav() {
+  window.onscroll = function () {
+    scrollFunction();
+  };
+
+  const scrollFunction = () => {
+    return window.pageYOffset > 50
+      ? (document.getElementById("nav").style.background = "black")
+      : (document.getElementById("nav").style.background = "");
+  };
+
   return (
     <Router>
       <div>
-        <nav className="nav">
+        <nav className="nav" id="nav">
           <Link to="/" className="logo">
             <img
               src="https://prod-static.disney-plus.net/us-west-2/builds/e76798ab2a732a884562763cbd19b969a80dcd5b_1606148151180/images/logo.svg"

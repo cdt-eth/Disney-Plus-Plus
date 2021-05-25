@@ -4,7 +4,7 @@
 }
 
 .nav {
-  padding: 10px 30px;
+  padding: 0px 30px;
   display: grid;
   grid-template-columns: 0.5fr 6fr 1fr;
   column-gap: 30px;
@@ -26,6 +26,7 @@
   position: fixed;
   top: 0;
   z-index: 1000;
+  transition: 0.3s;
 }
 
 .menu {
@@ -54,6 +55,7 @@
 
 .menu li svg {
   align-self: baseline;
+  font-size: 1rem;
 }
 
 .menu span:after {
