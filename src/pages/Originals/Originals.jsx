@@ -2,26 +2,30 @@ import Recommendations from "../../components/Recommendations/Recommendations";
 import "./Originals.css";
 
 export default function Originals() {
-  // When the user scrolls down 50px from the top of the document, resize the header's font size
   window.onscroll = function () {
     scrollFunction();
   };
 
-  function scrollFunction() {
-    if (
-      document.body.scrollTop > 50 ||
+  const scrollFunction = () => {
+    return document.body.scrollTop > 50 ||
       document.documentElement.scrollTop > 50
-    ) {
-      document.getElementById("originals").style.fontSize = "1.7rem";
-    } else {
-      document.getElementById("originals").style.fontSize = "2.7rem";
-    }
-  }
+      ? (document.getElementById("originals").style.fontSize = "1.7rem")
+      : (document.getElementById("originals").style.fontSize = "2.7rem");
+  };
 
   return (
     <div className="page2">
       <div className="fixedBannerOriginals">
-        <h1 className="originalsTitle" id="originals">
+        <h1
+          className="originalsTitle"
+          id="originals"
+          // style={
+          //   document.body.scrollTop > 50 ||
+          //   document.documentElement.scrollTop > 50
+          //     ? { fontSize: "1.7rem" }
+          //     : { fontSize: "2.7rem" }
+          // }
+        >
           Originals
         </h1>
       </div>
