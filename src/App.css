@@ -20,6 +20,12 @@ html {
   padding-top: 50px;
 }
 
+@media only screen and (max-width: 1050px) {
+  /* .wrapper {
+    padding-top: 150px;
+  } */
+}
+
 h3 {
   font-size: 20px;
   font-family: Avenir-Heavy, sans-serif;
@@ -31,8 +37,22 @@ h3 {
   margin-bottom: 100px;
 }
 
+@media only screen and (max-width: 765px) {
+  .wrapper {
+    padding-top: 100px;
+  }
+  .App {
+    padding-top: 100px;
+  }
+  .page {
+    margin: 20px;
+    margin-top: 0px;
+  }
+}
+
 .pageTitle {
   font-family: Avenir-Heavy, sans-serif;
   font-size: 3rem;
   font-weight: 600;
+  font-size: clamp(2rem, 1.6667rem + 1.4815vw, 3rem);
 }

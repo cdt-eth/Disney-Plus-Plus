@@ -2,6 +2,7 @@
   background: black;
   padding: 20px;
   display: grid;
+  /* width: 100%; */
 }
 
 .footerLogo {

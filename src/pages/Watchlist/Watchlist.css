@@ -18,3 +18,13 @@
 .wrapper {
   margin-bottom: 100px;
 }
+
+@media only screen and (max-width: 765px) {
+  .watchlistWrapper {
+    margin-top: 40px;
+  }
+
+  .wrapper {
+    margin-bottom: 60px;
+  }
+}
