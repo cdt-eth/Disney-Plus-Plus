@@ -127,13 +127,13 @@
 }
 
 @media only screen and (max-width: 765px) {
-  .nav {
+  /* .nav {
     font-size: 0.5rem;
   }
 
   .menu li svg {
     font-size: 0.5rem;
-  }
+  } */
 
   .login svg {
     font-size: 1.5rem;
