@@ -23,6 +23,9 @@
   .watchlistWrapper {
     margin-top: 40px;
   }
+  .watchlistWrapper svg {
+    font-size: 5rem;
+  }
 
   .wrapper {
     margin-bottom: 60px;
