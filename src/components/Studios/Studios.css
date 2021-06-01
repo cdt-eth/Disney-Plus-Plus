@@ -1,6 +1,8 @@
 .studios {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  /* grid-template-columns: repeat(5, 1fr); */
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+
   justify-content: space-around;
   gap: 50px;
   margin: 70px;
