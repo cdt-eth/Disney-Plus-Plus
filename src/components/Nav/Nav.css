@@ -150,9 +150,9 @@
     width: 60%;
   }
 
-  /* .menu {
-    padding: 15px 0px;
-  } */
+  .menu {
+    justify-items: center;
+  }
 
   .login svg {
     font-size: 1.5rem;
