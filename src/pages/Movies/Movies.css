@@ -17,9 +17,15 @@
 @media only screen and (max-width: 765px) {
   .fixedBanner {
     padding-top: 150px;
+    padding-left: 20px;
   }
   .moviePage {
     padding-top: 50px;
+  }
+
+  .movieList {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 

@@ -26,3 +26,9 @@
   transform: scale(1.02);
   border: 4px solid white;
 }
+
+@media only screen and (max-width: 765px) {
+  .recommendationSection {
+    margin-left: 20px !important;
+  }
+}

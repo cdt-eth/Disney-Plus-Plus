@@ -45,6 +45,10 @@
 }
 
 @media only screen and (max-width: 765px) {
+  .originalsList {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
   .originalsTitle {
     padding-top: 100px;
   }
