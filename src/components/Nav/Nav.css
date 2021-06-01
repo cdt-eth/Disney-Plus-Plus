@@ -1,12 +1,13 @@
 .logo {
-  width: 90%;
+  width: 70%;
   margin: auto;
+  margin-left: 0;
 }
 
 .nav {
   padding: 0px 30px;
   display: grid;
-  grid-template-columns: 0.5fr 6fr 1fr;
+  grid-template-columns: 1fr 8fr 1fr;
   column-gap: 30px;
   align-items: center;
   text-align: center;
@@ -27,6 +28,7 @@
   top: 0;
   z-index: 1000;
   transition: 0.3s;
+  width: -webkit-fill-available;
 }
 
 .menu {
@@ -92,4 +94,48 @@
 
 .login svg {
   font-size: 2.2rem;
+}
+
+@media only screen and (max-width: 1075px) {
+  .nav {
+    font-size: 0.65rem;
+    padding: 0px 15px;
+    column-gap: 0px;
+  }
+
+  .menu li svg {
+    font-size: 0.65rem;
+  }
+
+  .menu {
+    padding-inline-start: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 1fr;
+    padding: 0 40px;
+  }
+
+  .menu li {
+    padding: 5px;
+    /* margin: auto; */
+  }
+  .logo {
+    width: 100%;
+  }
+  .login svg {
+    font-size: 1.95rem;
+  }
+}
+
+@media only screen and (max-width: 765px) {
+  .nav {
+    font-size: 0.5rem;
+  }
+
+  .menu li svg {
+    font-size: 0.5rem;
+  }
+
+  .login svg {
+    font-size: 1.5rem;
+  }
 }
