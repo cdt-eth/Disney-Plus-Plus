@@ -12,6 +12,14 @@ export default function Recommendations({ title }) {
     slidesToScroll: 1,
     centerMode: false,
     arrows: false,
+    responsive: [
+      {
+        breakpoint: 812,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+    ],
   };
 
   return (
