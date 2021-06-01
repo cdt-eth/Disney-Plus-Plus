@@ -6,6 +6,10 @@
   color: rgb(249, 249, 249);
 }
 
+body {
+  margin: 0;
+}
+
 html {
   /* background: url(https://prod-static.disney-plus.net/us-east-1/disneyPlus/app/builds/c63ccc8fd2db4ed1a616b4bb8729a79d30927bd9/disneyPlus/app/assets/dss-junglebook/components/themes/images/background.png)
   no-repeat center center fixed; */
