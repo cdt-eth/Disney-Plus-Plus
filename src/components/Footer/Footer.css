@@ -42,3 +42,15 @@
   font-weight: 200;
   font-size: 0.65rem;
 }
+
+@media only screen and (max-width: 812px) {
+  .footerList {
+    padding-left: 0px !important;
+  }
+  .footerItem {
+    width: 50%;
+  }
+  .footerLogo {
+    width: 25%;
+  }
+}
