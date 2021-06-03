@@ -3,47 +3,71 @@ import "./Footer.css";
 export default function Footer() {
   return (
     <div className="footer">
-      <img
-        src="https://prod-static.disney-plus.net/us-west-2/builds/e76798ab2a732a884562763cbd19b969a80dcd5b_1606148151180/images/logo.svg"
-        alt="logo"
-        className="footerLogo"
-      />
+      <a href="/" className="footerLogo">
+        <img
+          src="https://prod-static.disney-plus.net/us-west-2/builds/e76798ab2a732a884562763cbd19b969a80dcd5b_1606148151180/images/logo.svg"
+          alt="logo"
+          // className="footerLogo"
+        />
+      </a>
       <ul className="footerList">
         <li className="footerItem">
-          <a href="###">Privacy Policy</a>
+          <a href="https://www.disneyplus.com/legal/privacy-policy">
+            Privacy Policy
+          </a>
         </li>
         <li className="footerItem">
-          <a href="###">Subscriber Agreement</a>
+          <a href="https://www.disneyplus.com/legal/subscriber-agreement">
+            Subscriber Agreement
+          </a>
         </li>
         <li className="footerItem">
-          <a href="###">Your California Privacy Rights</a>
+          <a href="https://www.disneyplus.com/legal/your-california-privacy-rights">
+            Your California Privacy Rights
+          </a>
         </li>
         <li className="footerItem">
-          <a href="###">Do Not Sell My Info</a>
+          <a href="https://www.disneyplus.com/legal/do-not-sell-my-info">
+            Do Not Sell My Info
+          </a>
         </li>
         <li className="footerItem">
-          <a href="###">Children's Online Privacy Policy</a>
+          <a href="https://privacy.thewaltdisneycompany.com/en/for-parents/childrens-online-privacy-policy/">
+            Children's Online Privacy Policy
+          </a>
         </li>
         <li className="footerItem">
-          <a href="###">Help</a>
+          <a href="https://help.disneyplus.com/csp">Help</a>
         </li>
         <li className="footerItem">
-          <a href="###">Closed Captioning</a>
+          <a href="https://help.disneyplus.com/csp?id=csp_article_content&sys_kb_id=f0fb467ddbb04c503c0cf158bf961982">
+            Closed Captioning
+          </a>
         </li>
         <li className="footerItem">
-          <a href="###">Supported Devices</a>
+          <a href="https://help.disneyplus.com/csp?id=csp_article_content&sys_kb_id=f0fb467ddbb04c503c0cf158bf961982">
+            Supported Devices
+          </a>
         </li>
         <li className="footerItem">
-          <a href="###">Gift Disney+</a>
+          <a href="https://www.disneyplus.com/welcome/gift-subscription">
+            Gift Disney+
+          </a>
         </li>
         <li className="footerItem">
-          <a href="###">About Us</a>
+          <a href="https://help.disneyplus.com/csp?id=csp_article_content_international&sys_kb_id=8d061aaadb7004903c0cf158bf9619ed">
+            About Us
+          </a>
         </li>
         <li className="footerItem">
-          <a href="###">Disney+ Partner Program</a>
+          <a href="https://www.disneyplus.com/welcome/partner-program">
+            Disney+ Partner Program
+          </a>
         </li>
         <li className="footerItem">
-          <a href="###">Interest-based Ads</a>
+          <a href="https://preferences-mgr.trustarc.com/?pid=disney01&aid=disneyplus01&type=disneyplus">
+            Interest-based Ads
+          </a>
         </li>
       </ul>
       <p className="copyright">© Disney. All Rights Reserved.</p>
