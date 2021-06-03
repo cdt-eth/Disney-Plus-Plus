@@ -1,14 +1,29 @@
 import "./Search.css";
+import { useState } from "react";
 
 export default function Search() {
+  const [searchValue, setSearchValue] = useState("");
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    console.log(searchValue);
+    setSearchValue("");
+  }
+
   return (
     <div className="wrapper">
-      <form action="submit" className="form">
+      <form className="form" onSubmit={handleSubmit}>
         <input
           placeholder="Search by title, character, or genre"
           className="input"
+          value={searchValue}
+          onChange={(e) => {
+            setSearchValue(e.target.value);
+          }}
         />
       </form>
+
       <div className="page">
         <h1 className="pageTitle">Explore</h1>
 
