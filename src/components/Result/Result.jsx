@@ -1,8 +1,10 @@
 import "./Result.css";
 
-export default function Result({ key, poster, alt }) {
+export default function Result(props) {
+  const { poster, alt } = props;
+
   return (
-    <div className="result" key={key}>
+    <div className="result">
       <img
         src={
           poster

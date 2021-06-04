@@ -37,6 +37,7 @@ export default function Search() {
           }}
         />
       </form>
+
       <div className="page">
         <h1 className="pageTitle">Explore</h1>
 
@@ -44,16 +45,13 @@ export default function Search() {
           <h1>Loading...</h1>
         ) : (
           <div className="results">
-            {data.map((movie) => {
-              console.log(movie.title);
-              return (
-                <Result
-                  key={movie.id}
-                  poster={movie.poster_path}
-                  alt={movie.title}
-                />
-              );
-            })}
+            {data.map((movie) => (
+              <Result
+                poster={movie.poster_path}
+                alt={movie.title}
+                key={movie.id}
+              />
+            ))}
           </div>
         )}
       </div>
