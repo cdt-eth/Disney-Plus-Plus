@@ -3,24 +3,23 @@ import { useState } from "react";
 
 export default function Search() {
   const [searchValue, setSearchValue] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
 
   const fetchData = async () => {
     const res = await fetch(
       `https://api.themoviedb.org/3/search/movie?api_key=1dbf27409e387afe9abadb77b2745ddd&query=${searchValue}`
     );
-
     const data = await res.json();
     const results = data.results;
 
-    console.log(results);
     setData(results);
+    setIsLoading(false);
   };
 
   function handleSubmit(e) {
     e.preventDefault();
-
-    console.log(searchValue);
+    setIsLoading(true);
     fetchData();
     setSearchValue("");
   }
@@ -38,23 +37,28 @@ export default function Search() {
         />
       </form>
 
-      {data.map((movie) => {
-        console.log(movie.title);
-        return (
-          <div>
-            <p key={movie.id}>{movie.title}</p>
-            <img
-              src={
-                movie.poster_path
-                  ? `https://image.tmdb.org/t/p/original/${movie.poster_path}`
-                  : "https://www.genius100visions.com/wp-content/uploads/2017/09/placeholder-vertical.jpg"
-              }
-              alt={movie.title}
-              width={100}
-            />
-          </div>
-        );
-      })}
+      {isLoading ? (
+        <h1>Loading...</h1>
+      ) : (
+        data.map((movie) => {
+          console.log(movie.title);
+
+          return (
+            <div key={movie.id}>
+              <p>{movie.title}</p>
+              <img
+                src={
+                  movie.poster_path
+                    ? `https://image.tmdb.org/t/p/original/${movie.poster_path}`
+                    : "https://www.genius100visions.com/wp-content/uploads/2017/09/placeholder-vertical.jpg"
+                }
+                alt={movie.title}
+                width={100}
+              />
+            </div>
+          );
+        })
+      )}
 
       <div className="page">
         <h1 className="pageTitle">Explore</h1>
