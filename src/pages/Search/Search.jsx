@@ -1,5 +1,6 @@
 import "./Search.css";
 import { useState } from "react";
+import Result from "../../components/Result/Result";
 
 export default function Search() {
   const [searchValue, setSearchValue] = useState("");
@@ -46,16 +47,11 @@ export default function Search() {
             {data.map((movie) => {
               console.log(movie.title);
               return (
-                <div className="result" key={movie.id}>
-                  <img
-                    src={
-                      movie.poster_path
-                        ? `https://image.tmdb.org/t/p/original/${movie.poster_path}`
-                        : "https://www.genius100visions.com/wp-content/uploads/2017/09/placeholder-vertical.jpg"
-                    }
-                    alt={movie.title}
-                  />
-                </div>
+                <Result
+                  key={movie.id}
+                  poster={movie.poster_path}
+                  alt={movie.title}
+                />
               );
             })}
           </div>
