@@ -6,6 +6,7 @@ import Watchlist from "../../pages/Watchlist/Watchlist";
 import Originals from "../../pages/Originals/Originals";
 import Movies from "../../pages/Movies/Movies";
 import Series from "../../pages/Series/Series";
+import ResultPage from "../../pages/ResultPage/ResultPage";
 
 import {
   MdAccountCircle as LoginIcon,
@@ -38,6 +39,7 @@ export default function Nav() {
               alt="logo"
             />
           </Link>
+
           <ul className="menu">
             <li>
               <HomeIcon />
@@ -93,13 +95,16 @@ export default function Nav() {
           <Route path="/originals">
             <Originals />
           </Route>
-          <Route path="/Movies">
+          <Route path="/movies">
             <Movies />
           </Route>
           <Route path="/series">
             <Series />
           </Route>
-          <Route path="/">
+
+          <Route path={"/results/:id"} component={ResultPage} />
+
+          <Route exact path="/">
             <Home />
           </Route>
         </Switch>
