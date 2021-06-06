@@ -50,6 +50,8 @@ export default function Search() {
                 poster={movie.poster_path}
                 alt={movie.title}
                 key={movie.id}
+                id={movie.id}
+                title={movie.title}
               />
             ))}
           </div>
