@@ -1,0 +1,76 @@
+.posterBackground {
+  width: 100%;
+  position: fixed;
+  z-index: -1;
+}
+
+.resultBackground {
+  z-index: 3;
+  background-color: #1a1d29;
+  opacity: 0.9;
+  height: 100vh;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+.resultInfo {
+  position: relative;
+  z-index: 5;
+  padding: 100px 250px 50px 70px;
+}
+
+.resultInfo h1 {
+  font-size: 85px;
+  max-width: 75%;
+}
+
+.resultInfo h5 {
+  font-size: 20px;
+}
+
+.actions {
+  display: inline-block;
+}
+
+.play {
+  text-decoration: none;
+  cursor: pointer;
+  color: white;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  background: white;
+  border-radius: 7px;
+  width: 120px;
+  padding: 5px 25px 5px 10px;
+  float: left;
+}
+
+.play p {
+  padding-left: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-size: 15px;
+  color: black;
+}
+
+.play svg {
+  font-size: 20px;
+  fill: black;
+  justify-self: end;
+  padding-right: 15px;
+}
+
+.trailer {
+  background: black;
+  width: 150px;
+  border: 2px solid white;
+  margin-left: 50px;
+}
+.trailer p {
+  color: white;
+}
+
+.trailer svg {
+  fill: white;
+}

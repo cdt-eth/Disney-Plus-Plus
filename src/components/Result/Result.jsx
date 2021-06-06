@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function Result(props) {
   const { poster, alt, id } = props;
 
-  console.log("Result Props:", props);
+  // console.log("Result Props:", props);
 
   return (
     <div className="result">

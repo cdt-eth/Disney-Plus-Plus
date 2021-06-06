@@ -52,6 +52,9 @@ export default function Search() {
                 key={movie.id}
                 id={movie.id}
                 title={movie.title}
+                overview={movie.overview}
+                release_date={movie.release_date}
+                genres={movie.genre_ids}
               />
             ))}
           </div>
