@@ -10,6 +10,10 @@
   margin: 0 auto;
 }
 
+.footerLogo img {
+  width: 100px;
+}
+
 .footerList {
   list-style-type: none;
   /* display: grid;

@@ -4,6 +4,10 @@
   margin-left: 0;
 }
 
+.logo img {
+  width: 100px !important;
+}
+
 .nav {
   padding: 0px 30px;
   display: grid;
@@ -146,6 +150,7 @@
     width: 20%;
     margin: auto;
   }
+
   .logo img {
     width: 60%;
   }

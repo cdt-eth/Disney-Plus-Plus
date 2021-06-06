@@ -35,7 +35,9 @@ export default function Nav() {
         <nav className="nav" id="nav">
           <Link to="/" className="logo">
             <img
-              src="https://prod-static.disney-plus.net/us-west-2/builds/e76798ab2a732a884562763cbd19b969a80dcd5b_1606148151180/images/logo.svg"
+              className="logoImg"
+              // src="https://prod-static.disney-plus.net/us-west-2/builds/e76798ab2a732a884562763cbd19b969a80dcd5b_1606148151180/images/logo.svg"
+              src="/dpp.png"
               alt="logo"
             />
           </Link>

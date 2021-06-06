@@ -5,7 +5,8 @@ export default function Footer() {
     <div className="footer">
       <a href="/" className="footerLogo">
         <img
-          src="https://prod-static.disney-plus.net/us-west-2/builds/e76798ab2a732a884562763cbd19b969a80dcd5b_1606148151180/images/logo.svg"
+          // src="https://prod-static.disney-plus.net/us-west-2/builds/e76798ab2a732a884562763cbd19b969a80dcd5b_1606148151180/images/logo.svg"
+          src="/dpp.png"
           alt="logo"
           // className="footerLogo"
         />
