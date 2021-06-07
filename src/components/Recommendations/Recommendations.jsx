@@ -3,7 +3,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Recommendations.css";
 
-export default function Recommendations({ title, data }) {
+export default function Recommendations({ title, data, isLoading }) {
   const settings = {
     dots: false,
     infinite: true,
