@@ -3,7 +3,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Recommendations.css";
 
-export default function Recommendations({ title }) {
+export default function Recommendations({ title, data }) {
   const settings = {
     dots: false,
     infinite: true,
@@ -26,48 +26,20 @@ export default function Recommendations({ title }) {
     <div className="recommendationSection">
       <h3>{title}</h3>
       <Slider {...settings}>
-        <div className="recommendationVideo">
-          <img
-            src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
-            alt="Mandalorian"
-          />
-        </div>
-        <div className="recommendationVideo">
-          <img
-            src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
-            alt="Mandalorian"
-          />
-        </div>
-        <div className="recommendationVideo">
-          <img
-            src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
-            alt="Mandalorian"
-          />
-        </div>
-        <div className="recommendationVideo">
-          <img
-            src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
-            alt="Mandalorian "
-          />
-        </div>
-        <div className="recommendationVideo">
-          <img
-            src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
-            alt="Mandalorian"
-          />
-        </div>
-        <div className="recommendationVideo">
-          <img
-            src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
-            alt="Mandalorian "
-          />
-        </div>
-        <div className="recommendationVideo">
-          <img
-            src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
-            alt="Mandalorian"
-          />
-        </div>
+        {data.map((movie) => {
+          return (
+            <div className="banner recBanner" key={movie.title}>
+              <img
+                src={
+                  movie.poster_path
+                    ? `https://image.tmdb.org/t/p/original/${movie.poster_path}`
+                    : "https://www.genius100visions.com/wp-content/uploads/2017/09/placeholder-vertical.jpg"
+                }
+                alt={movie.title}
+              />
+            </div>
+          );
+        })}
       </Slider>
     </div>
   );
