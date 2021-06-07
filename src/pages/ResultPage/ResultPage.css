@@ -7,15 +7,19 @@
 .resultBackground {
   z-index: 3;
   background-color: #1a1d29;
-  opacity: 0.9;
+  opacity: 0.85;
   height: 100vh;
   max-height: 100%;
   object-fit: cover;
 }
 
+.resultPage {
+  margin-top: -50px;
+}
+
 .resultInfo {
   position: relative;
-  z-index: 5;
+  z-index: 15;
   padding: 100px 250px 50px 70px;
 }
 
@@ -26,10 +30,15 @@
 
 .resultInfo h5 {
   font-size: 20px;
+  margin-top: 15px;
 }
 
 .actions {
   display: inline-block;
+  padding-bottom: 15px;
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr 1fr;
+  width: 60%;
 }
 
 .play {
@@ -44,6 +53,13 @@
   width: 120px;
   padding: 5px 25px 5px 10px;
   float: left;
+  border: 2px solid white;
+  transition: 0.3s;
+}
+
+.play:hover {
+  background: rgb(198, 198, 198);
+  border: 2px solid rgb(198, 198, 198);
 }
 
 .play p {
@@ -65,12 +81,92 @@
   background: black;
   width: 150px;
   border: 2px solid white;
-  margin-left: 50px;
+  margin-left: 30px;
+  margin-right: 30px;
 }
+
+.trailer:hover {
+  background: rgba(249, 249, 249, 0.4);
+  border: 2px solid rgba(249, 249, 249, 0) !important;
+}
+
 .trailer p {
   color: white;
 }
 
 .trailer svg {
   fill: white;
+}
+
+.circleButton {
+  display: grid;
+  width: 60px;
+  height: 62px;
+  justify-content: center;
+  align-content: center;
+  font-size: 2rem;
+  border: 2px solid white;
+  border-radius: 50%;
+  margin-right: 30px;
+  transition: 0.3s;
+}
+
+.circleButton:hover {
+  background: white;
+}
+
+.circleButton:hover svg {
+  fill: black;
+}
+
+@media only screen and (max-width: 765px) {
+  .resultPage {
+    width: auto;
+    padding-top: 80px;
+  }
+
+  .actions {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-row-gap: 20px;
+    justify-items: center;
+  }
+
+  .resultInfo h1 {
+    font-size: 60px;
+    max-width: 100%;
+  }
+
+  .play {
+    max-width: 75px;
+    height: 40px;
+  }
+
+  .play p {
+    font-size: 10px;
+  }
+
+  .play svg {
+    font-size: 15px;
+    padding-right: 0;
+  }
+
+  .resultPage {
+    width: fit-content;
+    margin-top: 0;
+  }
+
+  .resultInfo {
+    padding-right: 60px !important;
+  }
+
+  .circleButton {
+    width: 40px;
+    font-size: 1.3rem;
+    height: 42px;
+    margin-right: 0;
+  }
+  .resultInfo h5 {
+    font-size: 15px;
+  }
 }
