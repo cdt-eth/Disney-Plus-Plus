@@ -8,7 +8,8 @@
   z-index: 3;
   background-color: #1a1d29;
   opacity: 0.85;
-  height: 100vh;
+  /* height: 100vh; */
+  height: auto;
   max-height: 100%;
   object-fit: cover;
 }
@@ -123,6 +124,9 @@
   .resultPage {
     width: auto;
     padding-top: 80px;
+  }
+  .resultInfo {
+    padding: 5px 30px !important;
   }
 
   .actions {
