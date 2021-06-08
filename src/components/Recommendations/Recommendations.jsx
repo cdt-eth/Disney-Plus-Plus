@@ -1,4 +1,5 @@
 import Slider from "react-slick";
+import { Link } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Recommendations.css";
@@ -32,16 +33,23 @@ export default function Recommendations({ title, data, loading }) {
         <Slider {...settings}>
           {data.map((movie) => {
             return (
-              <div className="banner recBanner" key={movie.title}>
-                <img
-                  src={
-                    movie.poster_path
-                      ? `https://image.tmdb.org/t/p/original/${movie.poster_path}`
-                      : "https://www.genius100visions.com/wp-content/uploads/2017/09/placeholder-vertical.jpg"
-                  }
-                  alt={movie.title}
-                />
-              </div>
+              <Link
+                to={{
+                  pathname: `/results/${movie.id}`,
+                  state: { ...movie },
+                }}
+              >
+                <div className="banner recBanner" key={movie.title}>
+                  <img
+                    src={
+                      movie.poster_path
+                        ? `https://image.tmdb.org/t/p/original/${movie.poster_path}`
+                        : "https://www.genius100visions.com/wp-content/uploads/2017/09/placeholder-vertical.jpg"
+                    }
+                    alt={movie.title}
+                  />
+                </div>
+              </Link>
             );
           })}
         </Slider>
