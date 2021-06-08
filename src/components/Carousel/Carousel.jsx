@@ -1,5 +1,6 @@
 import "./Carousel.css";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -32,7 +33,6 @@ export default function Carousel() {
       );
       const data = await res.json();
       const results = data.results;
-      console.log(results);
 
       setPopular(results);
     };
@@ -45,54 +45,25 @@ export default function Carousel() {
       <Slider {...settings}>
         {popular.map((p) => {
           return (
-            <div className="banner" key={p.title}>
-              <img
-                src={
-                  p.poster_path
-                    ? `https://image.tmdb.org/t/p/original/${p.poster_path}`
-                    : "https://www.genius100visions.com/wp-content/uploads/2017/09/placeholder-vertical.jpg"
-                }
-                alt={p.title}
-              />
-            </div>
+            <Link
+              to={{
+                pathname: `/results/${p.id}`,
+                state: { ...p },
+              }}
+            >
+              <div className="banner" key={p.title}>
+                <img
+                  src={
+                    p.poster_path
+                      ? `https://image.tmdb.org/t/p/original/${p.poster_path}`
+                      : "https://www.genius100visions.com/wp-content/uploads/2017/09/placeholder-vertical.jpg"
+                  }
+                  alt={p.title}
+                />
+              </div>
+            </Link>
           );
         })}
-        {/* <div className="banner">
-          <img
-            src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/7F2714C42107E421DB04F96D1C4E269955A7F578C59B614505FE499FDC8A08CA/scale?width=2880&aspectRatio=3.91&format=jpeg"
-            alt="bad batch"
-          />
-        </div>
-        <div className="banner">
-          <img
-            src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/7F2714C42107E421DB04F96D1C4E269955A7F578C59B614505FE499FDC8A08CA/scale?width=2880&aspectRatio=3.91&format=jpeg"
-            alt="bad batch"
-          />
-        </div>
-        <div className="banner">
-          <img
-            src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/7F2714C42107E421DB04F96D1C4E269955A7F578C59B614505FE499FDC8A08CA/scale?width=2880&aspectRatio=3.91&format=jpeg"
-            alt="bad batch"
-          />
-        </div>
-        <div className="banner">
-          <img
-            src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/7F2714C42107E421DB04F96D1C4E269955A7F578C59B614505FE499FDC8A08CA/scale?width=2880&aspectRatio=3.91&format=jpeg"
-            alt="bad batch"
-          />
-        </div>
-        <div className="banner">
-          <img
-            src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/7F2714C42107E421DB04F96D1C4E269955A7F578C59B614505FE499FDC8A08CA/scale?width=2880&aspectRatio=3.91&format=jpeg"
-            alt="bad batch"
-          />
-        </div>
-        <div className="banner">
-          <img
-            src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/7F2714C42107E421DB04F96D1C4E269955A7F578C59B614505FE499FDC8A08CA/scale?width=2880&aspectRatio=3.91&format=jpeg"
-            alt="bad batch"
-          />
-        </div> */}
       </Slider>
     </div>
   );

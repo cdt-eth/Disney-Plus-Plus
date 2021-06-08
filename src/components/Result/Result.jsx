@@ -1,11 +1,8 @@
 import "./Result.css";
-
 import { Link } from "react-router-dom";
 
 export default function Result(props) {
-  const { poster, alt, id } = props;
-
-  // console.log("Result Props:", props);
+  const { poster_path: poster, alt, id } = props;
 
   return (
     <div className="result">

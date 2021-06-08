@@ -6,8 +6,15 @@ import { IoIosPeople as PeopleIcon } from "react-icons/io";
 export default function ResultPage(props) {
   const [genreNames, setGenreNames] = useState([]);
 
-  const { poster, overview, title, alt, release_date, genres } =
-    props.location.state;
+  const {
+    poster_path: poster,
+    overview,
+    title,
+    alt,
+    release_date,
+    genre_ids: genres,
+  } = props.location.state;
+
   const date = release_date.substr(0, release_date.indexOf("-"));
 
   useEffect(() => {
@@ -19,6 +26,7 @@ export default function ResultPage(props) {
       const apiGenres = data.genres;
 
       const filtered = [];
+
       apiGenres.map((res) => {
         if (genres.includes(res.id)) {
           filtered.push(res.name);
@@ -70,6 +78,7 @@ export default function ResultPage(props) {
           <div>
             {date} • {genreNames.join(", ")}
           </div>
+
           <h5>{overview}</h5>
         </div>
       </div>

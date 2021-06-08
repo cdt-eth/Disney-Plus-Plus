@@ -47,14 +47,14 @@ export default function Search() {
           <div className="results">
             {data.map((movie) => (
               <Result
-                poster={movie.poster_path}
+                poster_path={movie.poster_path}
                 alt={movie.title}
                 key={movie.id}
                 id={movie.id}
                 title={movie.title}
                 overview={movie.overview}
                 release_date={movie.release_date}
-                genres={movie.genre_ids}
+                genre_ids={movie.genre_ids}
               />
             ))}
           </div>
