@@ -19,8 +19,6 @@ export default function App() {
       const data = await res.json();
       const results = data.results;
 
-      console.log("upcoming:", results);
-
       setUpcoming(results);
       setIsLoading(false);
     };
@@ -68,21 +66,17 @@ export default function App() {
     <div className="App">
       <Carousel />
       <Studios />
-      {isLoading ? (
-        <h1>Loading...</h1>
-      ) : (
-        <Recommendations title={"Upcoming"} data={upcoming} />
-      )}
-      <Recommendations title={"Top Rated"} data={topRated} />
-      <Recommendations title={"Now Playing"} data={nowPlaying} />
-      {/* <Recommendations title={"Recommended For You"} data={upcoming} /> */}
-      {/* <Recommendations title={"New to Disney+"} />
+      <Recommendations title={"Upcoming"} data={upcoming} loading={isLoading} />
       <Recommendations
-        title={"Because You Watched The Falcon and The Winter Soldier"}
+        title={"Top Rated"}
+        data={topRated}
+        loading={isLoading}
       />
-      <Recommendations title={"Originals"} />
-      <Recommendations title={"Trending"} />
-      <Recommendations title={"Comedies"} /> */}
+      <Recommendations
+        title={"Now Playing"}
+        data={nowPlaying}
+        loading={isLoading}
+      />
     </div>
   );
 }

@@ -3,7 +3,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Recommendations.css";
 
-export default function Recommendations({ title, data, isLoading }) {
+export default function Recommendations({ title, data, loading }) {
   const settings = {
     dots: false,
     infinite: true,
@@ -25,22 +25,27 @@ export default function Recommendations({ title, data, isLoading }) {
   return (
     <div className="recommendationSection">
       <h3>{title}</h3>
-      <Slider {...settings}>
-        {data.map((movie) => {
-          return (
-            <div className="banner recBanner" key={movie.title}>
-              <img
-                src={
-                  movie.poster_path
-                    ? `https://image.tmdb.org/t/p/original/${movie.poster_path}`
-                    : "https://www.genius100visions.com/wp-content/uploads/2017/09/placeholder-vertical.jpg"
-                }
-                alt={movie.title}
-              />
-            </div>
-          );
-        })}
-      </Slider>
+
+      {loading ? (
+        <h3>Loading...</h3>
+      ) : (
+        <Slider {...settings}>
+          {data.map((movie) => {
+            return (
+              <div className="banner recBanner" key={movie.title}>
+                <img
+                  src={
+                    movie.poster_path
+                      ? `https://image.tmdb.org/t/p/original/${movie.poster_path}`
+                      : "https://www.genius100visions.com/wp-content/uploads/2017/09/placeholder-vertical.jpg"
+                  }
+                  alt={movie.title}
+                />
+              </div>
+            );
+          })}
+        </Slider>
+      )}
     </div>
   );
 }
