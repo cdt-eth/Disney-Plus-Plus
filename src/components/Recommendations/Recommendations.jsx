@@ -8,7 +8,7 @@ export default function Recommendations({ title, data, loading }) {
   const settings = {
     dots: false,
     infinite: true,
-    autoplay: false,
+    autoplay: true,
     slidesToShow: 4,
     slidesToScroll: 1,
     centerMode: false,
