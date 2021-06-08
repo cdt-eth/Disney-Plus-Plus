@@ -38,6 +38,15 @@
   margin-bottom: 100px;
 }
 
+.noResults em {
+  font-weight: 400 !important;
+}
+.noResults em {
+  color: #88b2f3;
+  /* text-decoration: underline; */
+  font-weight: 700 !important;
+}
+
 @media only screen and (max-width: 1050px) {
   .input {
     padding: 10px 20px;

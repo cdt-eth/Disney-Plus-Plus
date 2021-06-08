@@ -5,6 +5,7 @@ import Result from "../../components/Result/Result";
 export default function Search() {
   const [searchValue, setSearchValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [noResults, setNoResults] = useState(false);
   const [data, setData] = useState([]);
 
   const fetchData = async () => {
@@ -14,6 +15,8 @@ export default function Search() {
     const data = await res.json();
     const results = data.results;
 
+    if (results.length === 0) setNoResults(true);
+
     setData(results);
     setIsLoading(false);
   };
@@ -22,7 +25,7 @@ export default function Search() {
     e.preventDefault();
     setIsLoading(true);
     fetchData();
-    setSearchValue("");
+    // setSearchValue("");
   }
 
   return (
@@ -45,18 +48,27 @@ export default function Search() {
           <h1>Loading...</h1>
         ) : (
           <div className="results">
-            {data.map((movie) => (
-              <Result
-                poster_path={movie.poster_path}
-                alt={movie.title}
-                key={movie.id}
-                id={movie.id}
-                title={movie.title}
-                overview={movie.overview}
-                release_date={movie.release_date}
-                genre_ids={movie.genre_ids}
-              />
-            ))}
+            {!noResults ? (
+              data.map((movie) => (
+                <Result
+                  poster_path={movie.poster_path}
+                  alt={movie.title}
+                  key={movie.id}
+                  id={movie.id}
+                  title={movie.title}
+                  overview={movie.overview}
+                  release_date={movie.release_date}
+                  genre_ids={movie.genre_ids}
+                />
+              ))
+            ) : (
+              <div>
+                <h1 className="noResults">
+                  No results found for <em>"{searchValue}"</em>
+                </h1>
+                <h1>Please try again.</h1>
+              </div>
+            )}
           </div>
         )}
       </div>
