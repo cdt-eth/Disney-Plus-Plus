@@ -41,47 +41,50 @@ export default function ResultPage(props) {
   }, [genres]);
 
   return (
-    <div className="resultPage">
-      <img
-        className="posterBackground"
-        src={
-          poster
-            ? `https://image.tmdb.org/t/p/original/${poster}`
-            : "https://www.genius100visions.com/wp-content/uploads/2017/09/placeholder-vertical.jpg"
-        }
-        alt={alt}
-      />
-      <div className="resultBackground">
-        <div className="resultInfo">
-          <h1> {title} </h1>
+    console.log("overview:", overview),
+    (
+      <div className="resultPage">
+        <img
+          className="posterBackground"
+          src={
+            poster
+              ? `https://image.tmdb.org/t/p/original/${poster}`
+              : "https://www.genius100visions.com/wp-content/uploads/2017/09/placeholder-vertical.jpg"
+          }
+          alt={alt}
+        />
+        <div className="resultBackground">
+          <div className="resultInfo">
+            <h1> {title} </h1>
 
-          <div className="actions">
-            <a href="www.com" className="play">
-              <PlayIcon />
-              <p>Play</p>
-            </a>
+            <div className="actions">
+              <a href="www.com" className="play">
+                <PlayIcon />
+                <p>Play</p>
+              </a>
 
-            <a href="www.com" className="play trailer">
-              <PlayIcon />
-              <p>Trailer</p>
-            </a>
+              <a href="www.com" className="play trailer">
+                <PlayIcon />
+                <p>Trailer</p>
+              </a>
 
-            <a href="www.com" className="circleButton">
-              <PlusIcon />
-            </a>
+              <a href="www.com" className="circleButton">
+                <PlusIcon />
+              </a>
 
-            <a href="www.com" className="circleButton">
-              <PeopleIcon />
-            </a>
+              <a href="www.com" className="circleButton">
+                <PeopleIcon />
+              </a>
+            </div>
+
+            <div>
+              {date} {genreNames.length > 0 ? `• ${genreNames.join(", ")}` : ""}
+            </div>
+
+            <h5>{overview}</h5>
           </div>
-
-          <div>
-            {date} • {genreNames.join(", ")}
-          </div>
-
-          <h5>{overview}</h5>
         </div>
       </div>
-    </div>
+    )
   );
 }
