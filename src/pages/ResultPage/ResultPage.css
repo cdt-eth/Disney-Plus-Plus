@@ -22,6 +22,7 @@
   position: relative;
   z-index: 15;
   padding: 100px 250px 50px 70px;
+  /* opacity: 1 !important;  */
 }
 
 .resultInfo h1 {
@@ -118,6 +119,12 @@
 
 .circleButton:hover svg {
   fill: black;
+}
+
+.trailerError {
+  background-color: red;
+  max-width: max-content;
+  padding: 5px 10px;
 }
 
 @media only screen and (max-width: 765px) {
