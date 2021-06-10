@@ -1,0 +1,28 @@
+.column1 h5 {
+  margin-top: 0px;
+  font-weight: 300;
+}
+
+.column2 div {
+  padding-bottom: 10px;
+}
+
+.column3 div {
+  padding-bottom: 10px;
+}
+
+.extras {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 30px;
+}
+
+.extras p {
+  font-size: 15px;
+  font-weight: 300;
+  margin: 0;
+}
+
+.extras p:first-child {
+  color: rgb(202, 202, 202);
+}

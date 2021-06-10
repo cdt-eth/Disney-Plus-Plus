@@ -8,6 +8,9 @@ import Extras from "../../components/ResultPage/Extras/Extras";
 import Details from "../../components/ResultPage/Details/Details";
 
 export default function ResultPage(props) {
+  const [data, setData] = useState([]);
+  const [duration, setDuration] = useState("");
+  const [rating, setRating] = useState("");
   const [genreNames, setGenreNames] = useState([]);
   const [trailer, setTrailer] = useState([]);
   const [noTrailer, setNoTrailer] = useState(null);
@@ -29,36 +32,25 @@ export default function ResultPage(props) {
   const date = release_date.substr(0, release_date.indexOf("-"));
 
   useEffect(() => {
-    const fetchGenres = async () => {
+    const fetchMovieData = async () => {
       const res = await fetch(
-        "https://api.themoviedb.org/3/genre/movie/list?api_key=1dbf27409e387afe9abadb77b2745ddd"
+        `http://api.themoviedb.org/3/movie/${id}?api_key=1dbf27409e387afe9abadb77b2745ddd&append_to_response=videos,release_dates`
       );
       const data = await res.json();
+      setData(data);
+
+      // GENRES
       const apiGenres = data.genres;
-
       const filtered = [];
-
       apiGenres.map((res) => {
         if (genres.includes(res.id)) {
           filtered.push(res.name);
         }
         return filtered;
       });
-
       setGenreNames(filtered);
-    };
 
-    fetchGenres();
-  }, [genres]);
-
-  const fetchRequest = () => {
-    const fetchTrailer = async () => {
-      const res = await fetch(
-        `http://api.themoviedb.org/3/movie/${id}?api_key=1dbf27409e387afe9abadb77b2745ddd&append_to_response=videos`
-      );
-
-      const data = await res.json();
-
+      // TRAILER
       if (data.videos.results.length === 0) {
         setNoTrailer(true);
       } else {
@@ -67,13 +59,29 @@ export default function ResultPage(props) {
         setNoTrailer(false);
         setTrailer(key);
       }
+
+      // RUNTIME
+      const hours = data.runtime / 60;
+      const rhours = Math.floor(hours);
+      const minutes = (hours - rhours) * 60;
+      const rminutes = Math.round(minutes);
+      const d = rhours + "h " + rminutes + "m";
+      setDuration(d);
+
+      // RATING
+      const rating =
+        data.release_dates.results[1].release_dates[0].certification;
+      setRating(rating);
     };
 
-    fetchTrailer();
+    fetchMovieData();
+  }, [id, genres]);
 
+  const fetchRequest = () => {
     setOpen(true);
   };
 
+  console.log("movieData", data);
   return (
     <div className="resultPage">
       <img
@@ -168,7 +176,16 @@ export default function ResultPage(props) {
           <div className="detailsWrapper">
             {showSuggested && <Suggested />}
             {showExtras && <Extras />}
-            {showDetails && <Details overview={overview} title={title} />}
+            {showDetails && (
+              <Details
+                overview={overview}
+                title={title}
+                date={date}
+                genres={genreNames}
+                runtime={duration}
+                rating={rating}
+              />
+            )}
           </div>
         </div>
       </div>

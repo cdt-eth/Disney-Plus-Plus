@@ -1,8 +1,13 @@
 import "./Details.css";
 
-export default function Details({ overview, title }) {
-  console.log("detail props", overview, title);
-
+export default function Details({
+  overview,
+  title,
+  date,
+  genres,
+  runtime,
+  rating,
+}) {
   return (
     <>
       <h2>{title}</h2>
@@ -12,15 +17,33 @@ export default function Details({ overview, title }) {
         </div>
 
         <div className="column2">
-          <p>Duration:</p>
-          <p>Release Date:</p>
-          <p>Genre:</p>
-          <p>Rating:</p>
+          <div>
+            <p>Duration:</p>
+            <p>{runtime}</p>
+          </div>
+          <div>
+            <p>Release Date:</p>
+            <p>{date}</p>
+          </div>
+          <div>
+            <p>Genre:</p>
+            <p>{genres.length > 0 ? `${genres.join(", ")}` : "N/A"}</p>
+          </div>
+          <div>
+            <p>Rating:</p>
+            <p>{rating}</p>
+          </div>
         </div>
 
         <div className="column3">
-          <p>Director:</p>
-          <p>Starring:</p>
+          <div>
+            <p>Director:</p>
+            <p>director</p>
+          </div>
+          <div>
+            <p>Starring:</p>
+            <p>starring</p>
+          </div>
         </div>
       </div>
     </>

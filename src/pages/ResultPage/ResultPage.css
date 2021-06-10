@@ -41,7 +41,7 @@
   padding-bottom: 15px;
   display: grid;
   grid-template-columns: 2fr 2fr 1fr 1fr;
-  width: 60%;
+  width: 50%;
 }
 
 .play {
@@ -66,7 +66,7 @@
 }
 
 .play p {
-  padding-left: 12px;
+  /* padding-left: 12px; */
   text-transform: uppercase;
   letter-spacing: 0.2rem;
   font-size: 15px;
@@ -82,7 +82,7 @@
 
 .trailer {
   background: black;
-  width: 150px;
+  width: 160px;
   border: 2px solid white;
   margin-left: 30px;
   margin-right: 30px;
@@ -99,6 +99,7 @@
 
 .trailer svg {
   fill: white;
+  padding-right: 10px;
 }
 
 .circleButton {
@@ -149,21 +150,6 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
-}
-
-.extras {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 30px;
-}
-
-.extras p {
-  margin-top: 0;
-}
-
-.column1 h5 {
-  margin-top: 0px;
-  font-weight: 300;
 }
 
 @media only screen and (max-width: 765px) {
