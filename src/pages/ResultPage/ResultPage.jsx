@@ -8,8 +8,10 @@ import Extras from "../../components/ResultPage/Extras/Extras";
 import Details from "../../components/ResultPage/Details/Details";
 
 export default function ResultPage(props) {
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
   const [duration, setDuration] = useState("");
+  const [director, setDirector] = useState("");
+  const [castList, setCast] = useState([]);
   const [rating, setRating] = useState("");
   const [genreNames, setGenreNames] = useState([]);
   const [trailer, setTrailer] = useState([]);
@@ -34,10 +36,11 @@ export default function ResultPage(props) {
   useEffect(() => {
     const fetchMovieData = async () => {
       const res = await fetch(
-        `http://api.themoviedb.org/3/movie/${id}?api_key=1dbf27409e387afe9abadb77b2745ddd&append_to_response=videos,release_dates`
+        // `http://api.themoviedb.org/3/movie/${id}?api_key=1dbf27409e387afe9abadb77b2745ddd&append_to_response=videos,release_dates`
+        `http://api.themoviedb.org/3/movie/${id}?api_key=1dbf27409e387afe9abadb77b2745ddd&append_to_response=videos,release_dates,credits`
       );
       const data = await res.json();
-      setData(data);
+      // setData(data);
 
       // GENRES
       const apiGenres = data.genres;
@@ -65,23 +68,45 @@ export default function ResultPage(props) {
       const rhours = Math.floor(hours);
       const minutes = (hours - rhours) * 60;
       const rminutes = Math.round(minutes);
-      const d = rhours + "h " + rminutes + "m";
+      let d = "";
+
+      if (rhours < 1) {
+        d = rminutes + "m";
+      } else {
+        d = rhours + "h " + rminutes + "m";
+      }
       setDuration(d);
 
       // RATING
       const rating =
-        data.release_dates.results[1].release_dates[0].certification;
-      setRating(rating);
+        data.release_dates.results[0].release_dates[0].certification;
+      if (rating) setRating(rating);
+
+      // DIRECTOR
+      data.credits.crew.map((crew) => {
+        if (crew.job === "Director") {
+          setDirector(crew.name);
+        }
+        return crew;
+      });
+
+      // CAST
+      const castArray = [];
+      for (var i = 0; i < 6; i++) {
+        castArray.push(data.credits.cast[i].name);
+      }
+      setCast(castArray);
     };
 
     fetchMovieData();
   }, [id, genres]);
 
+  // console.log(castList);
+
   const fetchRequest = () => {
     setOpen(true);
   };
 
-  console.log("movieData", data);
   return (
     <div className="resultPage">
       <img
@@ -184,6 +209,8 @@ export default function ResultPage(props) {
                 genres={genreNames}
                 runtime={duration}
                 rating={rating}
+                director={director}
+                cast={castList}
               />
             )}
           </div>

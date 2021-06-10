@@ -26,3 +26,7 @@
 .extras p:first-child {
   color: rgb(202, 202, 202);
 }
+
+.cast {
+  list-style: none;
+}

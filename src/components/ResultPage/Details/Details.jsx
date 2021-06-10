@@ -7,6 +7,8 @@ export default function Details({
   genres,
   runtime,
   rating,
+  director,
+  cast,
 }) {
   return (
     <>
@@ -19,11 +21,11 @@ export default function Details({
         <div className="column2">
           <div>
             <p>Duration:</p>
-            <p>{runtime}</p>
+            <p>{runtime ? runtime : "N/A"}</p>
           </div>
           <div>
             <p>Release Date:</p>
-            <p>{date}</p>
+            <p>{date ? date : "N/A"}</p>
           </div>
           <div>
             <p>Genre:</p>
@@ -31,18 +33,22 @@ export default function Details({
           </div>
           <div>
             <p>Rating:</p>
-            <p>{rating}</p>
+            <p>{rating ? rating : "N/A"}</p>
           </div>
         </div>
 
         <div className="column3">
           <div>
             <p>Director:</p>
-            <p>director</p>
+            <p>{director}</p>
           </div>
           <div>
             <p>Starring:</p>
-            <p>starring</p>
+            <p className="cast">
+              {cast.map((cast) => (
+                <li>{cast}</li>
+              ))}
+            </p>
           </div>
         </div>
       </div>
