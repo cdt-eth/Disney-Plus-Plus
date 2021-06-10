@@ -3,12 +3,18 @@ import { useState, useEffect } from "react";
 import { FaPlay as PlayIcon, FaPlus as PlusIcon } from "react-icons/fa";
 import { IoIosPeople as PeopleIcon } from "react-icons/io";
 import ModalVideo from "react-modal-video";
+import Suggested from "../../components/ResultPage/Suggested/Suggested";
+import Extras from "../../components/ResultPage/Extras/Extras";
+import Details from "../../components/ResultPage/Details/Details";
 
 export default function ResultPage(props) {
   const [genreNames, setGenreNames] = useState([]);
   const [trailer, setTrailer] = useState([]);
   const [noTrailer, setNoTrailer] = useState(null);
   const [isOpen, setOpen] = useState(false);
+  const [showSuggested, setShowSuggested] = useState(false);
+  const [showExtras, setShowExtras] = useState(false);
+  const [showDetails, setShowDetails] = useState(false);
 
   const {
     poster_path: poster,
@@ -120,6 +126,49 @@ export default function ResultPage(props) {
                 onClose={() => setOpen(false)}
               />
             )}
+          </div>
+
+          <nav className="subNav">
+            <div className="subNavSection">
+              <button
+                onClick={() => {
+                  setShowSuggested(true);
+                  setShowExtras(false);
+                  setShowDetails(false);
+                }}
+              >
+                Suggested
+              </button>
+            </div>
+
+            <div className="subNavSection">
+              <button
+                onClick={() => {
+                  setShowSuggested(false);
+                  setShowExtras(true);
+                  setShowDetails(false);
+                }}
+              >
+                Extras
+              </button>
+            </div>
+
+            <div className="subNavSection">
+              <button
+                onClick={() => {
+                  setShowSuggested(false);
+                  setShowExtras(false);
+                  setShowDetails(true);
+                }}
+              >
+                Details
+              </button>
+            </div>
+          </nav>
+          <div className="detailsWrapper">
+            {showSuggested && <Suggested />}
+            {showExtras && <Extras />}
+            {showDetails && <Details overview={overview} title={title} />}
           </div>
         </div>
       </div>

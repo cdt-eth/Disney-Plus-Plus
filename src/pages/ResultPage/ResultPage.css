@@ -21,7 +21,8 @@
 .resultInfo {
   position: relative;
   z-index: 15;
-  padding: 100px 250px 50px 70px;
+  /* padding: 100px 250px 50px 70px; */
+  padding: 100px 150px 50px 70px;
   /* opacity: 1 !important;  */
 }
 
@@ -125,6 +126,44 @@
   background-color: red;
   max-width: max-content;
   padding: 5px 10px;
+}
+
+.subNav {
+  display: inline-block;
+  width: 100%;
+  border-bottom: 2px solid rgba(249, 249, 249, 0.2);
+  padding-bottom: 20px;
+}
+
+.subNavSection {
+  float: left;
+  margin-right: 25px;
+}
+
+.subNavSection button {
+  font-size: 20px;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  background-color: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.extras {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 30px;
+}
+
+.extras p {
+  margin-top: 0;
+}
+
+.column1 h5 {
+  margin-top: 0px;
+  font-weight: 300;
 }
 
 @media only screen and (max-width: 765px) {
