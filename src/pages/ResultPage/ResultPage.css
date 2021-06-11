@@ -48,7 +48,7 @@
   padding-bottom: 15px;
   display: grid;
   grid-template-columns: 2fr 2fr 1fr 1fr;
-  width: 50%;
+  width: 40%;
 }
 
 .play {
