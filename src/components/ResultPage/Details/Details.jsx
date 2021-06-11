@@ -45,9 +45,7 @@ export default function Details({
           <div>
             <p>Starring:</p>
             <p className="cast">
-              {cast.map((cast) => (
-                <li>{cast}</li>
-              ))}
+              {cast ? cast.map((cast) => <li key={cast}>{cast}</li>) : "N/A"}
             </p>
           </div>
         </div>

@@ -8,7 +8,7 @@ import Extras from "../../components/ResultPage/Extras/Extras";
 import Details from "../../components/ResultPage/Details/Details";
 
 export default function ResultPage(props) {
-  // const [data, setData] = useState([]);
+  const [data, setData] = useState([]);
   const [duration, setDuration] = useState("");
   const [director, setDirector] = useState("");
   const [castList, setCast] = useState([]);
@@ -17,7 +17,7 @@ export default function ResultPage(props) {
   const [trailer, setTrailer] = useState([]);
   const [noTrailer, setNoTrailer] = useState(null);
   const [isOpen, setOpen] = useState(false);
-  const [showSuggested, setShowSuggested] = useState(false);
+  const [showSuggested, setShowSuggested] = useState(true);
   const [showExtras, setShowExtras] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
 
@@ -36,11 +36,10 @@ export default function ResultPage(props) {
   useEffect(() => {
     const fetchMovieData = async () => {
       const res = await fetch(
-        // `http://api.themoviedb.org/3/movie/${id}?api_key=1dbf27409e387afe9abadb77b2745ddd&append_to_response=videos,release_dates`
         `http://api.themoviedb.org/3/movie/${id}?api_key=1dbf27409e387afe9abadb77b2745ddd&append_to_response=videos,release_dates,credits`
       );
       const data = await res.json();
-      // setData(data);
+      setData(data);
 
       // GENRES
       const apiGenres = data.genres;
@@ -78,9 +77,13 @@ export default function ResultPage(props) {
       setDuration(d);
 
       // RATING
-      const rating =
-        data.release_dates.results[0].release_dates[0].certification;
-      if (rating) setRating(rating);
+      data.release_dates.results.map((rating) => {
+        if (rating.iso_3166_1 === "US") {
+          console.log("found:", rating.iso_3166_1);
+          setRating(rating.release_dates[0].certification);
+        }
+        return rating;
+      });
 
       // DIRECTOR
       data.credits.crew.map((crew) => {
@@ -92,16 +95,20 @@ export default function ResultPage(props) {
 
       // CAST
       const castArray = [];
+      let castMember = data.credits.cast;
+
       for (var i = 0; i < 6; i++) {
-        castArray.push(data.credits.cast[i].name);
+        if (castMember[i] === undefined) {
+          break;
+        } else {
+          castArray.push(castMember[i].name);
+        }
       }
-      setCast(castArray);
+      if (castArray.length > 0) setCast(castArray);
     };
 
     fetchMovieData();
   }, [id, genres]);
-
-  // console.log(castList);
 
   const fetchRequest = () => {
     setOpen(true);
@@ -109,12 +116,22 @@ export default function ResultPage(props) {
 
   return (
     <div className="resultPage">
-      <img
+      {/* <img
         className="posterBackground"
         src={
           poster
             ? `https://image.tmdb.org/t/p/original/${poster}`
             : "https://www.genius100visions.com/wp-content/uploads/2017/09/placeholder-vertical.jpg"
+        }
+        alt={alt}
+      /> */}
+      <img
+        className="posterBackground"
+        src={
+          data.backdrop_path
+            ? `https://image.tmdb.org/t/p/original${data.backdrop_path}`
+            : `https://image.tmdb.org/t/p/original${poster}`
+          // "https://www.genius100visions.com/wp-content/uploads/2017/09/placeholder-vertical.jpg"
         }
         alt={alt}
       />
@@ -123,10 +140,10 @@ export default function ResultPage(props) {
           <h1> {title} </h1>
 
           <div className="actions">
-            <a href="www.com" className="play">
+            <button className="play" onClick={fetchRequest}>
               <PlayIcon />
               <p>Play</p>
-            </a>
+            </button>
 
             <button className="play trailer" onClick={fetchRequest}>
               <PlayIcon />
