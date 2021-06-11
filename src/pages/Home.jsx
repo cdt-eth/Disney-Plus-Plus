@@ -35,7 +35,6 @@ export default function App() {
       );
       const data = await res.json();
       const results = data.results;
-      console.log("top rated:", results);
 
       setTopRated(results);
       setIsLoading(false);

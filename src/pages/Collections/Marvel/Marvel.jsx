@@ -1,13 +1,13 @@
-import "./Pixar.css";
+import "./Marvel.css";
 import { useState, useEffect } from "react";
 import Result from "../../../components/Result/Result";
 
-export default function Pixar() {
+export default function Marvel() {
   const [data, setData] = useState([]);
 
   const fetchData = async () => {
     const res = await fetch(
-      "https://api.themoviedb.org/3/list/9095?api_key=1dbf27409e387afe9abadb77b2745ddd&language=en-US"
+      "https://api.themoviedb.org/3/list/9387?api_key=1dbf27409e387afe9abadb77b2745ddd&language=en-US"
     );
     const data = await res.json();
     const results = data.items;
@@ -28,7 +28,7 @@ export default function Pixar() {
         className="collectionsVideo"
       >
         <source
-          src="https://vod-bgc-na-east-1.media.dssott.com/bgui/ps01/disney/bgui/2019/08/01/1564677724-pixar.mp4"
+          src="https://vod-bgc-na-east-1.media.dssott.com/bgui/ps01/disney/bgui/2019/09/06/1567786546-marvel.mp4"
           type="video/mp4"
         />
       </video>
