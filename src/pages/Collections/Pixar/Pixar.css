@@ -1,0 +1,30 @@
+.collection {
+  background-color: rgb(26, 29, 41, 0.4);
+  margin-top: -50px;
+}
+
+.collections {
+  position: relative;
+}
+
+.collectionsVideo {
+  position: fixed;
+  inset: 0px;
+}
+
+.collectionsBG {
+  background: #87a8d5;
+  border: 20px solid red;
+  top: 30;
+  height: 240px;
+}
+.collectionsPage {
+  padding: 50px 50px 100px 50px !important;
+  padding-top: 0 !important;
+  margin: 0 !important;
+  padding-bottom: 0px !important;
+}
+
+.spacer {
+  padding-bottom: 475px;
+}

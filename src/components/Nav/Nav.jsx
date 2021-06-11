@@ -8,6 +8,11 @@ import Movies from "../../pages/Movies/Movies";
 import Series from "../../pages/Series/Series";
 import ResultPage from "../../pages/ResultPage/ResultPage";
 import Login from "../../pages/Login/Login";
+// import Disney from "../../pages/Collections/Disney/Disney";
+import Pixar from "../../pages/Collections/Pixar/Pixar";
+// import Marvel from "../../pages/Collections/Marvel/Marvel";
+// import StarWars from "../../pages/Collections/StarWars/StarWars";
+// import NetGeo from "../../pages/Collections/NetGeo/NetGeo";
 
 import {
   MdAccountCircle as LoginIcon,
@@ -83,10 +88,8 @@ export default function Nav() {
           </ul>
 
           <Link to="/login" className="login">
-            {/* <a href="www.com" className="login"> */}
             <p>CDT</p>
             <LoginIcon />
-            {/* </a> */}
           </Link>
         </nav>
 
@@ -111,6 +114,12 @@ export default function Nav() {
           </Route>
 
           <Route path={"/results/:id"} component={ResultPage} />
+
+          {/* <Route path={"/disney"} component={Disney} /> */}
+          <Route path={"/pixar"} component={Pixar} />
+          {/* <Route path={"/marvel"} component={Marvel} />
+          <Route path={"/star-wars"} component={StarWars} />
+          <Route path={"/nat-geo"} component={NatGeo} /> */}
 
           <Route exact path="/">
             <Home />
