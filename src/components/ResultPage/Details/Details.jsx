@@ -40,12 +40,14 @@ export default function Details({
         <div className="column3">
           <div>
             <p>Director:</p>
-            <p>{director}</p>
+            <p>{director ? director : "N/A"}</p>
           </div>
           <div>
             <p>Starring:</p>
             <p className="cast">
-              {cast ? cast.map((cast) => <li key={cast}>{cast}</li>) : "N/A"}
+              {cast.length > 0
+                ? cast.map((cast) => <li key={cast}>{cast}</li>)
+                : "N/A"}
             </p>
           </div>
         </div>
