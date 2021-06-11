@@ -7,6 +7,7 @@ import Originals from "../../pages/Originals/Originals";
 import Movies from "../../pages/Movies/Movies";
 import Series from "../../pages/Series/Series";
 import ResultPage from "../../pages/ResultPage/ResultPage";
+import Login from "../../pages/Login/Login";
 
 import {
   MdAccountCircle as LoginIcon,
@@ -81,10 +82,12 @@ export default function Nav() {
             </li>
           </ul>
 
-          <a href="www.com" className="login">
+          <Link to="/login" className="login">
+            {/* <a href="www.com" className="login"> */}
             <p>CDT</p>
             <LoginIcon />
-          </a>
+            {/* </a> */}
+          </Link>
         </nav>
 
         <Switch>
@@ -102,6 +105,9 @@ export default function Nav() {
           </Route>
           <Route path="/series">
             <Series />
+          </Route>
+          <Route path="/login">
+            <Login />
           </Route>
 
           <Route path={"/results/:id"} component={ResultPage} />
