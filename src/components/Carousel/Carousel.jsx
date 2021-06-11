@@ -50,8 +50,9 @@ export default function Carousel() {
                 pathname: `/results/${p.id}`,
                 state: { ...p },
               }}
+              key={p.title}
             >
-              <div className="banner" key={p.title}>
+              <div className="banner">
                 <img
                   src={
                     p.poster_path

@@ -52,7 +52,7 @@ export default function App() {
       );
       const data = await res.json();
       const results = data.results;
-      console.log("now playing:", results);
+      // console.log("now playing:", results);
 
       setNowPlaying(results);
       setIsLoading(false);

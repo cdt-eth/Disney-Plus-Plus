@@ -38,8 +38,9 @@ export default function Recommendations({ title, data, loading }) {
                   pathname: `/results/${movie.id}`,
                   state: { ...movie },
                 }}
+                key={movie.title}
               >
-                <div className="banner recBanner" key={movie.title}>
+                <div className="banner recBanner">
                   <img
                     src={
                       movie.poster_path
