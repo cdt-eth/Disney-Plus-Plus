@@ -140,7 +140,14 @@ export default function ResultPage(props) {
           <h1> {title} </h1>
 
           <div className="actions">
-            <button className="play" onClick={fetchRequest}>
+            <button
+              className="play"
+              onClick={
+                data.homepage
+                  ? () => window.open(data.homepage, "_blank")
+                  : fetchRequest
+              }
+            >
               <PlayIcon />
               <p>Play</p>
             </button>
