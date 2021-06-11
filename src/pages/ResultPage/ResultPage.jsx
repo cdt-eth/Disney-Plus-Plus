@@ -167,7 +167,8 @@ export default function ResultPage(props) {
           </div>
 
           <div>
-            {date} {genreNames.length > 0 ? `• ${genreNames.join(", ")}` : ""}
+            {rating ? `${rating} • ` : ""} {date}{" "}
+            {genreNames.length > 0 ? `• ${genreNames.join(", ")}` : ""}
           </div>
           <div>
             <h5>{overview}</h5>
