@@ -8,11 +8,11 @@ import Movies from "../../pages/Movies/Movies";
 import Series from "../../pages/Series/Series";
 import ResultPage from "../../pages/ResultPage/ResultPage";
 import Login from "../../pages/Login/Login";
-// import Disney from "../../pages/Collections/Disney/Disney";
+import Disney from "../../pages/Collections/Disney/Disney";
 import Pixar from "../../pages/Collections/Pixar/Pixar";
-// import Marvel from "../../pages/Collections/Marvel/Marvel";
-// import StarWars from "../../pages/Collections/StarWars/StarWars";
-// import NetGeo from "../../pages/Collections/NetGeo/NetGeo";
+import Marvel from "../../pages/Collections/Marvel/Marvel";
+import StarWars from "../../pages/Collections/StarWars/StarWars";
+import NatGeo from "../../pages/Collections/NatGeo/NatGeo";
 
 import {
   MdAccountCircle as LoginIcon,
@@ -115,11 +115,11 @@ export default function Nav() {
 
           <Route path={"/results/:id"} component={ResultPage} />
 
-          {/* <Route path={"/disney"} component={Disney} /> */}
-          <Route path={"/pixar"} component={Pixar} />
-          {/* <Route path={"/marvel"} component={Marvel} />
-          <Route path={"/star-wars"} component={StarWars} />
-          <Route path={"/nat-geo"} component={NatGeo} /> */}
+          <Route path={"/brand/disney"} component={Disney} />
+          <Route path={"/brand/pixar"} component={Pixar} />
+          <Route path={"/brand/marvel"} component={Marvel} />
+          <Route path={"/brand/star-wars"} component={StarWars} />
+          <Route path={"/brand/nat-geo"} component={NatGeo} />
 
           <Route exact path="/">
             <Home />
