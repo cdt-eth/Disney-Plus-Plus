@@ -127,15 +127,6 @@ export default function ResultPage(props) {
 
   return (
     <div className="resultPage">
-      {/* <img
-        className="posterBackground"
-        src={
-          poster
-            ? `https://image.tmdb.org/t/p/original/${poster}`
-            : "https://www.genius100visions.com/wp-content/uploads/2017/09/placeholder-vertical.jpg"
-        }
-        alt={alt}
-      /> */}
       <div className="resultBackground">
         <img
           className="posterBackground"
@@ -198,7 +189,7 @@ export default function ResultPage(props) {
           </div>
 
           <nav className="subNav">
-            <div className="subNavSection">
+            <div className={`subNavSection ${showSuggested ? "active" : ""} `}>
               <button
                 onClick={() => {
                   setShowSuggested(true);
@@ -210,7 +201,7 @@ export default function ResultPage(props) {
               </button>
             </div>
 
-            <div className="subNavSection">
+            <div className={`subNavSection ${showExtras ? "active" : ""} `}>
               <button
                 onClick={() => {
                   setShowSuggested(false);
@@ -222,7 +213,7 @@ export default function ResultPage(props) {
               </button>
             </div>
 
-            <div className="subNavSection">
+            <div className={`subNavSection ${showDetails ? "active" : ""} `}>
               <button
                 onClick={() => {
                   setShowSuggested(false);

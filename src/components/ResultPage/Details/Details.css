@@ -30,3 +30,13 @@
 .cast {
   list-style: none;
 }
+
+.subNavSection button {
+  padding-bottom: 20px;
+  transition: 0.3s;
+}
+
+.active {
+  border-bottom: 3px solid white !important;
+  transition: 0.3s;
+}
