@@ -48,7 +48,7 @@ export default function ResultPage(props) {
   useEffect(() => {
     const fetchMovieData = async () => {
       const res = await fetch(
-        `http://api.themoviedb.org/3/movie/${id}?api_key=1dbf27409e387afe9abadb77b2745ddd&append_to_response=videos,release_dates,credits`
+        `https://api.themoviedb.org/3/movie/${id}?api_key=1dbf27409e387afe9abadb77b2745ddd&append_to_response=videos,release_dates,credits`
       );
       const data = await res.json();
       setData(data);
