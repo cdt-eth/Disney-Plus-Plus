@@ -11,7 +11,7 @@ export default function Marvel() {
     );
     const data = await res.json();
     const results = data.items;
-    console.log(results);
+
     setData(results);
   };
 

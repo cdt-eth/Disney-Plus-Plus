@@ -91,7 +91,6 @@ export default function ResultPage(props) {
       // RATING
       data.release_dates.results.map((rating) => {
         if (rating.iso_3166_1 === "US") {
-          console.log("found:", rating.iso_3166_1);
           setRating(rating.release_dates[0].certification);
         }
         return rating;
