@@ -2,6 +2,7 @@ import "./ResultPage.css";
 import { useState, useEffect } from "react";
 import { FaPlay as PlayIcon, FaPlus as PlusIcon } from "react-icons/fa";
 import { IoIosPeople as PeopleIcon } from "react-icons/io";
+import { Link } from "react-router-dom";
 import ModalVideo from "react-modal-video";
 import Suggested from "../../components/ResultPage/Suggested/Suggested";
 import Extras from "../../components/ResultPage/Extras/Extras";
@@ -159,13 +160,13 @@ export default function ResultPage(props) {
               <p>Trailer</p>
             </button>
 
-            <a href="www.com" className="circleButton">
+            <Link to="/watchlist" className="circleButton">
               <PlusIcon />
-            </a>
+            </Link>
 
-            <a href="www.com" className="circleButton">
+            <Link to="/login" className="circleButton">
               <PeopleIcon />
-            </a>
+            </Link>
           </div>
 
           <div>
