@@ -172,8 +172,12 @@ export default function ResultPage(props) {
             {rating ? `${rating} • ` : ""} {date}{" "}
             {genreNames.length > 0 ? `• ${genreNames.join(", ")}` : ""}
           </div>
-          <div>
-            <h5>{overview}</h5>
+          <div className="overview">
+            <h5>
+              {overview
+                ? overview.split(".")[0] + "."
+                : "No summary available."}
+            </h5>
 
             {noTrailer ? (
               <h2 className="trailerError">No trailer available</h2>

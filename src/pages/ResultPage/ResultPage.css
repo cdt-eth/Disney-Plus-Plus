@@ -15,7 +15,7 @@
   max-height: 100%;
   object-fit: cover;
   background-image: radial-gradient(
-    farthest-side at 73% 21%,
+    farthest-side at 100% 21%,
     transparent,
     rgb(26, 29, 41)
   );
@@ -50,9 +50,14 @@
   max-width: 75%;
 }
 
+.overview {
+  max-width: 80%;
+}
+
 .resultInfo h5 {
   font-size: 20px;
   margin-top: 15px;
+  font-weight: 300;
 }
 
 .actions {
