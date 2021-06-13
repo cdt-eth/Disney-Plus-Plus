@@ -16,16 +16,7 @@ export default function Originals() {
   return (
     <div className="page2">
       <div className="fixedBannerOriginals">
-        <h1
-          className="originalsTitle"
-          id="originals"
-          // style={
-          //   document.body.scrollTop > 50 ||
-          //   document.documentElement.scrollTop > 50
-          //     ? { fontSize: "1.7rem" }
-          //     : { fontSize: "2.7rem" }
-          // }
-        >
+        <h1 className="originalsTitle" id="originals">
           Originals
         </h1>
       </div>

@@ -22,17 +22,6 @@ export default function ResultPage(props) {
   const [showExtras, setShowExtras] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
 
-  // window.addEventListener("scroll", function () {
-  //   var currScrollPos2 =
-  //     window.pageYOffset ||
-  //     document.documentElement.scrollTop ||
-  //     document.body.scrollTop ||
-  //     0;
-  //   if (currScrollPos2 > 40) {
-  //     document.getElementsByClassName("opacity").style.opacity = 0.8;
-  //   }
-  // });
-
   const {
     poster_path: poster,
     overview,
@@ -134,7 +123,6 @@ export default function ResultPage(props) {
             data.backdrop_path
               ? `https://image.tmdb.org/t/p/original${data.backdrop_path}`
               : `https://image.tmdb.org/t/p/original${poster}`
-            // "https://www.genius100visions.com/wp-content/uploads/2017/09/placeholder-vertical.jpg"
           }
           alt={alt}
         />
@@ -246,8 +234,6 @@ export default function ResultPage(props) {
             )}
           </div>
         </div>
-
-        {/* <div className="opacity"></div> */}
       </div>
     </div>
   );

@@ -25,7 +25,6 @@ export default function Search() {
     e.preventDefault();
     setIsLoading(true);
     fetchData();
-    // setSearchValue("");
   }
 
   return (
