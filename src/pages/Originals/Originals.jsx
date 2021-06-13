@@ -1,4 +1,4 @@
-import Recommendations from "../../components/Recommendations/Recommendations";
+// import Recommendations from "../../components/Recommendations/Recommendations";
 import "./Originals.css";
 
 export default function Originals() {
@@ -95,9 +95,9 @@ export default function Originals() {
           </div>
         </div>
       </div>
-      <Recommendations title="Series" />
+      {/* <Recommendations title="Series" />
       <Recommendations title="Shorts" />
-      <Recommendations title="Specials" />
+      <Recommendations title="Specials" /> */}
     </div>
   );
 }
