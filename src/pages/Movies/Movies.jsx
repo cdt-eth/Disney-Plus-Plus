@@ -8,7 +8,7 @@ export default function Movies() {
 
         <div className="selectWrapper">
           <select className="dropdown">
-            <option value="featured" selected>
+            <option value="featured" defaultValue>
               Featured
             </option>
             <option value="all">All Moveis A-Z</option>
