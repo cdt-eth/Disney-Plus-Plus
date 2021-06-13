@@ -177,6 +177,10 @@
   cursor: pointer;
 }
 
+.modal-video-close-btn {
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 765px) {
   .resultPage {
     width: auto;
