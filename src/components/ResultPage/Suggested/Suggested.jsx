@@ -68,9 +68,7 @@ export default function Suggested({ id }) {
           })}
         </Slider>
       ) : (
-        <h3 className="reccommendationsError">
-          "No Recommendations Available"
-        </h3>
+        <h3 className="reccommendationsError">No Recommendations Available</h3>
       )}
     </div>
   );
