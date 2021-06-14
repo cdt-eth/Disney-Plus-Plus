@@ -151,6 +151,14 @@
   background-color: red;
   max-width: max-content;
   padding: 5px 10px;
+  grid-template-columns: 1fr !important;
+  border-color: red;
+}
+
+.trailerError:hover {
+  background-color: red;
+  border-color: red;
+  cursor: default;
 }
 
 .subNav {

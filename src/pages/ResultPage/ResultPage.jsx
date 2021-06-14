@@ -152,10 +152,18 @@ export default function ResultPage(props) {
               <p>Play</p>
             </button>
 
-            <button className="play trailer" onClick={fetchRequest}>
-              <PlayIcon />
-              <p>Trailer</p>
-            </button>
+            {noTrailer ? (
+              <button className="play trailer trailerError">
+                {/* <p>No</p>
+                <p>Trailer</p> */}
+                <p>No Trailer</p>
+              </button>
+            ) : (
+              <button className="play trailer" onClick={fetchRequest}>
+                <PlayIcon />
+                <p>Trailer</p>
+              </button>
+            )}
 
             <Link to="/watchlist" className="circleButton">
               <PlusIcon />
@@ -170,6 +178,7 @@ export default function ResultPage(props) {
             {rating ? `${rating} • ` : ""} {date}{" "}
             {genreNames.length > 0 ? `• ${genreNames.join(", ")}` : ""}
           </div>
+
           <div className="overview">
             <h5>
               {overview
@@ -177,17 +186,13 @@ export default function ResultPage(props) {
                 : "No summary available."}
             </h5>
 
-            {noTrailer ? (
-              <h2 className="trailerError">No trailer available</h2>
-            ) : (
-              <ModalVideo
-                channel="youtube"
-                autoplay
-                isOpen={isOpen}
-                videoId={trailer}
-                onClose={() => setOpen(false)}
-              />
-            )}
+            <ModalVideo
+              channel="youtube"
+              autoplay
+              isOpen={isOpen}
+              videoId={trailer}
+              onClose={() => setOpen(false)}
+            />
           </div>
 
           <nav className="subNav">
