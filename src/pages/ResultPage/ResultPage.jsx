@@ -218,7 +218,7 @@ export default function ResultPage(props) {
             </div>
           </nav>
           <div className="detailsWrapper">
-            {showSuggested && <Suggested />}
+            {showSuggested && <Suggested id={id} />}
             {showExtras && <Extras />}
             {showDetails && (
               <Details
