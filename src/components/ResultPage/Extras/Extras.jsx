@@ -13,10 +13,9 @@ export default function Extras({ extras, noExtras }) {
         ) : (
           extras.map((extra) => {
             return (
-              <div>
+              <div key={extra.id}>
                 <div
                   className="extrasVid banner recBanner"
-                  key={extra.id}
                   onClick={() => setOpen(true)}
                 >
                   <img

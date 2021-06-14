@@ -11,10 +11,13 @@
 
 .extrasVid {
   cursor: pointer;
+  margin-bottom: 5px;
 }
+
 .extrasGrid h6 {
   max-width: 96%;
   margin: auto;
   font-size: 15px;
   font-weight: 400;
+  margin-bottom: 20px;
 }
