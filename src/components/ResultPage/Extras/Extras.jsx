@@ -9,7 +9,6 @@ export default function Extras({ extras, noExtras }) {
     <div className="">
       <div className="extrasGrid">
         {noExtras ? (
-          // <h2 className="trailerError">No trailer available</h2>
           <h3 className="extrasError">No Extras Available</h3>
         ) : (
           extras.map((extra) => {

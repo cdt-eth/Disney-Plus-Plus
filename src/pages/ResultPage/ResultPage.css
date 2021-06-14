@@ -159,6 +159,9 @@
   border-bottom: 2px solid rgba(249, 249, 249, 0.2);
   /* padding-bottom: 20px; */
 }
+.subNav button {
+  outline: none !important;
+}
 
 .subNavSection {
   float: left;
