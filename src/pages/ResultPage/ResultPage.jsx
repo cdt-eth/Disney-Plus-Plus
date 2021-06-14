@@ -16,6 +16,8 @@ export default function ResultPage(props) {
   const [rating, setRating] = useState("");
   const [genreNames, setGenreNames] = useState([]);
   const [trailer, setTrailer] = useState([]);
+  const [extras, setExtras] = useState([]);
+  const [noExtras, setNoExtras] = useState(null);
   const [noTrailer, setNoTrailer] = useState(null);
   const [isOpen, setOpen] = useState(false);
   const [showSuggested, setShowSuggested] = useState(true);
@@ -61,6 +63,14 @@ export default function ResultPage(props) {
 
         setNoTrailer(false);
         setTrailer(key);
+      }
+
+      // EXTRAS
+      if (data.videos.results.length === 0) {
+        setNoExtras(true);
+      } else {
+        setNoExtras(false);
+        setExtras(data.videos.results);
       }
 
       // RUNTIME
@@ -219,7 +229,7 @@ export default function ResultPage(props) {
           </nav>
           <div className="detailsWrapper">
             {showSuggested && <Suggested id={id} />}
-            {showExtras && <Extras />}
+            {showExtras && <Extras extras={extras} noExtras={noExtras} />}
             {showDetails && (
               <Details
                 overview={overview}

@@ -1,0 +1,20 @@
+.extrasGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding-top: 20px;
+}
+
+.extrasGrid img {
+  width: 100%;
+}
+
+.extrasVid {
+  cursor: pointer;
+}
+.extrasGrid h6 {
+  max-width: 96%;
+  margin: auto;
+  font-size: 15px;
+  font-weight: 400;
+}
