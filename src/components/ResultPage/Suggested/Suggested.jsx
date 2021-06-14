@@ -28,20 +28,23 @@ const settings = {
 export default function Suggested({ id }) {
   const [data, setData] = useState([]);
 
-  const fetchData = async () => {
-    const res = await fetch(
-      `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=1dbf27409e387afe9abadb77b2745ddd&language=en-US&page=1`
-    );
-    const data = await res.json();
-    const results = data.results;
-
-    setData(results);
-
-    document.getElementsByClassName("slick-active")[0].focus();
-  };
-
   useEffect(() => {
-    fetchData();
+    let unmounted = false;
+
+    const fetchData = async () => {
+      const res = await fetch(
+        `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=1dbf27409e387afe9abadb77b2745ddd&language=en-US&page=1`
+      );
+      const data = await res.json();
+      const results = data.results;
+      setData(results);
+    };
+    if (!unmounted) {
+      fetchData();
+    }
+    return () => {
+      unmounted = true;
+    };
   }, [id]);
 
   return (
