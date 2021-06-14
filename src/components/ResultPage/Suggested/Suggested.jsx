@@ -13,6 +13,8 @@ const settings = {
   slidesToScroll: 1,
   centerMode: false,
   arrows: false,
+  useTransform: true, // Mandatory to use cssEase
+  cssEase: "ease-in",
   responsive: [
     {
       breakpoint: 812,
@@ -34,6 +36,8 @@ export default function Suggested({ id }) {
     const results = data.results;
 
     setData(results);
+
+    document.getElementsByClassName("slick-active")[0].focus();
   };
 
   useEffect(() => {
