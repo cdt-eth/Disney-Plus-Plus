@@ -49,6 +49,7 @@ select {
 .dropdown {
   background: darkslategray;
   padding: 10px 20px;
+  outline: none !important;
   border-radius: 50px;
   border: none;
   cursor: pointer;
@@ -67,4 +68,8 @@ select {
 .movieList {
   padding: 50px;
   padding-top: 200px;
+}
+
+.movieList .results {
+  gap: 15px !important;
 }
