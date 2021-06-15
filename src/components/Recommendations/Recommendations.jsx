@@ -23,8 +23,6 @@ export default function Recommendations({ title, data, loading }) {
     ],
   };
 
-  console.log("here data", data);
-
   return (
     <div className="recommendationSection">
       <h3>{title}</h3>
