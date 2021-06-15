@@ -22,8 +22,9 @@ export default function Originals() {
       </div>
 
       <div className="originalsList">
-        <h4>Featured</h4>
-        <div className="results">
+        {/* <h4>Featured</h4> */}
+        <h2 style={{ textAlign: "center" }}>coming soon</h2>
+        {/* <div className="results">
           <div className="result">
             <img
               src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
@@ -84,7 +85,7 @@ export default function Originals() {
               alt="Mandalorian"
             />
           </div>
-        </div>
+        </div> */}
       </div>
       {/* <Recommendations title="Series" />
       <Recommendations title="Shorts" />
