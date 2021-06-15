@@ -1,4 +1,3 @@
-import "./Suggested.css";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -25,7 +24,7 @@ const settings = {
   ],
 };
 
-export default function Suggested({ id }) {
+export default function SuggestedShows({ id }) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -33,7 +32,7 @@ export default function Suggested({ id }) {
 
     const fetchData = async () => {
       const res = await fetch(
-        `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=1dbf27409e387afe9abadb77b2745ddd&language=en-US&page=1`
+        `https://api.themoviedb.org/3/tv/${id}/recommendations?api_key=1dbf27409e387afe9abadb77b2745ddd&language=en-US&page=1`
       );
       const data = await res.json();
       const results = data.results;
@@ -51,23 +50,23 @@ export default function Suggested({ id }) {
     <div className="suggested">
       {data.length > 0 ? (
         <Slider {...settings}>
-          {data.map((movie) => {
+          {data.map((show) => {
             return (
               <Link
                 to={{
-                  pathname: `/movie/${movie.id}`,
-                  state: { ...movie },
+                  pathname: `/show/${show.id}`,
+                  state: { ...show },
                 }}
-                key={movie.title}
+                key={show.title}
               >
                 <div className="banner recBanner">
                   <img
                     src={
-                      movie.poster_path
-                        ? `https://image.tmdb.org/t/p/original/${movie.poster_path}`
+                      show.poster_path
+                        ? `https://image.tmdb.org/t/p/original/${show.poster_path}`
                         : "https://www.genius100visions.com/wp-content/uploads/2017/09/placeholder-vertical.jpg"
                     }
-                    alt={movie.title}
+                    alt={show.title}
                   />
                 </div>
               </Link>

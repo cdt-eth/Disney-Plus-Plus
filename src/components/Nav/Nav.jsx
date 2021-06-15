@@ -23,6 +23,7 @@ import {
   MdTv as TvIcon,
   MdLocalMovies as MovieIcon,
 } from "react-icons/md";
+import ShowResultPage from "../../pages/ShowResultPage/ShowResultPage";
 
 export default function Nav() {
   window.onscroll = function () {
@@ -108,7 +109,8 @@ export default function Nav() {
             <Login />
           </Route>
 
-          <Route path={"/results/:id"} component={ResultPage} />
+          <Route path={"/movie/:id"} component={ResultPage} />
+          <Route path={"/show/:id"} component={ShowResultPage} />
 
           <Route path={"/brand/disney"} component={Disney} />
           <Route path={"/brand/pixar"} component={Pixar} />

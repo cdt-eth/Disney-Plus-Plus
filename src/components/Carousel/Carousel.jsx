@@ -47,7 +47,7 @@ export default function Carousel() {
           return (
             <Link
               to={{
-                pathname: `/results/${p.id}`,
+                pathname: `/movie/${p.id}`,
                 state: { ...p },
               }}
               key={p.title}
