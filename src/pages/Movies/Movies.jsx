@@ -1,152 +1,101 @@
 import "./Movies.css";
+import { useState, useEffect } from "react";
+import Result from "../../components/Result/Result";
 
 export default function Movies() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [noResults, setNoResults] = useState(false);
+  const [data, setData] = useState([]);
+  const [value, setValue] = useState(27);
+  const [items] = useState([
+    { label: "Action", value: 28 },
+    { label: "Adventure", value: 12 },
+    { label: "Animation", value: 16 },
+    { label: "Comedy", value: 35 },
+    { label: "Documentary", value: 99 },
+    { label: "Drama", value: 18 },
+    { label: "Family", value: 10751 },
+    { label: "Romance", value: 10749 },
+    { label: "Science Fiction", value: 878 },
+    { label: "Western", value: 37 },
+  ]);
+
+  useEffect(() => {
+    let unmounted = false;
+
+    const fetchData = async () => {
+      const res = await fetch(
+        `https://api.themoviedb.org/3/discover/movie?api_key=1dbf27409e387afe9abadb77b2745ddd&with_genres=${value}`
+      );
+      const data = await res.json();
+      const results = data.results;
+
+      if (results.length === 0) setNoResults(true);
+
+      setData(results);
+      setIsLoading(false);
+    };
+
+    if (!unmounted) {
+      setIsLoading(true);
+      fetchData();
+    }
+    return () => {
+      unmounted = true;
+    };
+  }, [value]);
+
   return (
     <div className="moviePage">
       <div className="fixedBanner">
         <h1 className="pageTitle">Movies</h1>
 
         <div className="selectWrapper">
-          <select className="dropdown">
-            <option value="featured" defaultValue>
-              Featured
-            </option>
-            <option value="all">All Moveis A-Z</option>
-            <option value="action">Action/Adventure</option>
-            <option value="animation">Animation</option>
-            <option value="comedy">Comedy</option>
-            <option value="documentary">Documentary</option>
-            <option value="drama">Drama</option>
-            <option value="kids">Kids</option>
-            <option value="shorts">Shorts</option>
-            <option value="ultra">Ultra HD And HDR</option>
+          <select
+            className="dropdown"
+            value={value}
+            onChange={(e) => {
+              setValue(e.currentTarget.value);
+            }}
+          >
+            {items.map((item) => (
+              <option key={item.value} label={item.label} value={item.value}>
+                {item.label}
+              </option>
+            ))}
           </select>
         </div>
       </div>
 
       <div className="movieList">
-        <div className="results">
-          <div className="result">
-            <img
-              src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
-              alt="Mandalorian"
-            />
-          </div>
-          <div className="result">
-            <img
-              src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
-              alt="Mandalorian"
-            />
-          </div>
-          <div className="result">
-            <img
-              src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
-              alt="Mandalorian"
-            />
-          </div>
-          <div className="result">
-            <img
-              src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
-              alt="Mandalorian "
-            />
-          </div>
-          <div className="result">
-            <img
-              src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
-              alt="Mandalorian"
-            />
-          </div>
-          <div className="result">
-            <img
-              src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
-              alt="Mandalorian "
-            />
-          </div>
-          <div className="result">
-            <img
-              src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
-              alt="Mandalorian"
-            />
-          </div>
-          <div className="result">
-            <img
-              src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
-              alt="Mandalorian"
-            />
-          </div>
-          <div className="result">
-            <img
-              src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
-              alt="Mandalorian "
-            />
-          </div>
-          <div className="result">
-            <img
-              src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
-              alt="Mandalorian"
-            />
-          </div>
-          <div className="result">
-            <img
-              src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
-              alt="Mandalorian"
-            />
-          </div>
-          <div className="result">
-            <img
-              src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
-              alt="Mandalorian"
-            />
-          </div>
-          <div className="result">
-            <img
-              src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
-              alt="Mandalorian"
-            />
-          </div>
-          <div className="result">
-            <img
-              src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
-              alt="Mandalorian "
-            />
-          </div>
-          <div className="result">
-            <img
-              src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
-              alt="Mandalorian"
-            />
-          </div>
-          <div className="result">
-            <img
-              src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
-              alt="Mandalorian "
-            />
-          </div>
-          <div className="result">
-            <img
-              src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
-              alt="Mandalorian"
-            />
-          </div>
-          <div className="result">
-            <img
-              src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
-              alt="Mandalorian"
-            />
-          </div>
-          <div className="result">
-            <img
-              src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
-              alt="Mandalorian "
-            />
-          </div>
-          <div className="result">
-            <img
-              src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
-              alt="Mandalorian"
-            />
-          </div>
-        </div>
+        {isLoading ? (
+          <h1>Loading...</h1>
+        ) : (
+          <>
+            {!noResults ? (
+              <div className="results">
+                {data.map((movie) => (
+                  <Result
+                    poster_path={movie.poster_path}
+                    alt={movie.title}
+                    key={movie.id}
+                    id={movie.id}
+                    title={movie.title}
+                    overview={movie.overview}
+                    release_date={movie.release_date}
+                    genre_ids={movie.genre_ids}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div>
+                <h2 className="noResults">
+                  No results found. Please try again.
+                </h2>
+              </div>
+            )}
+          </>
+        )}
       </div>
     </div>
   );
