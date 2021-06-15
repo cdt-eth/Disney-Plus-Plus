@@ -4,20 +4,28 @@ import Result from "../../../components/Result/Result";
 
 export default function Marvel() {
   const [data, setData] = useState([]);
-
-  const fetchData = async () => {
-    const res = await fetch(
-      "https://api.themoviedb.org/3/search/movie?api_key=1dbf27409e387afe9abadb77b2745ddd&query=national+geographic"
-    );
-    const data = await res.json();
-    const results = data.results;
-
-    setData(results);
-  };
+  const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    let unmounted = false;
+
+    const fetchData = async () => {
+      const res = await fetch(
+        `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=national+geographic`
+      );
+      const data = await res.json();
+      const results = data.items;
+
+      setData(results);
+    };
+
+    if (!unmounted) {
+      fetchData();
+    }
+    return () => {
+      unmounted = true;
+    };
+  }, [API_KEY]);
 
   return (
     <div className="wrapper collection">

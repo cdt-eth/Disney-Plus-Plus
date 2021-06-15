@@ -23,6 +23,8 @@ export default function Recommendations({ title, data, loading }) {
     ],
   };
 
+  console.log("here data", data);
+
   return (
     <div className="recommendationSection">
       <h3>{title}</h3>
@@ -35,7 +37,7 @@ export default function Recommendations({ title, data, loading }) {
             return (
               <Link
                 to={{
-                  pathname: `/results/${movie.id}`,
+                  pathname: `/movie/${movie.id}`,
                   state: { ...movie },
                 }}
                 key={movie.title}

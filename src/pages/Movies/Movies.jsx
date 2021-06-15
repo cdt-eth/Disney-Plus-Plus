@@ -19,13 +19,14 @@ export default function Movies() {
     { label: "Science Fiction", value: 878 },
     { label: "Western", value: 37 },
   ]);
+  const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
 
   useEffect(() => {
     let unmounted = false;
 
     const fetchData = async () => {
       const res = await fetch(
-        `https://api.themoviedb.org/3/discover/movie?api_key=1dbf27409e387afe9abadb77b2745ddd&with_genres=${value}`
+        `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${value}`
       );
       const data = await res.json();
       const results = data.results;
@@ -43,7 +44,7 @@ export default function Movies() {
     return () => {
       unmounted = true;
     };
-  }, [value]);
+  }, [value, API_KEY]);
 
   return (
     <div className="moviePage">

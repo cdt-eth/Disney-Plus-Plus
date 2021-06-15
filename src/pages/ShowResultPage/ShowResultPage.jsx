@@ -33,14 +33,14 @@ export default function ShowResultPage(props) {
     name,
     first_air_date,
   } = props.location.state;
+  const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
 
   useEffect(() => {
     const fetchShowData = async () => {
       const res = await fetch(
-        `https://api.themoviedb.org/3/tv/${id}?api_key=1dbf27409e387afe9abadb77b2745ddd&append_to_response=videos,credits,content_ratings`
+        `https://api.themoviedb.org/3/tv/${id}?api_key=${API_KEY}&append_to_response=videos,credits,content_ratings`
       );
       const data = await res.json();
-      console.log("data", data);
       setData(data);
 
       // DATE
@@ -112,7 +112,7 @@ export default function ShowResultPage(props) {
     };
 
     fetchShowData();
-  }, [id, genres, first_air_date, rating]);
+  }, [id, genres, first_air_date, rating, API_KEY]);
 
   const fetchRequest = () => {
     setOpen(true);

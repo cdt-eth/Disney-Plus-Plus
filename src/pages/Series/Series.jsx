@@ -19,18 +19,18 @@ export default function Series() {
     { label: "News", value: 10763 },
     { label: "Talk", value: 10767 },
   ]);
+  const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
 
   useEffect(() => {
     let unmounted = false;
 
     const fetchData = async () => {
       const res = await fetch(
-        // `https://api.themoviedb.org/3/discover/tv?api_key=1dbf27409e387afe9abadb77b2745ddd&with_genres=${value}`
-        `https://api.themoviedb.org/3/discover/tv?api_key=1dbf27409e387afe9abadb77b2745ddd&with_genres=${value}`
+        // `https://api.themoviedb.org/3/discover/tv?api_key=REACT_APP_OPEN_MOVIE_DB_API_KEY&with_genres=${value}`
+        `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&with_genres=${value}`
       );
       const data = await res.json();
       const results = data.results;
-      console.log(results);
 
       if (results.length === 0) setNoResults(true);
 
@@ -45,9 +45,7 @@ export default function Series() {
     return () => {
       unmounted = true;
     };
-  }, [value]);
-
-  console.log("data", data);
+  }, [value, API_KEY]);
 
   return (
     <div className="moviePage">

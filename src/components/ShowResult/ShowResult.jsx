@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 export default function ShowResult(props) {
   const { poster_path: poster, alt, id } = props;
 
-  console.log("...props", { ...props });
-
   return (
     <div className="result">
       <Link

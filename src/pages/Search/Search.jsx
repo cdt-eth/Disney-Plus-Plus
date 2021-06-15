@@ -7,10 +7,11 @@ export default function Search() {
   const [isLoading, setIsLoading] = useState(false);
   const [noResults, setNoResults] = useState(false);
   const [data, setData] = useState([]);
+  const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
 
   const fetchData = async () => {
     const res = await fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=1dbf27409e387afe9abadb77b2745ddd&query=${searchValue}`
+      `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${searchValue}`
     );
     const data = await res.json();
     const results = data.results;

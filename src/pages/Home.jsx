@@ -8,13 +8,14 @@ export default function App() {
   const [upcoming, setUpcoming] = useState([]);
   const [nowPlaying, setNowPlaying] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
 
   useEffect(() => {
     const fetchUpcoming = async () => {
       setIsLoading(true);
 
       const res = await fetch(
-        "https://api.themoviedb.org/3/movie/upcoming?api_key=1dbf27409e387afe9abadb77b2745ddd&language=en-US&page=1"
+        `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`
       );
       const data = await res.json();
       const results = data.results;
@@ -24,14 +25,14 @@ export default function App() {
     };
 
     fetchUpcoming();
-  }, []);
+  }, [API_KEY]);
 
   useEffect(() => {
     const fetchTopRated = async () => {
       setIsLoading(true);
 
       const res = await fetch(
-        "https://api.themoviedb.org/3/movie/top_rated?api_key=1dbf27409e387afe9abadb77b2745ddd&language=en-US&page=1"
+        `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`
       );
       const data = await res.json();
       const results = data.results;
@@ -41,14 +42,14 @@ export default function App() {
     };
 
     fetchTopRated();
-  }, []);
+  }, [API_KEY]);
 
   useEffect(() => {
     const fetchNowPlaying = async () => {
       setIsLoading(true);
 
       const res = await fetch(
-        "https://api.themoviedb.org/3/movie/now_playing?api_key=1dbf27409e387afe9abadb77b2745ddd&language=en-US&page=1"
+        `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`
       );
       const data = await res.json();
       const results = data.results;
@@ -58,7 +59,7 @@ export default function App() {
     };
 
     fetchNowPlaying();
-  }, []);
+  }, [API_KEY]);
 
   return (
     <div className="App">

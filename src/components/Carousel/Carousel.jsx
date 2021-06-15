@@ -25,11 +25,12 @@ export default function Carousel() {
       },
     ],
   };
+  const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
 
   useEffect(() => {
     const fetchPopular = async () => {
       const res = await fetch(
-        "https://api.themoviedb.org/3/movie/popular?api_key=1dbf27409e387afe9abadb77b2745ddd&language=en-US&page=1"
+        `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
       );
       const data = await res.json();
       const results = data.results;
@@ -38,7 +39,7 @@ export default function Carousel() {
     };
 
     fetchPopular();
-  }, []);
+  }, [API_KEY]);
 
   return (
     <div className="slideWrapper">

@@ -26,13 +26,14 @@ const settings = {
 
 export default function SuggestedShows({ id }) {
   const [data, setData] = useState([]);
+  const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
 
   useEffect(() => {
     let unmounted = false;
 
     const fetchData = async () => {
       const res = await fetch(
-        `https://api.themoviedb.org/3/tv/${id}/recommendations?api_key=1dbf27409e387afe9abadb77b2745ddd&language=en-US&page=1`
+        `https://api.themoviedb.org/3/tv/${id}/recommendations?api_key=${API_KEY}&language=en-US&page=1`
       );
       const data = await res.json();
       const results = data.results;
@@ -44,7 +45,7 @@ export default function SuggestedShows({ id }) {
     return () => {
       unmounted = true;
     };
-  }, [id]);
+  }, [id, API_KEY]);
 
   return (
     <div className="suggested">
