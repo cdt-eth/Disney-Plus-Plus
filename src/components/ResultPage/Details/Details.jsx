@@ -15,7 +15,7 @@ export default function Details({
       <h2>{title}</h2>
       <div className="extras">
         <div className="column1">
-          <h5> {overview}</h5>
+          <h5> {overview.length > 0 ? overview : "No summary available."}</h5>
         </div>
 
         <div className="column2">
