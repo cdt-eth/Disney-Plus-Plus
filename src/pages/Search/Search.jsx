@@ -12,8 +12,6 @@ export default function Search() {
   useEffect(() => {
     setNoResults(false);
 
-    if (data === undefined) setNoResults(true);
-
     if (searchValue.length === 0) {
       fetch(
         `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
@@ -30,6 +28,7 @@ export default function Search() {
       )
         .then((response) => response.json())
         .then((data) => {
+          // if (data === undefined) setNoResults(true);
           if (data.results === undefined) {
             setNoResults(true);
           } else {
@@ -49,17 +48,12 @@ export default function Search() {
   }
 
   function handleKeydown(e) {
-    // const regex = /([a-zA-Z]{4})+-([0-9]{3})+([a-zA-Z]{2})+$/g;
-    // const regex = /^[a-z0-9]+$/i;
-    // if (e.target.value.match(regex)) {
-    //   e.preventDefault();
-    // }
-
-    // if(searchValue === undefined)
-
     if (e.key === " " && searchValue.length === 0) {
       e.preventDefault();
     }
+    // if (e.match(/[^0-9a-z]/i)) {
+    //   e.preventDefault();
+    // }
   }
 
   return (
