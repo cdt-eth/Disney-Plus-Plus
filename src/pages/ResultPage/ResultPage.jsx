@@ -141,22 +141,26 @@ export default function ResultPage(props) {
           <h1> {title} </h1>
 
           <div className="actions">
-            <button
-              className="play"
-              onClick={
-                data.homepage
-                  ? () => window.open(data.homepage, "_blank")
-                  : fetchRequest
-              }
-            >
-              <PlayIcon />
-              <p>Play</p>
-            </button>
+            {noTrailer ? (
+              <button className="play playError trailerError">
+                <p>No Videos</p>
+              </button>
+            ) : (
+              <button
+                className="play"
+                onClick={
+                  data.homepage
+                    ? () => window.open(data.homepage, "_blank")
+                    : fetchRequest
+                }
+              >
+                <PlayIcon />
+                <p>Play</p>
+              </button>
+            )}
 
             {noTrailer ? (
               <button className="play trailer trailerError">
-                {/* <p>No</p>
-                <p>Trailer</p> */}
                 <p>No Trailer</p>
               </button>
             ) : (
