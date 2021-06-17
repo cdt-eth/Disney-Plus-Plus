@@ -1,36 +1,47 @@
 import "./Search.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Result from "../../components/Result/Result";
 
 export default function Search() {
   const [searchValue, setSearchValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [noResults, setNoResults] = useState(false);
+  // const [noResults, setNoResults] = useState(false);
   const [data, setData] = useState([]);
   const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
 
-  const fetchData = async () => {
-    const res = await fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${searchValue}`
-    );
-    const data = await res.json();
-    const results = data.results;
+  useEffect(() => {
+    let unmounted = false;
+    const fetchData = async () => {
+      const res = await fetch(
+        `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${searchValue}`
+      );
+      const data = await res.json();
+      const results = data.results;
 
-    if (results.length === 0) setNoResults(true);
+      // if (results.length === 0) setNoResults(true);
 
-    setData(results);
-    setIsLoading(false);
-  };
+      setData(results);
+      setIsLoading(false);
+    };
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    setIsLoading(true);
-    fetchData();
-  }
+    if (!unmounted) {
+      fetchData();
+    }
+    return () => {
+      unmounted = true;
+    };
+  }, [searchValue, API_KEY]);
+
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+  //   setIsLoading(true);
+  //   fetchData();
+  // }
 
   return (
     <div className="wrapper">
-      <form className="form" onSubmit={handleSubmit}>
+      {/* <form className="form" onSubmit={handleSubmit}> */}
+      <form className="form">
         <input
           placeholder="Search by title, character, or genre"
           className="input"
@@ -48,7 +59,21 @@ export default function Search() {
           <h1>Loading...</h1>
         ) : (
           <div className="results">
-            {!noResults ? (
+            {data &&
+              data.map((movie) => (
+                <Result
+                  poster_path={movie.poster_path}
+                  alt={movie.title}
+                  key={movie.id}
+                  id={movie.id}
+                  title={movie.title}
+                  overview={movie.overview}
+                  release_date={movie.release_date}
+                  genre_ids={movie.genre_ids}
+                />
+              ))}
+
+            {/* {!noResults ? (
               data.map((movie) => (
                 <Result
                   poster_path={movie.poster_path}
@@ -68,7 +93,7 @@ export default function Search() {
                 </h1>
                 <h1>Please try again.</h1>
               </div>
-            )}
+            )} */}
           </div>
         )}
       </div>
