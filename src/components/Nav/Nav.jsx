@@ -135,9 +135,11 @@ export default function Nav() {
             <Home />
           </Route>
 
-          <Route path="*">
+          <Route path={"*"} component={NoMatch} />
+          {/* <Route path={"/404"} component={NoMatch} /> */}
+          {/* <Route path="*" >
             <NoMatch />
-          </Route>
+          </Route> */}
         </Switch>
       </div>
     </Router>
