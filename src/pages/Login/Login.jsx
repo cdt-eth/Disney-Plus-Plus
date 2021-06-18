@@ -1,20 +1,54 @@
 import "./Login.css";
+import { useState } from "react";
+import { supabase } from "../../supabaseClient.js";
 
 export default function Login() {
+  const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState("");
+
+  const handleLogin = async (email) => {
+    try {
+      setLoading(true);
+      const { error } = await supabase.auth.signIn({ email });
+      if (error) throw error;
+      alert("Check your email for the login link!");
+    } catch (error) {
+      alert(error.error_description || error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <div className="loginPage">
-      <h3>Login content</h3>
-      <div>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis maximus
-        magna, ac fermentum nisl. Suspendisse potenti. Praesent eget arcu quis
-        urna vehicula tempus. Orci varius natoque penatibus et magnis dis
-        parturient montes, nascetur ridiculus mus. Morbi eleifend pellentesque
-        magna, at gravida nisl. Ut suscipit sed nisl a facilisis. Nunc a maximus
-        erat, in ultricies justo. Sed blandit faucibus nisi sit amet interdum.
-        Curabitur luctus libero felis, vel fringilla purus vulputate in. Proin
-        elementum, magna quis efficitur egestas, tellus turpis feugiat mauris,
-        at ultrices diam sem faucibus lectus. Nulla eget elit ut elit placerat
-        lobortis. Sed vel nibh sodales, posuere nisi in, congue nunc.
+    <div className="loginPage auth">
+      <div className="row flex flex-center">
+        <div className="col-6 form-widget">
+          <h1 className="header">Login</h1>
+          <p className="description">
+            Sign in via magic link with your email below
+          </p>
+          <div>
+            <input
+              className="inputField"
+              type="email"
+              placeholder="Your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                handleLogin(email);
+              }}
+              className={"button block"}
+              disabled={loading}
+            >
+              {loading ? <span>Loading...</span> : <span>Send magic link</span>}
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

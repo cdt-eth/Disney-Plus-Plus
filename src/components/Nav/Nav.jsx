@@ -1,5 +1,9 @@
 import "./Nav.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+// import { useContext } from "react";
+// import { useContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+// import { context } from "../../Context";
 import Home from "../../pages/Home";
 import Search from "../../pages/Search/Search";
 import Watchlist from "../../pages/Watchlist/Watchlist";
@@ -7,13 +11,13 @@ import Originals from "../../pages/Originals/Originals";
 import Movies from "../../pages/Movies/Movies";
 import Series from "../../pages/Series/Series";
 import ResultPage from "../../pages/ResultPage/ResultPage";
-import Login from "../../pages/Login/Login";
+import Login from "../../pages/Auth/Auth";
 import Disney from "../../pages/Collections/Disney/Disney";
 import Pixar from "../../pages/Collections/Pixar/Pixar";
 import Marvel from "../../pages/Collections/Marvel/Marvel";
 import StarWars from "../../pages/Collections/StarWars/StarWars";
 import NatGeo from "../../pages/Collections/NatGeo/NatGeo";
-
+import ShowResultPage from "../../pages/ShowResultPage/ShowResultPage";
 import {
   MdAccountCircle as LoginIcon,
   MdHome as HomeIcon,
@@ -23,9 +27,30 @@ import {
   MdTv as TvIcon,
   MdLocalMovies as MovieIcon,
 } from "react-icons/md";
-import ShowResultPage from "../../pages/ShowResultPage/ShowResultPage";
+import { supabase } from "../../supabaseClient";
 
 export default function Nav() {
+  // export default function Nav({ session }) {
+  // const [isLoading, setIsLoading] = useState(false);
+  // const { user, isLoading } = useContext(context);
+
+  const [session, setSession] = useState(null);
+  const user = supabase.auth.user();
+  // console.log("user: ", supabase.auth.user());
+  // console.log("session: ", supabase.auth.session());
+
+  useEffect(() => {
+    setSession(supabase.auth.session());
+
+    supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+  }, []);
+
+  // useEffect(() => {
+  //   console.log("user", user);
+  // }, [user, isLoading]);
+
   window.onscroll = function () {
     scrollFunction();
   };
@@ -84,7 +109,14 @@ export default function Nav() {
           </ul>
 
           <Link to="/login" className="login">
-            <p>CDT</p>
+            {/* {isLoading ? (
+              <p>Loading...</p>
+            ) : (
+              // <p>{user === null ? "User" : user}</p> */}
+            <p>{session ? user.email : "Log In"}</p>
+            {/* )} */}
+
+            {/* {loggedIn && <p>{user === null ? "User" : user}</p>} */}
             <LoginIcon />
           </Link>
         </nav>
