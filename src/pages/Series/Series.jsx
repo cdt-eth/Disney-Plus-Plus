@@ -26,7 +26,6 @@ export default function Series() {
 
     const fetchData = async () => {
       const res = await fetch(
-        // `https://api.themoviedb.org/3/discover/tv?api_key=REACT_APP_OPEN_MOVIE_DB_API_KEY&with_genres=${value}`
         `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&with_genres=${value}`
       );
       const data = await res.json();
