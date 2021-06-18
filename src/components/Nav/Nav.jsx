@@ -1,9 +1,6 @@
 import "./Nav.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-// import { useContext } from "react";
-// import { useContext, useState, useEffect } from "react";
 import { useState, useEffect } from "react";
-// import { context } from "../../Context";
 import Home from "../../pages/Home";
 import Search from "../../pages/Search/Search";
 import Watchlist from "../../pages/Watchlist/Watchlist";
@@ -30,14 +27,8 @@ import {
 import { supabase } from "../../supabaseClient";
 
 export default function Nav() {
-  // export default function Nav({ session }) {
-  // const [isLoading, setIsLoading] = useState(false);
-  // const { user, isLoading } = useContext(context);
-
   const [session, setSession] = useState(null);
   const user = supabase.auth.user();
-  // console.log("user: ", supabase.auth.user());
-  // console.log("session: ", supabase.auth.session());
 
   useEffect(() => {
     setSession(supabase.auth.session());
@@ -46,10 +37,6 @@ export default function Nav() {
       setSession(session);
     });
   }, []);
-
-  // useEffect(() => {
-  //   console.log("user", user);
-  // }, [user, isLoading]);
 
   window.onscroll = function () {
     scrollFunction();
@@ -109,14 +96,7 @@ export default function Nav() {
           </ul>
 
           <Link to="/login" className="login">
-            {/* {isLoading ? (
-              <p>Loading...</p>
-            ) : (
-              // <p>{user === null ? "User" : user}</p> */}
             <p>{session ? user.email : "Log In"}</p>
-            {/* )} */}
-
-            {/* {loggedIn && <p>{user === null ? "User" : user}</p>} */}
             <LoginIcon />
           </Link>
         </nav>

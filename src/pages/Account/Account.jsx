@@ -1,16 +1,12 @@
 import "./Account.css";
-// import { useState, useEffect, useContext } from "react";
 import { useState, useEffect } from "react";
 import { supabase } from "../../supabaseClient.js";
-// import { context } from "../../Context";
 
 export default function Account({ session }) {
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState(null);
   const [website, setWebsite] = useState(null);
   const [avatar_url, setAvatarUrl] = useState(null);
-
-  // const { isLoggedIn, setUser, setIsLoading } = useContext(context);
 
   useEffect(() => {
     let unmounted = false;
@@ -32,15 +28,12 @@ export default function Account({ session }) {
 
         if (data) {
           setUsername(data.username);
-          // setUser(data.username);
           setWebsite(data.website);
           setAvatarUrl(data.avatar_url);
         }
       } catch (error) {
         alert(error.message);
       } finally {
-        // isLoggedIn(true);
-        // setIsLoading(false);
         setLoading(false);
       }
     }
@@ -51,7 +44,6 @@ export default function Account({ session }) {
       unmounted = true;
     };
   }, [session]);
-  // }, [session, setUser, isLoggedIn, setIsLoading]);
 
   async function updateProfile({ username, website, avatar_url }) {
     try {
@@ -79,10 +71,6 @@ export default function Account({ session }) {
       setLoading(false);
     }
   }
-
-  //   console.log("session:", session);
-  //   console.log("username:", username);
-  //   console.log("website:", website);
 
   return (
     <div className="loginPage">
