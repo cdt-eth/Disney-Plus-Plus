@@ -1,7 +1,38 @@
-// import Recommendations from "../../components/Recommendations/Recommendations";
 import "./Originals.css";
+import { useState, useEffect } from "react";
+import ShowResult from "../../components/ShowResult/ShowResult";
 
 export default function Originals() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [noResults, setNoResults] = useState(false);
+  const [data, setData] = useState([]);
+  const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
+
+  useEffect(() => {
+    let unmounted = false;
+
+    const fetchData = async () => {
+      const res = await fetch(
+        `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&with_networks=213 `
+      );
+      const data = await res.json();
+      const results = data.results;
+
+      if (results.length === 0) setNoResults(true);
+
+      setData(results);
+      setIsLoading(false);
+    };
+
+    if (!unmounted) {
+      setIsLoading(true);
+      fetchData();
+    }
+    return () => {
+      unmounted = true;
+    };
+  }, [API_KEY]);
+
   window.onscroll = function () {
     scrollFunction();
   };
@@ -22,74 +53,38 @@ export default function Originals() {
       </div>
 
       <div className="originalsList">
-        {/* <h4>Featured</h4> */}
-        <h2 style={{ textAlign: "center" }}>coming soon</h2>
-        {/* <div className="results">
-          <div className="result">
-            <img
-              src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
-              alt="Mandalorian"
-            />
-          </div>
-          <div className="result">
-            <img
-              src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
-              alt="Mandalorian"
-            />
-          </div>
-          <div className="result">
-            <img
-              src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
-              alt="Mandalorian"
-            />
-          </div>
-          <div className="result">
-            <img
-              src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
-              alt="Mandalorian "
-            />
-          </div>
-          <div className="result">
-            <img
-              src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
-              alt="Mandalorian"
-            />
-          </div>
-          <div className="result">
-            <img
-              src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
-              alt="Mandalorian "
-            />
-          </div>
-          <div className="result">
-            <img
-              src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
-              alt="Mandalorian"
-            />
-          </div>
-          <div className="result">
-            <img
-              src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
-              alt="Mandalorian"
-            />
-          </div>
-          <div className="result">
-            <img
-              src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
-              alt="Mandalorian "
-            />
-          </div>
-          <div className="result">
-            <img
-              src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/267252F276A5CB826A8AB77FB70B5C4EE8EA0E529DE9C82C79D0F85C899D5FB9/badging?width=800&aspectRatio=1.78&format=jpeg&label=originals"
-              alt="Mandalorian"
-            />
-          </div>
-        </div> */}
+        <h4>Featured</h4>
+
+        {isLoading ? (
+          <h1>Loading...</h1>
+        ) : (
+          <>
+            {!noResults ? (
+              <div className="results">
+                {data.map((show) => (
+                  <ShowResult
+                    backdrop_path={show.backdrop_path}
+                    poster_path={show.poster_path}
+                    alt={show.name}
+                    key={show.id}
+                    id={show.id}
+                    overview={show.overview}
+                    first_air_date={show.first_air_date}
+                    genre_ids={show.genre_ids}
+                    name={show.name}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div>
+                <h2 className="noResults">
+                  No results found. Please try again.
+                </h2>
+              </div>
+            )}
+          </>
+        )}
       </div>
-      {/* <Recommendations title="Series" />
-      <Recommendations title="Shorts" />
-      <Recommendations title="Specials" /> */}
     </div>
   );
 }
