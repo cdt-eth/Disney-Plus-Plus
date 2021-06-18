@@ -63,6 +63,7 @@ export default function Search() {
           placeholder="Search by title, character, or genre"
           className="input"
           value={searchValue}
+          autoFocus
           onKeyDown={handleKeydown}
           onChange={(e) => {
             setSearchValue(e.target.value);
