@@ -25,6 +25,7 @@ import {
   MdLocalMovies as MovieIcon,
 } from "react-icons/md";
 import { supabase } from "../../supabaseClient";
+import NoMatch from "../../pages/404/404";
 
 export default function Nav() {
   const [session, setSession] = useState(null);
@@ -132,6 +133,10 @@ export default function Nav() {
 
           <Route exact path="/">
             <Home />
+          </Route>
+
+          <Route path="*">
+            <NoMatch />
           </Route>
         </Switch>
       </div>

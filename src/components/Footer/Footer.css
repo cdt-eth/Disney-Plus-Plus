@@ -3,6 +3,8 @@
   padding: 20px;
   display: grid;
   /* width: 100%; */
+  z-index: 9999999 !important;
+  position: relative;
 }
 
 .footerLogo {

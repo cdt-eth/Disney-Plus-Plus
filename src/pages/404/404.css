@@ -1,0 +1,71 @@
+.noMatch {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: url(https://prod-static.disney-plus.net/us-east-1/disneyPlus/app/builds/d38beec4d0177f807f581a878f076d3811ac9633/disneyPlus/app/assets/images/404.jpg)
+    50% no-repeat;
+  background-size: cover;
+  /* width: 100vw; */
+  height: 90vh;
+  margin-top: -60px;
+}
+
+.overlay {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: 1;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.errorMessage {
+  position: relative;
+  z-index: 2;
+  max-width: 50%;
+}
+
+.errorMessage h1 {
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1.23;
+}
+
+.errorMessage h2 {
+  margin: 20px auto;
+  cursor: inherit;
+  font-size: 15px;
+  line-height: 1.53;
+  font-weight: 400 !important;
+}
+
+.errorMessage button {
+  background: #0072d2;
+  border: 0;
+  border-radius: 0.25rem;
+  color: #f9f9f9;
+  height: 3rem;
+  padding: 0 1.5rem;
+  text-align: center;
+  display: inline-block;
+  outline: none;
+  text-decoration: none;
+  font-family: Avenir-Heavy, sans-serif;
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  line-height: 3.1;
+  text-transform: uppercase;
+  -webkit-font-smoothing: antialiased;
+  cursor: pointer;
+}
+
+.errorMessage button:hover {
+  background: #0082f0;
+  transition: background-color 0.2s ease-in-out;
+}
