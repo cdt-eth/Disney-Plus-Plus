@@ -7,6 +7,7 @@ export default function Search() {
   const [isLoading, setIsLoading] = useState(true);
   const [noResults, setNoResults] = useState(false);
   const [data, setData] = useState([]);
+  const [explore, setExplore] = useState(false);
   const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
 
   useEffect(() => {
@@ -20,6 +21,7 @@ export default function Search() {
         .then((data) => {
           const results = data.results;
           setData(results);
+          setExplore(true);
           setIsLoading(false);
         });
     } else {
@@ -37,6 +39,7 @@ export default function Search() {
             if (results.length === 0) setNoResults(true);
 
             setData(results);
+            setExplore(false);
             setIsLoading(false);
           }
         });
@@ -72,25 +75,27 @@ export default function Search() {
       </form>
 
       <div className="page">
-        <h1 className="pageTitle">Explore</h1>
+        {explore && <h1 className="pageTitle">Explore</h1>}
 
         {isLoading ? (
           <h1>Loading...</h1>
         ) : !noResults ? (
-          <div className="results">
-            {data.map((movie) => (
-              <Result
-                poster_path={movie.poster_path}
-                alt={movie.title}
-                key={movie.id}
-                id={movie.id}
-                title={movie.title}
-                overview={movie.overview}
-                release_date={movie.release_date}
-                genre_ids={movie.genre_ids}
-              />
-            ))}
-          </div>
+          <>
+            <div className="results">
+              {data.map((movie) => (
+                <Result
+                  poster_path={movie.poster_path}
+                  alt={movie.title}
+                  key={movie.id}
+                  id={movie.id}
+                  title={movie.title}
+                  overview={movie.overview}
+                  release_date={movie.release_date}
+                  genre_ids={movie.genre_ids}
+                />
+              ))}
+            </div>
+          </>
         ) : (
           <div>
             <h1 className="noResults">
