@@ -33,16 +33,16 @@ export default function Originals() {
     };
   }, [API_KEY]);
 
-  window.onscroll = function () {
-    scrollFunction();
-  };
+  // window.onscroll = function () {
+  //   scrollFunction();
+  // };
 
-  const scrollFunction = () => {
-    return document.body.scrollTop > 50 ||
-      document.documentElement.scrollTop > 50
-      ? (document.getElementById("originals").style.fontSize = "1.7rem")
-      : (document.getElementById("originals").style.fontSize = "2.7rem");
-  };
+  // const scrollFunction = () => {
+  //   return document.body.scrollTop > 50 ||
+  //     document.documentElement.scrollTop > 50
+  //     ? (document.getElementById("originals").style.fontSize = "1.7rem")
+  //     : (document.getElementById("originals").style.fontSize = "2.7rem");
+  // };
 
   return (
     <div className="page2">
