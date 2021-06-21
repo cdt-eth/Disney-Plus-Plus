@@ -4,11 +4,28 @@ import Recommendations from "../components/Recommendations/Recommendations";
 import { useState, useEffect } from "react";
 
 export default function App() {
-  const [topRated, setTopRated] = useState([]);
+  const [trending, setTrending] = useState([]);
   const [upcoming, setUpcoming] = useState([]);
   const [nowPlaying, setNowPlaying] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
+
+  useEffect(() => {
+    const fetchTrending = async () => {
+      setIsLoading(true);
+
+      const res = await fetch(
+        `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&original_language=en`
+      );
+      const data = await res.json();
+      const results = data.results;
+
+      setTrending(results);
+      setIsLoading(false);
+    };
+
+    fetchTrending();
+  }, [API_KEY]);
 
   useEffect(() => {
     const fetchUpcoming = async () => {
@@ -25,23 +42,6 @@ export default function App() {
     };
 
     fetchUpcoming();
-  }, [API_KEY]);
-
-  useEffect(() => {
-    const fetchTopRated = async () => {
-      setIsLoading(true);
-
-      const res = await fetch(
-        `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`
-      );
-      const data = await res.json();
-      const results = data.results;
-
-      setTopRated(results);
-      setIsLoading(false);
-    };
-
-    fetchTopRated();
   }, [API_KEY]);
 
   useEffect(() => {
@@ -65,12 +65,8 @@ export default function App() {
     <div className="App">
       <Carousel />
       <Studios />
+      <Recommendations title={"Trending"} data={trending} loading={isLoading} />
       <Recommendations title={"Upcoming"} data={upcoming} loading={isLoading} />
-      <Recommendations
-        title={"Top Rated"}
-        data={topRated}
-        loading={isLoading}
-      />
       <Recommendations
         title={"Now Playing"}
         data={nowPlaying}
