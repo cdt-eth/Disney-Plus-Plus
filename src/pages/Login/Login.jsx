@@ -23,9 +23,9 @@ export default function Login() {
     <div className="loginPage auth">
       <div className="row flex flex-center">
         <div className="col-6 form-widget">
-          <h1 className="header">Login</h1>
+          <h1 className="header">Log In To Your Account</h1>
           <p className="description">
-            Sign in via magic link with your email below
+            Sign in/up via magic link with your email below
           </p>
           <div>
             <input
