@@ -9,11 +9,13 @@ export default function Originals() {
   const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
 
   useEffect(() => {
-    let unmounted = false;
+    const abortController = new AbortController();
+    const signal = abortController.signal;
 
     const fetchData = async () => {
       const res = await fetch(
-        `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&with_networks=213 `
+        `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&with_networks=213`,
+        { signal: signal }
       );
       const data = await res.json();
       const results = data.results;
@@ -24,13 +26,9 @@ export default function Originals() {
       setIsLoading(false);
     };
 
-    if (!unmounted) {
-      setIsLoading(true);
-      fetchData();
-    }
-    return () => {
-      unmounted = true;
-    };
+    setIsLoading(true);
+    fetchData();
+    return () => abortController.abort();
   }, [API_KEY]);
 
   // window.onscroll = function () {

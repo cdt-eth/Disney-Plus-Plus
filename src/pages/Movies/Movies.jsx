@@ -22,11 +22,13 @@ export default function Movies() {
   const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
 
   useEffect(() => {
-    let unmounted = false;
+    const abortController = new AbortController();
+    const signal = abortController.signal;
 
     const fetchData = async () => {
       const res = await fetch(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${value}`
+        `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${value}`,
+        { signal: signal }
       );
       const data = await res.json();
       const results = data.results;
@@ -37,13 +39,9 @@ export default function Movies() {
       setIsLoading(false);
     };
 
-    if (!unmounted) {
-      setIsLoading(true);
-      fetchData();
-    }
-    return () => {
-      unmounted = true;
-    };
+    setIsLoading(true);
+    fetchData();
+    return () => abortController.abort();
   }, [value, API_KEY]);
 
   return (

@@ -9,18 +9,20 @@ export default function Account({ session }) {
   const [avatar_url, setAvatarUrl] = useState(null);
 
   useEffect(() => {
-    let unmounted = false;
+    const abortController = new AbortController();
+    const signal = abortController.signal;
 
     async function getProfile() {
       try {
         setLoading(true);
         const user = supabase.auth.user();
 
-        let { data, error, status } = await supabase
+        let { data, error, status } = await (supabase
           .from("profiles")
           .select(`username, website, avatar_url`)
           .eq("id", user.id)
-          .single();
+          .single(),
+        { signal: signal });
 
         if (error && status !== 406) {
           throw error;
@@ -37,12 +39,10 @@ export default function Account({ session }) {
         setLoading(false);
       }
     }
-    if (!unmounted) {
-      getProfile();
-    }
-    return () => {
-      unmounted = true;
-    };
+
+    getProfile();
+
+    return () => abortController.abort();
   }, [session]);
 
   async function updateProfile({ username, website, avatar_url }) {

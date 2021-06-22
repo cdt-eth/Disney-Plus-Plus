@@ -25,7 +25,6 @@ export default function ResultPage(props) {
   const [showDetails, setShowDetails] = useState(false);
 
   const {
-    poster_path: poster,
     overview,
     title,
     alt,
@@ -128,15 +127,17 @@ export default function ResultPage(props) {
   return (
     <div className="resultPage">
       <div className="resultBackground">
-        <img
-          className="posterBackground"
-          src={
-            data.backdrop_path
-              ? `https://image.tmdb.org/t/p/original${data.backdrop_path}`
-              : `https://image.tmdb.org/t/p/original${poster}`
-          }
-          alt={alt}
-        />
+        {data.backdrop_path && (
+          <img
+            className="posterBackground"
+            src={
+              data.backdrop_path
+                ? `https://image.tmdb.org/t/p/original${data.backdrop_path}`
+                : "https://i1.wp.com/www.africanflair.com/wp-content/uploads/2015/10/pix-horizontal-placeholder.jpg?w=1920&ssl=1"
+            }
+            alt={alt}
+          />
+        )}
         <div className="resultInfo">
           <h1> {title} </h1>
 

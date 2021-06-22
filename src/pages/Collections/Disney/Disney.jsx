@@ -7,11 +7,13 @@ export default function Disney() {
   const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
 
   useEffect(() => {
-    let unmounted = false;
+    const abortController = new AbortController();
+    const signal = abortController.signal;
 
     const fetchData = async () => {
       const res = await fetch(
-        `https://api.themoviedb.org/3/list/338?api_key=${API_KEY}&language=en-US`
+        `https://api.themoviedb.org/3/list/338?api_key=${API_KEY}&language=en-US`,
+        { signal: signal }
       );
       const data = await res.json();
       const results = data.items;
@@ -19,12 +21,9 @@ export default function Disney() {
       setData(results);
     };
 
-    if (!unmounted) {
-      fetchData();
-    }
-    return () => {
-      unmounted = true;
-    };
+    fetchData();
+
+    return () => abortController.abort();
   }, [API_KEY]);
 
   return (
