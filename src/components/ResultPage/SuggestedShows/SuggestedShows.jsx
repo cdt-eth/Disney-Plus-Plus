@@ -26,30 +26,46 @@ const settings = {
 
 export default function SuggestedShows({ id }) {
   const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
 
   useEffect(() => {
-    let unmounted = false;
+    const abortController = new AbortController();
+    const signal = abortController.signal;
 
     const fetchData = async () => {
-      const res = await fetch(
-        `https://api.themoviedb.org/3/tv/${id}/recommendations?api_key=${API_KEY}&language=en-US&page=1`
-      );
-      const data = await res.json();
-      const results = data.results;
-      setData(results);
+      try {
+        setIsLoading(true);
+
+        const res = await fetch(
+          `https://api.themoviedb.org/3/tv/${id}/recommendations?api_key=${API_KEY}&language=en-US&page=1`,
+          { signal: signal }
+        );
+
+        if (!res.ok) throw new Error("Request failed.");
+
+        const data = await res.json();
+        const results = data.results;
+
+        setData(results);
+        setIsLoading(false);
+      } catch (e) {
+        console.log(e);
+      }
     };
-    if (!unmounted) {
-      fetchData();
-    }
-    return () => {
-      unmounted = true;
-    };
+
+    fetchData();
+
+    return () => abortController.abort();
   }, [id, API_KEY]);
 
   return (
     <div className="suggested">
-      {data.length > 0 ? (
+      {isLoading ? (
+        <h3>Loading...</h3>
+      ) : data.length === 0 ? (
+        <h3 className="reccommendationsError">No Recommendations Available</h3>
+      ) : (
         <Slider {...settings}>
           {data.map((show) => {
             return (
@@ -58,7 +74,7 @@ export default function SuggestedShows({ id }) {
                   pathname: `/show/${show.id}`,
                   state: { ...show },
                 }}
-                key={show.title}
+                key={show.id}
               >
                 <div className="banner recBanner">
                   <img
@@ -74,8 +90,6 @@ export default function SuggestedShows({ id }) {
             );
           })}
         </Slider>
-      ) : (
-        <h3 className="reccommendationsError">No Recommendations Available</h3>
       )}
     </div>
   );

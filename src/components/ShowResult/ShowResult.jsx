@@ -14,7 +14,7 @@ export default function ShowResult(props) {
         <img
           src={
             poster
-              ? `https://image.tmdb.org/t/p/original/${poster}`
+              ? `https://image.tmdb.org/t/p/original${poster}`
               : "https://www.genius100visions.com/wp-content/uploads/2017/09/placeholder-vertical.jpg"
           }
           alt={alt}

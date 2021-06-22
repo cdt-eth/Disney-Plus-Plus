@@ -23,7 +23,7 @@ export default function ShowResultPage(props) {
   const [showSuggested, setShowSuggested] = useState(true);
   const [showExtras, setShowExtras] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
-
+  const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
   const {
     // poster_path: poster,
     overview,
@@ -33,7 +33,6 @@ export default function ShowResultPage(props) {
     name,
     first_air_date,
   } = props.location.state;
-  const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
 
   useEffect(() => {
     const fetchShowData = async () => {
@@ -121,16 +120,17 @@ export default function ShowResultPage(props) {
   return (
     <div className="resultPage">
       <div className="resultBackground">
-        <img
-          className="posterBackground"
-          src={
-            data.backdrop_path
-              ? `https://image.tmdb.org/t/p/original${data.backdrop_path}`
-              : `https://image.tmdb.org/t/p/original${data.backdrop_path}`
-            // : `https://image.tmdb.org/t/p/original${poster_path}`
-          }
-          alt={alt}
-        />
+        {data.backdrop_path && (
+          <img
+            className="posterBackground"
+            src={
+              data.backdrop_path
+                ? `https://image.tmdb.org/t/p/original${data.backdrop_path}`
+                : "https://i1.wp.com/www.africanflair.com/wp-content/uploads/2015/10/pix-horizontal-placeholder.jpg?w=1920&ssl=1"
+            }
+            alt={alt}
+          />
+        )}
         <div className="resultInfo">
           <h1> {name} </h1>
 
