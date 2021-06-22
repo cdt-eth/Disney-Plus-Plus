@@ -180,7 +180,7 @@ export default function ResultPage(props) {
             </Link>
           </div>
 
-          <div>
+          <div className="generalInfo">
             {rating ? `${rating} • ` : ""} {date}{" "}
             {genreNames.length > 0 ? `• ${genreNames.join(", ")}` : ""}
           </div>
