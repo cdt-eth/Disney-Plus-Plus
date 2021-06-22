@@ -9,41 +9,35 @@ export default function Account({ session }) {
   const [avatar_url, setAvatarUrl] = useState(null);
 
   useEffect(() => {
-    const abortController = new AbortController();
-    const signal = abortController.signal;
-
-    async function getProfile() {
-      try {
-        setLoading(true);
-        const user = supabase.auth.user();
-
-        let { data, error, status } = await (supabase
-          .from("profiles")
-          .select(`username, website, avatar_url`)
-          .eq("id", user.id)
-          .single(),
-        { signal: signal });
-
-        if (error && status !== 406) {
-          throw error;
-        }
-
-        if (data) {
-          setUsername(data.username);
-          setWebsite(data.website);
-          setAvatarUrl(data.avatar_url);
-        }
-      } catch (error) {
-        alert(error.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-
     getProfile();
-
-    return () => abortController.abort();
   }, [session]);
+
+  async function getProfile() {
+    try {
+      setLoading(true);
+      const user = supabase.auth.user();
+
+      let { data, error, status } = await supabase
+        .from("profiles")
+        .select(`username, website, avatar_url`)
+        .eq("id", user.id)
+        .single();
+
+      if (error && status !== 406) {
+        throw error;
+      }
+
+      if (data) {
+        setUsername(data.username);
+        setWebsite(data.website);
+        setAvatarUrl(data.avatar_url);
+      }
+    } catch (error) {
+      alert(error.message);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   async function updateProfile({ username, website, avatar_url }) {
     try {
