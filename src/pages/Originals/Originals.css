@@ -50,6 +50,8 @@
     padding-right: 20px;
   }
   .originalsTitle {
-    padding-top: 100px;
+    padding-top: 150px;
+    font-size: 2rem;
+    letter-spacing: 0.7rem;
   }
 }
