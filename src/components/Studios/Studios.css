@@ -42,7 +42,9 @@ video:hover {
 
 @media only screen and (max-width: 765px) {
   .studios {
-    margin: 70px 20px 40px 20px !important;
+    grid-template-columns: repeat(5, 1fr) !important;
+    gap: 7px !important;
+    margin: 70px 15px 50px 15px !important;
   }
 }
 
