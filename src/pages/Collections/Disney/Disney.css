@@ -1,0 +1,9 @@
+@media only screen and (max-width: 765px) {
+  .collectionDisney {
+    background: radial-gradient(
+      ellipse closest-side at 50% 3%,
+      transparent -10%,
+      #1a1e29 200%
+    ) !important;
+  }
+}

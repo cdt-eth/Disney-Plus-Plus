@@ -18,6 +18,7 @@
   top: 30;
   height: 240px;
 }
+
 .collectionsPage {
   padding: 50px 50px 100px 50px !important;
   padding-top: 0 !important;
@@ -25,6 +26,53 @@
   padding-bottom: 0px !important;
 }
 
+.collectionsImg {
+  max-width: 600px;
+  min-width: 200px;
+  width: 35vw;
+  display: block;
+  margin: auto;
+  margin-top: 180px;
+  margin-bottom: 60px;
+}
+
 .spacer {
   padding-bottom: 475px;
+}
+
+@media only screen and (max-width: 765px) {
+  .collection {
+    margin-top: -100px;
+    background: radial-gradient(
+      ellipse closest-side at 50% 6%,
+      transparent -10%,
+      #1a1e29 200%
+    ) !important;
+  }
+
+  .collectionsPixar {
+    background: radial-gradient(
+      ellipse closest-side at 50% 5%,
+      transparent -10%,
+      #1a1e29 200%
+    ) !important;
+  }
+
+  .collectionsPage {
+    padding: 0px 20px !important;
+  }
+
+  .collectionsImg {
+    margin-top: 80px;
+    margin-bottom: 30px;
+  }
+
+  .spacer {
+    padding-bottom: 100px;
+  }
+
+  .results {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 15px !important;
+  }
 }

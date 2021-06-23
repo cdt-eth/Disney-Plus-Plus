@@ -39,7 +39,12 @@ export default function Marvel() {
           type="video/mp4"
         />
       </video>
-      <div className="spacer"></div>
+      {/* <div className="spacer"></div> */}
+      <img
+        src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/BC26D77B10047FCE6F1CC1AB419F700447E5C37D352BAD6433B2EF7C068187D0/scale?width=1200"
+        alt="marvel"
+        className="collectionsImg"
+      />
       <div className="page collectionsPage">
         <div className="results collections">
           {data.map((movie) => {

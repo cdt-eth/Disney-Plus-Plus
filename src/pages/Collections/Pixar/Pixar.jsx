@@ -40,7 +40,8 @@ export default function Pixar() {
         />
       </video>
       <div className="spacer"></div>
-      <div className="page collectionsPage">
+      {/* <img src="" alt="nat-geo" className="collectionsImg" /> */}
+      <div className="page collectionsPixar collectionsPage ">
         <div className="results collections">
           {data.map((movie) => {
             return (
