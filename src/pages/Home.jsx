@@ -4,11 +4,47 @@ import Recommendations from "../components/Recommendations/Recommendations";
 import { useState, useEffect } from "react";
 
 export default function App() {
+  const [cannes, setCannes] = useState([]);
   const [trending, setTrending] = useState([]);
-  const [upcoming, setUpcoming] = useState([]);
-  const [nowPlaying, setNowPlaying] = useState([]);
+  const [marvelUniverse, setMarvelUniverse] = useState([]);
+  const [anime, setAnime] = useState([]);
+  const [bestPictures, setBestPictures] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
+
+  useEffect(() => {
+    const fetchCannes = async () => {
+      setIsLoading(true);
+
+      const res = await fetch(
+        `https://api.themoviedb.org/3/list/112870?api_key=${API_KEY}&language=en-US`
+      );
+      const data = await res.json();
+      const results = data.items;
+
+      setCannes(results);
+      setIsLoading(false);
+    };
+
+    fetchCannes();
+  }, [API_KEY]);
+
+  useEffect(() => {
+    const fetchMarvelUniverse = async () => {
+      setIsLoading(true);
+
+      const res = await fetch(
+        `https://api.themoviedb.org/3/list/1?api_key=${API_KEY}&language=en-US`
+      );
+      const data = await res.json();
+      const results = data.items;
+
+      setMarvelUniverse(results);
+      setIsLoading(false);
+    };
+
+    fetchMarvelUniverse();
+  }, [API_KEY]);
 
   useEffect(() => {
     const fetchTrending = async () => {
@@ -28,48 +64,58 @@ export default function App() {
   }, [API_KEY]);
 
   useEffect(() => {
-    const fetchUpcoming = async () => {
+    const fetchAnime = async () => {
       setIsLoading(true);
 
       const res = await fetch(
-        `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`
+        `https://api.themoviedb.org/3/list/3321?api_key=${API_KEY}&language=en-US`
       );
       const data = await res.json();
-      const results = data.results;
+      const results = data.items;
 
-      setUpcoming(results);
+      setAnime(results);
       setIsLoading(false);
     };
 
-    fetchUpcoming();
+    fetchAnime();
   }, [API_KEY]);
 
   useEffect(() => {
-    const fetchNowPlaying = async () => {
+    const fetchBestPictures = async () => {
       setIsLoading(true);
 
       const res = await fetch(
-        `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`
+        `https://api.themoviedb.org/3/list/28?api_key=${API_KEY}&language=en-US`
       );
       const data = await res.json();
-      const results = data.results;
+      const results = data.items;
 
-      setNowPlaying(results);
+      setBestPictures(results);
       setIsLoading(false);
     };
 
-    fetchNowPlaying();
+    fetchBestPictures();
   }, [API_KEY]);
 
   return (
     <div className="App">
       <Carousel />
       <Studios />
-      <Recommendations title={"Trending"} data={trending} loading={isLoading} />
-      <Recommendations title={"Upcoming"} data={upcoming} loading={isLoading} />
       <Recommendations
-        title={"Now Playing"}
-        data={nowPlaying}
+        title={"Best Picture Winners"}
+        data={bestPictures}
+        loading={isLoading}
+      />
+      <Recommendations
+        title={"Cannes 2019"}
+        data={cannes}
+        loading={isLoading}
+      />
+      <Recommendations title={"Anime"} data={anime} loading={isLoading} />
+      <Recommendations title={"Trending"} data={trending} loading={isLoading} />
+      <Recommendations
+        title={"The Marvel Universe"}
+        data={marvelUniverse}
         loading={isLoading}
       />
     </div>
