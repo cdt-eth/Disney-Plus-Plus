@@ -4,8 +4,6 @@
   z-index: -1;
 }
 
-/* <div class="sc-bIqbHp jpylNY" style="opacity: 0.541333;"><img alt="Marvel Studios' Captain America: The First Avenger" src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/569C9B466BEACAE947848E1F2A5CC9B63CE47B0A4EBA88395FC3FE33170E4A6D/scale?width=2880&amp;aspectRatio=1.78&amp;format=jpeg" style="width: 100vw;"><div class="sc-gNJABI lhisuK"></div></div> */
-
 .resultBackground {
   /* z-index: 3; */
   /* background-color: #1a1d29; */
@@ -19,6 +17,12 @@
     transparent,
     rgb(26, 29, 41)
   );
+
+  /* background-image: radial-gradient(
+    ellipse closest-side at 75% 19%,
+    transparent -10%,
+    #1a1e29 200%
+  ); */
 }
 
 .resultPage {
@@ -207,6 +211,26 @@
     padding-top: 80px;
   }
 
+  .resultBackground {
+    /* background: radial-gradient(
+      ellipse closest-side at 75% 9%,
+      transparent -10%,
+      #1a1e29 200%
+    ); */
+
+    /* background-image: radial-gradient(
+      ellipse closest-side at 55% 9%,
+      transparent 60%,
+      #1a1e29 200%
+    ); */
+
+    background: radial-gradient(
+      ellipse closest-side at 70% 8%,
+      transparent -10%,
+      #1a1e29 200%
+    ) !important;
+  }
+
   .resultInfo {
     padding: 5px 30px !important;
   }
@@ -220,8 +244,9 @@
   }
 
   .resultInfo h1 {
-    font-size: 60px;
-    max-width: 100%;
+    font-size: 40px;
+    max-width: 90%;
+    margin: 40px 0px 50px 0px;
   }
 
   .play {
