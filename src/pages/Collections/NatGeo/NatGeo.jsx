@@ -39,7 +39,6 @@ export default function Marvel() {
           type="video/mp4"
         />
       </video>
-      {/* <div className="spacer"></div> */}
       <img
         src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/B794A4647CDE36B4D8742BB6B3FDAEC940351C90F2D7D15E803B2376021C3826/scale?width=1200"
         alt="nat-geo"

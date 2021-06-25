@@ -39,7 +39,6 @@ export default function StarWars() {
           type="video/mp4"
         />
       </video>
-      {/* <div className="spacer"></div> */}
       <img
         src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/04BB6D7A8E43E18DB3C30E6D9916DE7F44F38C12A7B3ED6B99EDD96DF8FF7D68/scale?width=1200"
         alt="star-wars"

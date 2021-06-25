@@ -39,7 +39,6 @@ export default function Disney() {
           type="video/mp4"
         />
       </video>
-      {/* <div className="spacer"></div> */}
       <img
         src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/A596DE839393E0F3DB258AC5B4F45CDB4C03257DAA4FF87F9952ADBCB28E2905/scale?width=1200"
         alt="disney"
