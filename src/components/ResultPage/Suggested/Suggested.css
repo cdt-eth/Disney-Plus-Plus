@@ -1,3 +1,6 @@
 .suggested {
   padding-top: 20px;
 }
+.suggested .slick-track {
+  margin-left: inherit !important;
+}
