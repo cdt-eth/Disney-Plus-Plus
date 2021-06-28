@@ -1,6 +1,6 @@
 import "./App.css";
 import Nav from "./components/Nav/Nav";
-import Footer from "./components/Footer/Footer";
+import Footer from "./components/Footer/Footer.tsx";
 import "react-modal-video/scss/modal-video.scss";
 
 function App() {

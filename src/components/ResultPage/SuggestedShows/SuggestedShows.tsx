@@ -1,8 +1,15 @@
+import React, { FC } from "react";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
+type SuggestedShow = {
+  id: number;
+  poster_path: string;
+  title: string;
+};
 
 const settings = {
   dots: false,
@@ -24,8 +31,8 @@ const settings = {
   ],
 };
 
-export default function SuggestedShows({ id }) {
-  const [data, setData] = useState([]);
+const SuggestedShows: FC<SuggestedShow> = ({ id }) => {
+  const [data, setData] = useState<SuggestedShow[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
 
@@ -93,5 +100,6 @@ export default function SuggestedShows({ id }) {
       )}
     </div>
   );
-}
-//
+};
+
+export default SuggestedShows;
