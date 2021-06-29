@@ -4,9 +4,9 @@ import { FaPlay as PlayIcon, FaPlus as PlusIcon } from "react-icons/fa";
 import { IoIosPeople as PeopleIcon } from "react-icons/io";
 import { Link } from "react-router-dom";
 import ModalVideo from "react-modal-video";
-import Extras from "../../components/ResultPage/Extras/Extras";
-import ShowDetails from "../../components/ResultPage/ShowDetails/ShowDetails";
-import SuggestedShows from "../../components/ResultPage/SuggestedShows/SuggestedShows";
+import Extras from "../../components/ResultPage/Extras/Extras.tsx";
+import ShowDetails from "../../components/ResultPage/ShowDetails/ShowDetails.tsx";
+import SuggestedShows from "../../components/ResultPage/SuggestedShows/SuggestedShows.tsx";
 
 export default function ShowResultPage(props) {
   const [data, setData] = useState([]);

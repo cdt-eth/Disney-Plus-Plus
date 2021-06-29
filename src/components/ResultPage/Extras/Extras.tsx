@@ -1,8 +1,21 @@
 import "./Extras.css";
-import { useState } from "react";
+import { useState, ReactElement } from "react";
 import ModalVideo from "react-modal-video";
 
-export default function Extras({ extras, noExtras }) {
+interface IData {
+  extras: Array<IExtras>;
+  noExtras: boolean;
+  id: number;
+}
+
+interface IExtras {
+  id: string;
+  length: number;
+  key: string;
+  name: string;
+}
+
+const Extras = ({ extras, noExtras }: IData): ReactElement => {
   const [isOpen, setOpen] = useState(false);
 
   return (
@@ -27,7 +40,7 @@ export default function Extras({ extras, noExtras }) {
                     alt={extra.id}
                   />
                   <ModalVideo
-                    key={extras.id}
+                    key={extra.id}
                     channel="youtube"
                     autoplay
                     isOpen={isOpen}
@@ -43,4 +56,6 @@ export default function Extras({ extras, noExtras }) {
       </div>
     </div>
   );
-}
+};
+
+export default Extras;
