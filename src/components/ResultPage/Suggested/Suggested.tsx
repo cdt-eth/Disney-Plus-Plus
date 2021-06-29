@@ -1,9 +1,19 @@
 import "./Suggested.css";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, ReactElement } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
+type ISuggestedData = {
+  id: number;
+  title: string;
+  poster_path: string;
+};
+
+type ISuggested = {
+  id: number;
+};
 
 const settings = {
   dots: false,
@@ -25,8 +35,9 @@ const settings = {
   ],
 };
 
-export default function Suggested({ id }) {
-  const [data, setData] = useState([]);
+const Suggested = ({ id }: ISuggested): ReactElement => {
+  // export default function Suggested({ id }) {
+  const [data, setData] = useState<ISuggestedData[]>([]);
   const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
 
   useEffect(() => {
@@ -80,5 +91,6 @@ export default function Suggested({ id }) {
       )}
     </div>
   );
-}
-//
+};
+
+export default Suggested;

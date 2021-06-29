@@ -2,7 +2,7 @@ import "./Extras.css";
 import { useState, ReactElement } from "react";
 import ModalVideo from "react-modal-video";
 
-interface IData {
+interface IExtrasData {
   extras: Array<IExtras>;
   noExtras: boolean;
   id: number;
@@ -15,7 +15,7 @@ interface IExtras {
   name: string;
 }
 
-const Extras = ({ extras, noExtras }: IData): ReactElement => {
+const Extras = ({ extras, noExtras }: IExtrasData): ReactElement => {
   const [isOpen, setOpen] = useState(false);
 
   return (
