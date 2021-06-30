@@ -1,9 +1,18 @@
-import "./Pixar.css";
-import { useState, useEffect } from "react";
+import "./Disney.css";
+import { useState, useEffect, ReactElement } from "react";
 import Result from "../../../components/Result/Result";
 
-export default function Pixar() {
-  const [data, setData] = useState([]);
+export interface IStudioMovies {
+  poster_path: string;
+  id: string;
+  title: string;
+  overview: string;
+  release_date: string;
+  genre_ids: string[];
+}
+
+const Disney = (): ReactElement => {
+  const [data, setData] = useState<IStudioMovies[]>([]);
   const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
 
   useEffect(() => {
@@ -12,7 +21,7 @@ export default function Pixar() {
 
     const fetchData = async () => {
       const res = await fetch(
-        `https://api.themoviedb.org/3/list/9095?api_key=${API_KEY}&language=en-US`,
+        `https://api.themoviedb.org/3/list/338?api_key=${API_KEY}&language=en-US`,
         { signal: signal }
       );
       const data = await res.json();
@@ -27,7 +36,7 @@ export default function Pixar() {
   }, [API_KEY]);
 
   return (
-    <div className="wrapper collection">
+    <div className="wrapper collectionDisney collection">
       <video
         loop={true}
         autoPlay={true}
@@ -35,13 +44,16 @@ export default function Pixar() {
         className="collectionsVideo"
       >
         <source
-          src="https://vod-bgc-na-east-1.media.dssott.com/bgui/ps01/disney/bgui/2019/08/01/1564677724-pixar.mp4"
+          src="https://vod-bgc-na-east-1.media.dssott.com/bgui/ps01/disney/bgui/2019/08/01/1564677287-disney.mp4"
           type="video/mp4"
         />
       </video>
-      <div className="spacer"></div>
-      {/* <img src="" alt="nat-geo" className="collectionsImg" /> */}
-      <div className="page collectionsPixar collectionsPage ">
+      <img
+        src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/A596DE839393E0F3DB258AC5B4F45CDB4C03257DAA4FF87F9952ADBCB28E2905/scale?width=1200"
+        alt="disney"
+        className="collectionsImg"
+      />
+      <div className="page collectionsPage">
         <div className="results collections">
           {data.map((movie) => {
             return (
@@ -61,4 +73,6 @@ export default function Pixar() {
       </div>
     </div>
   );
-}
+};
+
+export default Disney;

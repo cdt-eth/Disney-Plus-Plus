@@ -36,7 +36,6 @@ const settings = {
 };
 
 const Suggested = ({ id }: ISuggested): ReactElement => {
-  // export default function Suggested({ id }) {
   const [data, setData] = useState<ISuggestedData[]>([]);
   const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
 

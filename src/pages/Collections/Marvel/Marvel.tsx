@@ -1,9 +1,10 @@
-import "./Disney.css";
-import { useState, useEffect } from "react";
+import "./Marvel.css";
+import { useState, useEffect, ReactElement } from "react";
 import Result from "../../../components/Result/Result";
+import { IStudioMovies } from "../Disney/Disney";
 
-export default function Disney() {
-  const [data, setData] = useState([]);
+const Marvel = (): ReactElement => {
+  const [data, setData] = useState<IStudioMovies[]>([]);
   const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
 
   useEffect(() => {
@@ -12,7 +13,7 @@ export default function Disney() {
 
     const fetchData = async () => {
       const res = await fetch(
-        `https://api.themoviedb.org/3/list/338?api_key=${API_KEY}&language=en-US`,
+        `https://api.themoviedb.org/3/list/9387?api_key=${API_KEY}&language=en-US`,
         { signal: signal }
       );
       const data = await res.json();
@@ -27,7 +28,7 @@ export default function Disney() {
   }, [API_KEY]);
 
   return (
-    <div className="wrapper collectionDisney collection">
+    <div className="wrapper collection">
       <video
         loop={true}
         autoPlay={true}
@@ -35,13 +36,13 @@ export default function Disney() {
         className="collectionsVideo"
       >
         <source
-          src="https://vod-bgc-na-east-1.media.dssott.com/bgui/ps01/disney/bgui/2019/08/01/1564677287-disney.mp4"
+          src="https://vod-bgc-na-east-1.media.dssott.com/bgui/ps01/disney/bgui/2019/09/06/1567786546-marvel.mp4"
           type="video/mp4"
         />
       </video>
       <img
-        src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/A596DE839393E0F3DB258AC5B4F45CDB4C03257DAA4FF87F9952ADBCB28E2905/scale?width=1200"
-        alt="disney"
+        src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/BC26D77B10047FCE6F1CC1AB419F700447E5C37D352BAD6433B2EF7C068187D0/scale?width=1200"
+        alt="marvel"
         className="collectionsImg"
       />
       <div className="page collectionsPage">
@@ -64,4 +65,6 @@ export default function Disney() {
       </div>
     </div>
   );
-}
+};
+
+export default Marvel;

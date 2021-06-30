@@ -9,11 +9,11 @@ import Movies from "../../pages/Movies/Movies";
 import Series from "../../pages/Series/Series";
 import ResultPage from "../../pages/ResultPage/ResultPage";
 import Login from "../../pages/Auth/Auth";
-import Disney from "../../pages/Collections/Disney/Disney";
-import Pixar from "../../pages/Collections/Pixar/Pixar";
-import Marvel from "../../pages/Collections/Marvel/Marvel";
-import StarWars from "../../pages/Collections/StarWars/StarWars";
-import NatGeo from "../../pages/Collections/NatGeo/NatGeo";
+import Disney from "../../pages/Collections/Disney/Disney.tsx";
+import Pixar from "../../pages/Collections/Pixar/Pixar.tsx";
+import Marvel from "../../pages/Collections/Marvel/Marvel.tsx";
+import StarWars from "../../pages/Collections/StarWars/StarWars.tsx";
+import NatGeo from "../../pages/Collections/NatGeo/NatGeo.tsx";
 import ShowResultPage from "../../pages/ShowResultPage/ShowResultPage";
 import {
   MdAccountCircle as LoginIcon,

@@ -1,9 +1,10 @@
-import "./Marvel.css";
-import { useState, useEffect } from "react";
+import "./StarWars.css";
+import { useState, useEffect, ReactElement } from "react";
 import Result from "../../../components/Result/Result";
+import { IStudioMovies } from "../Disney/Disney";
 
-export default function Marvel() {
-  const [data, setData] = useState([]);
+const StarWars = (): ReactElement => {
+  const [data, setData] = useState<IStudioMovies[]>([]);
   const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
 
   useEffect(() => {
@@ -12,7 +13,7 @@ export default function Marvel() {
 
     const fetchData = async () => {
       const res = await fetch(
-        `https://api.themoviedb.org/3/list/9387?api_key=${API_KEY}&language=en-US`,
+        `https://api.themoviedb.org/3/list/8136?api_key=${API_KEY}&language=en-US`,
         { signal: signal }
       );
       const data = await res.json();
@@ -35,16 +36,16 @@ export default function Marvel() {
         className="collectionsVideo"
       >
         <source
-          src="https://vod-bgc-na-east-1.media.dssott.com/bgui/ps01/disney/bgui/2019/09/06/1567786546-marvel.mp4"
+          src="https://vod-bgc-na-east-1.media.dssott.com/bgui/ps01/disney/bgui/2019/08/01/1564677991-star-wars.mp4"
           type="video/mp4"
         />
       </video>
       <img
-        src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/BC26D77B10047FCE6F1CC1AB419F700447E5C37D352BAD6433B2EF7C068187D0/scale?width=1200"
-        alt="marvel"
+        src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/04BB6D7A8E43E18DB3C30E6D9916DE7F44F38C12A7B3ED6B99EDD96DF8FF7D68/scale?width=1200"
+        alt="star-wars"
         className="collectionsImg"
       />
-      <div className="page collectionsPage">
+      <div className="page collectionsStarWars collectionsPage">
         <div className="results collections">
           {data.map((movie) => {
             return (
@@ -64,4 +65,6 @@ export default function Marvel() {
       </div>
     </div>
   );
-}
+};
+
+export default StarWars;
