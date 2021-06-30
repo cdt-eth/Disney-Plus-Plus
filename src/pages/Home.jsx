@@ -1,5 +1,5 @@
 import Carousel from "../components/Carousel/Carousel";
-import Studios from "../components/Studios/Studios";
+import Studios from "../components/Studios/Studios.tsx";
 import Recommendations from "../components/Recommendations/Recommendations";
 import { useState, useEffect } from "react";
 
