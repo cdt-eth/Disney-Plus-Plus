@@ -1,23 +1,32 @@
 import "./Movies.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, ReactElement, ChangeEvent } from "react";
 import Result from "../../components/Result/Result";
 
-export default function Movies() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [noResults, setNoResults] = useState(false);
-  const [data, setData] = useState([]);
-  const [value, setValue] = useState(27);
+type IMoviesData = {
+  poster_path: string;
+  title: string;
+  id: string;
+  overview: string;
+  release_date: string;
+  genre_ids: string[];
+};
+
+const Movies = (): ReactElement => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [noResults, setNoResults] = useState<boolean>(false);
+  const [data, setData] = useState<IMoviesData[]>([]);
+  const [value, setValue] = useState<string>("27");
   const [items] = useState([
-    { label: "Action", value: 28 },
-    { label: "Adventure", value: 12 },
-    { label: "Animation", value: 16 },
-    { label: "Comedy", value: 35 },
-    { label: "Documentary", value: 99 },
-    { label: "Drama", value: 18 },
-    { label: "Family", value: 10751 },
-    { label: "Romance", value: 10749 },
-    { label: "Science Fiction", value: 878 },
-    { label: "Western", value: 37 },
+    { label: "Action", value: "28" },
+    { label: "Adventure", value: "12" },
+    { label: "Animation", value: "16" },
+    { label: "Comedy", value: "35" },
+    { label: "Documentary", value: "99" },
+    { label: "Drama", value: "18" },
+    { label: "Family", value: "10751" },
+    { label: "Romance", value: "10749" },
+    { label: "Science Fiction", value: "878" },
+    { label: "Western", value: "37" },
   ]);
   const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
 
@@ -53,7 +62,7 @@ export default function Movies() {
           <select
             className="dropdown"
             value={value}
-            onChange={(e) => {
+            onChange={(e: ChangeEvent<HTMLSelectElement>) => {
               setValue(e.currentTarget.value);
             }}
           >
@@ -98,4 +107,6 @@ export default function Movies() {
       </div>
     </div>
   );
-}
+};
+
+export default Movies;

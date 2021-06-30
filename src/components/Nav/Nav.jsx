@@ -5,7 +5,7 @@ import Home from "../../pages/Home.tsx";
 import Search from "../../pages/Search/Search";
 import Watchlist from "../../pages/Watchlist/Watchlist.tsx";
 import Originals from "../../pages/Originals/Originals.tsx";
-import Movies from "../../pages/Movies/Movies";
+import Movies from "../../pages/Movies/Movies.tsx";
 import Series from "../../pages/Series/Series";
 import ResultPage from "../../pages/ResultPage/ResultPage";
 import Login from "../../pages/Auth/Auth";
