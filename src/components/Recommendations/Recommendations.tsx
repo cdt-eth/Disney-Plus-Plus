@@ -1,10 +1,27 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { ReactElement } from "react";
 import { Link } from "react-router-dom";
 import "./Recommendations.css";
 
-export default function Recommendations({ title, data, loading }) {
+interface IRecommendationData {
+  data: Array<IRecommendations>;
+  loading: boolean;
+  title: string;
+}
+
+interface IRecommendations {
+  title: string;
+  id: string;
+  poster_path: string;
+}
+
+const Recommendations = ({
+  title,
+  data,
+  loading,
+}: IRecommendationData): ReactElement => {
   const settings = {
     dots: false,
     infinite: true,
@@ -57,4 +74,6 @@ export default function Recommendations({ title, data, loading }) {
       )}
     </div>
   );
-}
+};
+
+export default Recommendations;

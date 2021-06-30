@@ -1,6 +1,6 @@
 import Carousel from "../components/Carousel/Carousel";
 import Studios from "../components/Studios/Studios.tsx";
-import Recommendations from "../components/Recommendations/Recommendations";
+import Recommendations from "../components/Recommendations/Recommendations.tsx";
 import { useState, useEffect } from "react";
 
 export default function App() {
