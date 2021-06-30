@@ -1,9 +1,9 @@
-import Carousel from "../components/Carousel/Carousel.tsx";
-import Studios from "../components/Studios/Studios.tsx";
-import Recommendations from "../components/Recommendations/Recommendations.tsx";
-import { useState, useEffect } from "react";
+import Carousel from "../components/Carousel/Carousel";
+import Studios from "../components/Studios/Studios";
+import Recommendations from "../components/Recommendations/Recommendations";
+import { useState, useEffect, ReactElement } from "react";
 
-export default function App() {
+const App = (): ReactElement => {
   const [cannes, setCannes] = useState([]);
   const [trending, setTrending] = useState([]);
   const [marvelUniverse, setMarvelUniverse] = useState([]);
@@ -120,4 +120,6 @@ export default function App() {
       />
     </div>
   );
-}
+};
+
+export default App;

@@ -1,7 +1,7 @@
 import "./Nav.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import Home from "../../pages/Home";
+import Home from "../../pages/Home.tsx";
 import Search from "../../pages/Search/Search";
 import Watchlist from "../../pages/Watchlist/Watchlist.tsx";
 import Originals from "../../pages/Originals/Originals";
