@@ -1,4 +1,4 @@
-import Carousel from "../components/Carousel/Carousel";
+import Carousel from "../components/Carousel/Carousel.tsx";
 import Studios from "../components/Studios/Studios.tsx";
 import Recommendations from "../components/Recommendations/Recommendations.tsx";
 import { useState, useEffect } from "react";

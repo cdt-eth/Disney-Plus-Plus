@@ -1,12 +1,19 @@
 import "./Carousel.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, ReactElement } from "react";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-export default function Carousel() {
-  const [popular, setPopular] = useState([]);
+type ICarouselData = {
+  id: string;
+  title: string;
+  poster_path: string;
+};
+
+const Carousel = (): ReactElement => {
+  const [popular, setPopular] = useState<ICarouselData[]>([]);
+  const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
   const settings = {
     dots: true,
     infinite: true,
@@ -25,7 +32,6 @@ export default function Carousel() {
       },
     ],
   };
-  const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
 
   useEffect(() => {
     const fetchPopular = async () => {
@@ -69,4 +75,6 @@ export default function Carousel() {
       </Slider>
     </div>
   );
-}
+};
+
+export default Carousel;
