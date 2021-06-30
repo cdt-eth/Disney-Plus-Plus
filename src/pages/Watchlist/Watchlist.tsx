@@ -1,11 +1,10 @@
 import "./Watchlist.css";
+import { ReactElement } from "react";
 import { MdAddCircleOutline as AddIcon } from "react-icons/md";
 
-export default function Watchlist() {
+const Watchlist = (): ReactElement => {
   return (
     <div className="wrapper">
-      {/* <h1 className="pageTitle">Watchlist</h1> */}
-
       <div className="watchlistWrapper">
         <AddIcon />
         <h3>Your watchlist is empty</h3>
@@ -13,4 +12,6 @@ export default function Watchlist() {
       </div>
     </div>
   );
-}
+};
+
+export default Watchlist;

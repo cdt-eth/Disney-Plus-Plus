@@ -16,7 +16,7 @@ interface IExtras {
 }
 
 const Extras = ({ extras, noExtras }: IExtrasData): ReactElement => {
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen, setOpen] = useState<boolean>(false);
 
   return (
     <div className="">

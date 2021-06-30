@@ -1,7 +1,8 @@
 import "./404.css";
+import { ReactElement } from "react";
 import { Link } from "react-router-dom";
 
-export default function NoMatch() {
+const NoMatch = (): ReactElement => {
   return (
     <div className="noMatch">
       <div className="overlay"></div>
@@ -16,4 +17,6 @@ export default function NoMatch() {
       </div>
     </div>
   );
-}
+};
+
+export default NoMatch;

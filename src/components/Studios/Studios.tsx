@@ -1,7 +1,8 @@
 import "./Studios.css";
+import { ReactElement } from "react";
 import { Link } from "react-router-dom";
 
-export default function Studios() {
+const Studios = (): ReactElement => {
   return (
     <div className="studios">
       <Link to="/brand/disney" className="studio">
@@ -70,4 +71,6 @@ export default function Studios() {
       </Link>
     </div>
   );
-}
+};
+
+export default Studios;

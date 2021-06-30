@@ -1,6 +1,7 @@
 import "./Footer.css";
+import { ReactElement } from "react";
 
-export default function Footer() {
+const Footer = (): ReactElement => {
   return (
     <div className="footer">
       <a href="/" className="footerLogo">
@@ -69,4 +70,6 @@ export default function Footer() {
       <p className="copyright">© Disney. All Rights Reserved.</p>
     </div>
   );
-}
+};
+
+export default Footer;

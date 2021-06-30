@@ -25,7 +25,7 @@ import {
   MdLocalMovies as MovieIcon,
 } from "react-icons/md";
 import { supabase } from "../../supabaseClient";
-import NoMatch from "../../pages/404/404";
+import NoMatch from "../../pages/404/404.tsx";
 
 export default function Nav() {
   const [session, setSession] = useState(null);

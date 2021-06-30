@@ -9,7 +9,7 @@ const App = (): ReactElement => {
   const [marvelUniverse, setMarvelUniverse] = useState([]);
   const [anime, setAnime] = useState([]);
   const [bestPictures, setBestPictures] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
 
   useEffect(() => {

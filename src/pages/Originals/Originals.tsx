@@ -13,8 +13,8 @@ interface IOriginalsData {
 }
 
 const Originals = (): ReactElement => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [noResults, setNoResults] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [noResults, setNoResults] = useState<boolean>(false);
   const [data, setData] = useState<IOriginalsData[]>([]);
   const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
 
