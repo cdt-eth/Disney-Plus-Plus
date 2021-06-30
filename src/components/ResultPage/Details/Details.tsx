@@ -1,6 +1,18 @@
 import "./Details.css";
+import React, { ReactElement } from "react";
 
-export default function Details({
+type IDetails = {
+  overview: string;
+  title: string;
+  date: string;
+  genres: string[];
+  runtime: string;
+  rating: string;
+  director: string;
+  cast: string[];
+};
+
+const Details = ({
   overview,
   title,
   date,
@@ -9,7 +21,7 @@ export default function Details({
   rating,
   director,
   cast,
-}) {
+}: IDetails): ReactElement => {
   return (
     <>
       <h2>{title}</h2>
@@ -54,4 +66,6 @@ export default function Details({
       </div>
     </>
   );
-}
+};
+
+export default Details;
