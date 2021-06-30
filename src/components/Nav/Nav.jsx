@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Home from "../../pages/Home.tsx";
 import Search from "../../pages/Search/Search";
 import Watchlist from "../../pages/Watchlist/Watchlist.tsx";
-import Originals from "../../pages/Originals/Originals";
+import Originals from "../../pages/Originals/Originals.tsx";
 import Movies from "../../pages/Movies/Movies";
 import Series from "../../pages/Series/Series";
 import ResultPage from "../../pages/ResultPage/ResultPage";

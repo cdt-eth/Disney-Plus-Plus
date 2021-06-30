@@ -1,11 +1,21 @@
 import "./Originals.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, ReactElement } from "react";
 import ShowResult from "../../components/ShowResult/ShowResult";
 
-export default function Originals() {
+interface IOriginalsData {
+  backdrop_path: string;
+  poster_path: string;
+  name: string;
+  id: string;
+  overview: string;
+  first_air_date: string;
+  genre_ids: string[];
+}
+
+const Originals = (): ReactElement => {
   const [isLoading, setIsLoading] = useState(false);
   const [noResults, setNoResults] = useState(false);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<IOriginalsData[]>([]);
   const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
 
   useEffect(() => {
@@ -85,4 +95,6 @@ export default function Originals() {
       </div>
     </div>
   );
-}
+};
+
+export default Originals;
