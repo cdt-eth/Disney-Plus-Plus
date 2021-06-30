@@ -1,13 +1,28 @@
 import "./Search.css";
-import { useState, useEffect } from "react";
+import {
+  useState,
+  useEffect,
+  ReactElement,
+  FormEvent,
+  KeyboardEvent,
+} from "react";
 import Result from "../../components/Result/Result";
 
-export default function Search() {
-  const [searchValue, setSearchValue] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
-  const [noResults, setNoResults] = useState(false);
-  const [data, setData] = useState([]);
-  const [explore, setExplore] = useState(false);
+type ISearchData = {
+  poster_path: string;
+  id: string;
+  title: string;
+  overview: string;
+  release_date: string;
+  genre_ids: string;
+};
+
+const Search = (): ReactElement => {
+  const [searchValue, setSearchValue] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [noResults, setNoResults] = useState<boolean>(false);
+  const [data, setData] = useState<ISearchData[]>([]);
+  const [explore, setExplore] = useState<boolean>(false);
   const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
 
   useEffect(() => {
@@ -46,11 +61,11 @@ export default function Search() {
     }
   }, [searchValue, API_KEY]);
 
-  function handleSubmit(e) {
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
   }
 
-  function handleKeydown(e) {
+  function handleKeydown(e: KeyboardEvent) {
     if (e.key === " " && searchValue.length === 0) {
       e.preventDefault();
     }
@@ -107,4 +122,6 @@ export default function Search() {
       </div>
     </div>
   );
-}
+};
+
+export default Search;
