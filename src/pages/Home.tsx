@@ -3,12 +3,20 @@ import Studios from "../components/Studios/Studios";
 import Recommendations from "../components/Recommendations/Recommendations";
 import { useState, useEffect, ReactElement } from "react";
 
+interface IRecommendations {
+  title: string;
+  id: string;
+  poster_path: string;
+}
+
+export type RecommendationData = IRecommendations[];
+
 const App = (): ReactElement => {
-  const [cannes, setCannes] = useState([]);
-  const [trending, setTrending] = useState([]);
-  const [marvelUniverse, setMarvelUniverse] = useState([]);
-  const [anime, setAnime] = useState([]);
-  const [bestPictures, setBestPictures] = useState([]);
+  const [cannes, setCannes] = useState<IRecommendations[]>([]);
+  const [trending, setTrending] = useState<IRecommendations[]>([]);
+  const [marvelUniverse, setMarvelUniverse] = useState<IRecommendations[]>([]);
+  const [anime, setAnime] = useState<IRecommendations[]>([]);
+  const [bestPictures, setBestPictures] = useState<IRecommendations[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
 

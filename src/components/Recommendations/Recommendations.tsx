@@ -4,24 +4,19 @@ import "slick-carousel/slick/slick-theme.css";
 import { ReactElement } from "react";
 import { Link } from "react-router-dom";
 import "./Recommendations.css";
+import { RecommendationData } from "../../pages/Home";
 
-interface IRecommendationData {
-  data: Array<IRecommendations>;
+interface RecommendationProps {
+  data: RecommendationData;
   loading: boolean;
   title: string;
-}
-
-interface IRecommendations {
-  title: string;
-  id: string;
-  poster_path: string;
 }
 
 const Recommendations = ({
   title,
   data,
   loading,
-}: IRecommendationData): ReactElement => {
+}: RecommendationProps): ReactElement => {
   const settings = {
     dots: false,
     infinite: true,
