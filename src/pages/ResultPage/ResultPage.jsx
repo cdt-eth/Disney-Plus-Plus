@@ -14,6 +14,8 @@ export default function ResultPage(props) {
   const [director, setDirector] = useState("");
   const [castList, setCast] = useState([]);
   const [rating, setRating] = useState("");
+  const [logo, setLogo] = useState("");
+  const [noLogo, setNoLogo] = useState(null);
   const [genreNames, setGenreNames] = useState([]);
   const [trailer, setTrailer] = useState([]);
   const [extras, setExtras] = useState([]);
@@ -39,10 +41,18 @@ export default function ResultPage(props) {
   useEffect(() => {
     const fetchMovieData = async () => {
       const res = await fetch(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&append_to_response=videos,release_dates,credits`
+        `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&append_to_response=videos,images,release_dates,credits`
       );
       const data = await res.json();
       setData(data);
+
+      // LOGO
+      if (data.images.length === 0 || data.images.logos.length === 0) {
+        setNoLogo(true);
+      } else {
+        setNoLogo(false);
+        setLogo(data.images.logos[0].file_path);
+      }
 
       // GENRES
       const apiGenres = data.genres;
@@ -139,7 +149,15 @@ export default function ResultPage(props) {
           />
         )}
         <div className="resultInfo">
-          <h1> {title} </h1>
+          {!noLogo ? (
+            <img
+              className="logoImg"
+              src={`https://image.tmdb.org/t/p/w500${logo}`}
+              alt={logo}
+            />
+          ) : (
+            <h1> {title} </h1>
+          )}
 
           <div className="actions">
             {noTrailer ? (
