@@ -144,7 +144,7 @@ export default function ShowResultPage(props) {
         <div className="resultInfo">
           {!noLogo ? (
             <img
-              className="logoImg"
+              className="resultLogo"
               src={`https://image.tmdb.org/t/p/w500${logo}`}
               alt={logo}
             />

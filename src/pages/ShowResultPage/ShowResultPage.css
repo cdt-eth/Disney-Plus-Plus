@@ -1,3 +1,16 @@
-.logoImg {
+.resultLogo {
   padding: 50px 0px;
+  padding: 50px 0px;
+  max-height: 170px;
+  margin: auto;
+  /* max-width: 500px; */
+  /* width: 100%; */
+  object-fit: contain;
+}
+
+@media only screen and (max-width: 765px) {
+  .resultLogo {
+    max-width: 100%;
+    max-height: 100px;
+  }
 }
