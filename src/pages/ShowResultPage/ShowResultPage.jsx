@@ -11,6 +11,8 @@ import SuggestedShows from "../../components/ResultPage/SuggestedShows/Suggested
 export default function ShowResultPage(props) {
   const [data, setData] = useState([]);
   const [date, setDate] = useState("");
+  const [logo, setLogo] = useState("");
+  const [noLogo, setNoLogo] = useState(null);
   const [creator, setCreator] = useState("");
   const [castList, setCast] = useState([]);
   const [rating, setRating] = useState("");
@@ -37,10 +39,18 @@ export default function ShowResultPage(props) {
   useEffect(() => {
     const fetchShowData = async () => {
       const res = await fetch(
-        `https://api.themoviedb.org/3/tv/${id}?api_key=${API_KEY}&append_to_response=videos,credits,content_ratings`
+        `https://api.themoviedb.org/3/tv/${id}?api_key=${API_KEY}&append_to_response=videos,images,credits,content_ratings`
       );
       const data = await res.json();
       setData(data);
+
+      // LOGO
+      if (data.images.length === 0 || data.images.logos.length === 0) {
+        setNoLogo(true);
+      } else {
+        setNoLogo(false);
+        setLogo(data.images.logos[0].file_path);
+      }
 
       // DATE
       const date = first_air_date.substr(0, first_air_date.indexOf("-"));
@@ -132,7 +142,15 @@ export default function ShowResultPage(props) {
           />
         )}
         <div className="resultInfo">
-          <h1> {name} </h1>
+          {!noLogo ? (
+            <img
+              className="logoImg"
+              src={`https://image.tmdb.org/t/p/w500${logo}`}
+              alt={logo}
+            />
+          ) : (
+            <h1> {name} </h1>
+          )}
 
           <div className="actions">
             <button

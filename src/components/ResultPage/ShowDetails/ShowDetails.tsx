@@ -8,6 +8,7 @@ type IShowDetail = {
   creator: string[];
   cast: string[];
   name: string;
+  logo: string;
 };
 
 const ShowDetails = ({
