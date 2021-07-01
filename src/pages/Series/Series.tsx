@@ -1,23 +1,33 @@
 import "./Series.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, ReactElement, ChangeEvent } from "react";
 import ShowResult from "../../components/ShowResult/ShowResult";
 
-export default function Series() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [noResults, setNoResults] = useState(false);
-  const [data, setData] = useState([]);
-  const [value, setValue] = useState(10759);
+type ISeriesData = {
+  poster_path: string;
+  backdrop_path: string;
+  id: string;
+  name: string;
+  first_air_date: string;
+  overview: string;
+  genre_ids: string[];
+};
+
+const Series = (): ReactElement => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [noResults, setNoResults] = useState<boolean>(false);
+  const [data, setData] = useState<ISeriesData[]>([]);
+  const [value, setValue] = useState<string>("10759");
   const [items] = useState([
     { label: "Action & Adventure", value: 10759 },
-    { label: "Animation", value: 16 },
-    { label: "Comedy", value: 35 },
-    { label: "Crime", value: 80 },
-    { label: "Documentary", value: 99 },
-    { label: "Drama", value: 18 },
-    { label: "Family", value: 10751 },
-    { label: "Kids", value: 10762 },
-    { label: "News", value: 10763 },
-    { label: "Talk", value: 10767 },
+    { label: "Animation", value: "16" },
+    { label: "Comedy", value: "35" },
+    { label: "Crime", value: "80" },
+    { label: "Documentary", value: "99" },
+    { label: "Drama", value: "18" },
+    { label: "Family", value: "10751" },
+    { label: "Kids", value: "10762" },
+    { label: "News", value: "10763" },
+    { label: "Talk", value: "10767" },
   ]);
   const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
 
@@ -54,7 +64,7 @@ export default function Series() {
           <select
             className="dropdown"
             value={value}
-            onChange={(e) => {
+            onChange={(e: ChangeEvent<HTMLSelectElement>) => {
               setValue(e.currentTarget.value);
             }}
           >
@@ -100,4 +110,6 @@ export default function Series() {
       </div>
     </div>
   );
-}
+};
+
+export default Series;

@@ -6,7 +6,7 @@ import Search from "../../pages/Search/Search.tsx";
 import Watchlist from "../../pages/Watchlist/Watchlist.tsx";
 import Originals from "../../pages/Originals/Originals.tsx";
 import Movies from "../../pages/Movies/Movies.tsx";
-import Series from "../../pages/Series/Series";
+import Series from "../../pages/Series/Series.tsx";
 import ResultPage from "../../pages/ResultPage/ResultPage";
 import Login from "../../pages/Auth/Auth";
 import Disney from "../../pages/Collections/Disney/Disney.tsx";
@@ -15,6 +15,7 @@ import Marvel from "../../pages/Collections/Marvel/Marvel.tsx";
 import StarWars from "../../pages/Collections/StarWars/StarWars.tsx";
 import NatGeo from "../../pages/Collections/NatGeo/NatGeo.tsx";
 import ShowResultPage from "../../pages/ShowResultPage/ShowResultPage";
+import NoMatch from "../../pages/404/404.tsx";
 import {
   MdAccountCircle as LoginIcon,
   MdHome as HomeIcon,
@@ -25,7 +26,6 @@ import {
   MdLocalMovies as MovieIcon,
 } from "react-icons/md";
 import { supabase } from "../../supabaseClient";
-import NoMatch from "../../pages/404/404.tsx";
 
 export default function Nav() {
   const [session, setSession] = useState(null);
