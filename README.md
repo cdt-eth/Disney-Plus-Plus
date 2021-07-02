@@ -1,6 +1,6 @@
 ## Disney Plus Plus
 
-#### A Disney Plus clone built with React, React Router, Supabase, and The Open Movie Database API
+#### A Disney Plus clone built with Typescript, React, React Router, Supabase, and The Open Movie Database API
 
 #### [https://disnyplus.plus/](https://disnyplus.plus/)
 
