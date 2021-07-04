@@ -205,6 +205,10 @@
   cursor: pointer;
 }
 
+.generalInfo {
+  padding: 20px 0px;
+}
+
 @media only screen and (max-width: 765px) {
   .resultPage {
     width: auto;
@@ -306,7 +310,7 @@
   }
 
   .subNavSection button {
-    font-size: 15px;
+    font-size: 12px;
   }
 
   .extrasGrid {
