@@ -158,10 +158,12 @@ export default function ResultPage(props) {
           ) : (
             <h1> {title} </h1>
           )}
+
           <div className="generalInfo">
             {rating ? `${rating} • ` : ""} {date}{" "}
             {genreNames.length > 0 ? `• ${genreNames.join(", ")}` : ""}
           </div>
+
           <div className="actions">
             {noTrailer ? (
               <button className="play playError trailerError">
@@ -200,11 +202,6 @@ export default function ResultPage(props) {
               <PeopleIcon />
             </Link>
           </div>
-
-          {/* <div className="generalInfo">
-            {rating ? `${rating} • ` : ""} {date}{" "}
-            {genreNames.length > 0 ? `• ${genreNames.join(", ")}` : ""}
-          </div> */}
 
           <div className="overview">
             <h5>

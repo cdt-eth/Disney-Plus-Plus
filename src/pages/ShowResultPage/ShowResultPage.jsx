@@ -152,6 +152,11 @@ export default function ShowResultPage(props) {
             <h1> {name} </h1>
           )}
 
+          <div className="generalInfo">
+            {rating ? `${rating} • ` : ""} {date}{" "}
+            {genreNames.length > 0 ? `• ${genreNames.join(", ")}` : ""}
+          </div>
+
           <div className="actions">
             <button
               className="play"
@@ -183,11 +188,6 @@ export default function ShowResultPage(props) {
             <Link to="/login" className="circleButton">
               <PeopleIcon />
             </Link>
-          </div>
-
-          <div>
-            {rating ? `${rating} • ` : ""} {date}{" "}
-            {genreNames.length > 0 ? `• ${genreNames.join(", ")}` : ""}
           </div>
 
           <div className="overview">
