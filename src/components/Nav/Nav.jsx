@@ -14,7 +14,7 @@ import Pixar from "../../pages/Collections/Pixar/Pixar.tsx";
 import Marvel from "../../pages/Collections/Marvel/Marvel.tsx";
 import StarWars from "../../pages/Collections/StarWars/StarWars.tsx";
 import NatGeo from "../../pages/Collections/NatGeo/NatGeo.tsx";
-import ShowResultPage from "../../pages/ShowResultPage/ShowResultPage";
+import ShowResultPage from "../../pages/ShowResultPage/ShowResultPage.tsx";
 import NoMatch from "../../pages/404/404.tsx";
 import {
   MdAccountCircle as LoginIcon,
@@ -136,10 +136,6 @@ export default function Nav() {
           </Route>
 
           <Route path={"*"} component={NoMatch} />
-          {/* <Route path={"/404"} component={NoMatch} /> */}
-          {/* <Route path="*" >
-            <NoMatch />
-          </Route> */}
         </Switch>
       </div>
     </Router>
