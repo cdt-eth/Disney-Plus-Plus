@@ -1,16 +1,3 @@
-import { ReactElement } from "react";
-
-type IShowDetail = {
-  overview: string;
-  date: string;
-  genres: string[];
-  rating: string;
-  creator: string[];
-  cast: string[];
-  name: string;
-  logo: string;
-};
-
 const ShowDetails = ({
   overview,
   date,
@@ -19,7 +6,7 @@ const ShowDetails = ({
   creator,
   cast,
   name,
-}: IShowDetail): ReactElement => {
+}) => {
   return (
     <>
       <h2>{name}</h2>
