@@ -5,7 +5,7 @@ import ModalVideo from "react-modal-video";
 interface IExtrasData {
   extras: Array<IExtras>;
   noExtras: boolean;
-  id: number;
+  id?: number;
 }
 
 interface IExtras {

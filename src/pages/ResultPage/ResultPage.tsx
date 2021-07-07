@@ -4,27 +4,63 @@ import { FaPlay as PlayIcon, FaPlus as PlusIcon } from "react-icons/fa";
 import { IoIosPeople as PeopleIcon } from "react-icons/io";
 import { Link } from "react-router-dom";
 import ModalVideo from "react-modal-video";
-import Suggested from "../../components/ResultPage/Suggested/Suggested.tsx";
+import Suggested from "../../components/ResultPage/Suggested/Suggested";
 import Extras from "../../components/ResultPage/Extras/Extras";
 import Details from "../../components/ResultPage/Details/Details";
+// import { RecommendationData } from "../Home";
 
-export default function ResultPage(props) {
-  const [data, setData] = useState([]);
-  const [duration, setDuration] = useState("");
-  const [director, setDirector] = useState("");
-  const [castList, setCast] = useState([]);
-  const [rating, setRating] = useState("");
-  const [logo, setLogo] = useState("");
-  const [noLogo, setNoLogo] = useState(null);
-  const [genreNames, setGenreNames] = useState([]);
+interface IResult {
+  id: string;
+  location: any;
+  props: any;
+  logo: string;
+}
+
+interface IResultData {
+  backdrop_path: string;
+  homepage: string;
+}
+
+interface ILogo {
+  iso_639_1: string;
+  file_path: string;
+}
+
+interface IGenres {
+  id: string;
+  name: string;
+}
+
+interface IRating {
+  iso_3166_1: string;
+  release_dates: string[] | any;
+}
+
+interface ICrew {
+  name: string;
+  job: string;
+}
+
+const ResultPage = (props: IResult) => {
+  const [data, setData] = useState<any | IResultData[]>([]);
+  const [duration, setDuration] = useState<string>("");
+  const [director, setDirector] = useState<string>("");
+  const [castList, setCast] = useState<string[]>([]);
+  const [rating, setRating] = useState<string>("");
+  const [logo, setLogo] = useState<string>("");
+  const [noLogo, setNoLogo] = useState<boolean>(false);
+  // const [noLogo, setNoLogo] = useState(null);
+  const [genreNames, setGenreNames] = useState<string[]>([]);
   const [trailer, setTrailer] = useState([]);
   const [extras, setExtras] = useState([]);
-  const [noExtras, setNoExtras] = useState(null);
-  const [noTrailer, setNoTrailer] = useState(null);
-  const [isOpen, setOpen] = useState(false);
-  const [showSuggested, setShowSuggested] = useState(true);
-  const [showExtras, setShowExtras] = useState(false);
-  const [showDetails, setShowDetails] = useState(false);
+  const [noExtras, setNoExtras] = useState<boolean>(false);
+  // const [noExtras, setNoExtras] = useState(null);
+  const [noTrailer, setNoTrailer] = useState<boolean>(false);
+  // const [noTrailer, setNoTrailer] = useState(null);
+  const [isOpen, setOpen] = useState<boolean>(false);
+  const [showSuggested, setShowSuggested] = useState<boolean>(true);
+  const [showExtras, setShowExtras] = useState<boolean>(false);
+  const [showDetails, setShowDetails] = useState<boolean>(false);
 
   const {
     overview,
@@ -51,9 +87,8 @@ export default function ResultPage(props) {
         setNoLogo(true);
       }
 
-      data.images.logos.map((logo) => {
+      data.images.logos.map((logo: ILogo) => {
         if (logo.iso_639_1 === "en") {
-          console.log("ran here");
           setNoLogo(false);
           setLogo(logo.file_path);
         }
@@ -62,8 +97,8 @@ export default function ResultPage(props) {
 
       // GENRES
       const apiGenres = data.genres;
-      const filtered = [];
-      apiGenres.map((res) => {
+      const filtered: string[] = [];
+      apiGenres.map((res: IGenres) => {
         if (genres.includes(res.id)) {
           filtered.push(res.name);
         }
@@ -104,7 +139,7 @@ export default function ResultPage(props) {
       setDuration(d);
 
       // RATING
-      data.release_dates.results.map((rating) => {
+      data.release_dates.results.map((rating: IRating) => {
         if (rating.iso_3166_1 === "US") {
           setRating(rating.release_dates[0].certification);
         }
@@ -112,7 +147,7 @@ export default function ResultPage(props) {
       });
 
       // DIRECTOR
-      data.credits.crew.map((crew) => {
+      data.credits.crew.map((crew: ICrew) => {
         if (crew.job === "Director") {
           setDirector(crew.name);
         }
@@ -120,7 +155,7 @@ export default function ResultPage(props) {
       });
 
       // CAST
-      const castArray = [];
+      const castArray: string[] = [];
       let castMember = data.credits.cast;
 
       for (var i = 0; i < 6; i++) {
@@ -130,7 +165,9 @@ export default function ResultPage(props) {
           castArray.push(castMember[i].name);
         }
       }
-      if (castArray.length > 0) setCast(castArray);
+
+      // const castArray: string[] = [];
+      if (castArray.length > 0) setCast(castArray as []);
     };
 
     fetchMovieData();
@@ -282,4 +319,6 @@ export default function ResultPage(props) {
       </div>
     </div>
   );
-}
+};
+
+export default ResultPage;
