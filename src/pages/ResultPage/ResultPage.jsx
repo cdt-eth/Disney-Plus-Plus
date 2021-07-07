@@ -49,10 +49,16 @@ export default function ResultPage(props) {
       // LOGO
       if (data.images.length === 0 || data.images.logos.length === 0) {
         setNoLogo(true);
-      } else {
-        setNoLogo(false);
-        setLogo(data.images.logos[0].file_path);
       }
+
+      data.images.logos.map((logo) => {
+        if (logo.iso_639_1 === "en") {
+          console.log("ran here");
+          setNoLogo(false);
+          setLogo(logo.file_path);
+        }
+        return logo;
+      });
 
       // GENRES
       const apiGenres = data.genres;
