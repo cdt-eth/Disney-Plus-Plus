@@ -5,7 +5,7 @@ import { IoIosPeople as PeopleIcon } from "react-icons/io";
 import { Link } from "react-router-dom";
 import ModalVideo from "react-modal-video";
 import Extras from "../../components/ResultPage/Extras/Extras.tsx";
-import ShowDetails from "../../components/ResultPage/ShowDetails/ShowDetails.tsx";
+import ShowDetails from "../../components/ResultPage/ShowDetails/ShowDetails";
 import SuggestedShows from "../../components/ResultPage/SuggestedShows/SuggestedShows.tsx";
 
 export default function ShowResultPage(props) {

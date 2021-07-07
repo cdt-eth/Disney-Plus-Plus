@@ -1,21 +1,21 @@
 import "./Nav.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import Home from "../../pages/Home.tsx";
-import Search from "../../pages/Search/Search.tsx";
-import Watchlist from "../../pages/Watchlist/Watchlist.tsx";
-import Originals from "../../pages/Originals/Originals.tsx";
-import Movies from "../../pages/Movies/Movies.tsx";
-import Series from "../../pages/Series/Series.tsx";
+import { useState, useEffect, ReactElement } from "react";
+import Home from "../../pages/Home";
+import Search from "../../pages/Search/Search";
+import Watchlist from "../../pages/Watchlist/Watchlist";
+import Originals from "../../pages/Originals/Originals";
+import Movies from "../../pages/Movies/Movies";
+import Series from "../../pages/Series/Series";
 import ResultPage from "../../pages/ResultPage/ResultPage";
 import Login from "../../pages/Auth/Auth";
-import Disney from "../../pages/Collections/Disney/Disney.tsx";
-import Pixar from "../../pages/Collections/Pixar/Pixar.tsx";
-import Marvel from "../../pages/Collections/Marvel/Marvel.tsx";
-import StarWars from "../../pages/Collections/StarWars/StarWars.tsx";
-import NatGeo from "../../pages/Collections/NatGeo/NatGeo.tsx";
+import Disney from "../../pages/Collections/Disney/Disney";
+import Pixar from "../../pages/Collections/Pixar/Pixar";
+import Marvel from "../../pages/Collections/Marvel/Marvel";
+import StarWars from "../../pages/Collections/StarWars/StarWars";
+import NatGeo from "../../pages/Collections/NatGeo/NatGeo";
 import ShowResultPage from "../../pages/ShowResultPage/ShowResultPage";
-import NoMatch from "../../pages/404/404.tsx";
+import NoMatch from "../../pages/404/404";
 import {
   MdAccountCircle as LoginIcon,
   MdHome as HomeIcon,
@@ -27,8 +27,10 @@ import {
 } from "react-icons/md";
 import { supabase } from "../../supabaseClient";
 
-export default function Nav() {
-  const [session, setSession] = useState(null);
+interface INav {}
+
+const Nav = (): ReactElement => {
+  const [session, setSession] = useState<INav | null>(null);
   const user = supabase.auth.user();
 
   useEffect(() => {
@@ -45,8 +47,8 @@ export default function Nav() {
 
   const scrollFunction = () => {
     return window.pageYOffset > 50
-      ? (document.getElementById("nav").style.background = "black")
-      : (document.getElementById("nav").style.background = "");
+      ? (document.getElementById("nav")!.style.background = "black")
+      : (document.getElementById("nav")!.style.background = "");
   };
 
   return (
@@ -97,7 +99,7 @@ export default function Nav() {
           </ul>
 
           <Link to="/login" className="login">
-            <p>{session ? user.email : "Log In"}</p>
+            <p>{session ? user!.email : "Log In"}</p>
             <LoginIcon />
           </Link>
         </nav>
@@ -140,4 +142,5 @@ export default function Nav() {
       </div>
     </Router>
   );
-}
+};
+export default Nav;
