@@ -26,11 +26,10 @@ import {
   MdLocalMovies as MovieIcon,
 } from "react-icons/md";
 import { supabase } from "../../supabaseClient";
-
-interface INav {}
+import { Session } from "@supabase/supabase-js";
 
 const Nav = (): ReactElement => {
-  const [session, setSession] = useState<INav | null>(null);
+  const [session, setSession] = useState<Session | null>(null);
   const user = supabase.auth.user();
 
   useEffect(() => {

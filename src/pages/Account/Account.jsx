@@ -1,8 +1,9 @@
 import "./Account.css";
 import { useState, useEffect } from "react";
 import { supabase } from "../../supabaseClient.js";
+// import { Session } from "@supabase/supabase-js";
 
-export default function Account({ session }) {
+const Account = ({ session }) => {
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState(null);
   const [website, setWebsite] = useState(null);
@@ -114,4 +115,6 @@ export default function Account({ session }) {
       </div>
     </div>
   );
-}
+};
+
+export default Account;

@@ -1,11 +1,12 @@
 import "./Auth.css";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, ReactElement } from "react";
 import { supabase } from "../../supabaseClient.js";
-import Login from "../Login/Login.tsx";
-import Account from "../Account/Account";
+import Login from "../Login/Login";
+import Account from "../Account/Account.jsx";
+import { Session } from "@supabase/supabase-js";
 
-export default function Auth() {
-  const [session, setSession] = useState(null);
+const Auth = (): ReactElement => {
+  const [session, setSession] = useState<Session | null>(null);
 
   useEffect(() => {
     setSession(supabase.auth.session());
@@ -20,8 +21,10 @@ export default function Auth() {
       {!session ? (
         <Login />
       ) : (
-        <Account key={session.user.id} session={session} />
+        <Account key={session.user!.id} session={session} />
       )}
     </div>
   );
-}
+};
+
+export default Auth;
