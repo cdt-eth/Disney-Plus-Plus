@@ -1,12 +1,12 @@
 import "./Login.css";
-import { useState } from "react";
+import { useState, ReactElement } from "react";
 import { supabase } from "../../supabaseClient.js";
 
-export default function Login() {
-  const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState("");
+const Login = (): ReactElement => {
+  const [loading, setLoading] = useState<boolean>(false);
+  const [email, setEmail] = useState<string>("");
 
-  const handleLogin = async (email) => {
+  const handleLogin = async (email: string) => {
     try {
       setLoading(true);
       const { error } = await supabase.auth.signIn({ email });
@@ -52,4 +52,6 @@ export default function Login() {
       </div>
     </div>
   );
-}
+};
+
+export default Login;

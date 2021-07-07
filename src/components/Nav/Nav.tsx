@@ -8,7 +8,7 @@ import Originals from "../../pages/Originals/Originals";
 import Movies from "../../pages/Movies/Movies";
 import Series from "../../pages/Series/Series";
 import ResultPage from "../../pages/ResultPage/ResultPage";
-import Login from "../../pages/Auth/Auth";
+import Auth from "../../pages/Auth/Auth";
 import Disney from "../../pages/Collections/Disney/Disney";
 import Pixar from "../../pages/Collections/Pixar/Pixar";
 import Marvel from "../../pages/Collections/Marvel/Marvel";
@@ -121,7 +121,7 @@ const Nav = (): ReactElement => {
             <Series />
           </Route>
           <Route path="/login">
-            <Login />
+            <Auth />
           </Route>
 
           <Route path={"/movie/:id"} component={ResultPage} />

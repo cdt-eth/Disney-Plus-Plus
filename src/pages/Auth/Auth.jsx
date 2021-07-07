@@ -1,7 +1,7 @@
 import "./Auth.css";
 import { useState, useEffect } from "react";
 import { supabase } from "../../supabaseClient.js";
-import Login from "../Login/Login";
+import Login from "../Login/Login.tsx";
 import Account from "../Account/Account";
 
 export default function Auth() {
