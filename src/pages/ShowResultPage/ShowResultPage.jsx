@@ -47,10 +47,15 @@ export default function ShowResultPage(props) {
       // LOGO
       if (data.images.length === 0 || data.images.logos.length === 0) {
         setNoLogo(true);
-      } else {
-        setNoLogo(false);
-        setLogo(data.images.logos[0].file_path);
       }
+
+      data.images.logos.map((logo) => {
+        if (logo.iso_639_1 === "en") {
+          setNoLogo(false);
+          setLogo(logo.file_path);
+        }
+        return logo;
+      });
 
       // DATE
       const date = first_air_date.substr(0, first_air_date.indexOf("-"));
