@@ -17,7 +17,7 @@ const Account = ({ ...session }): ReactElement => {
 
   useEffect(() => {
     getProfile();
-  }, [session]);
+  }, []);
 
   async function getProfile() {
     try {
@@ -79,7 +79,12 @@ const Account = ({ ...session }): ReactElement => {
         <h1 className="header">Change Details</h1>
         <div>
           <label htmlFor="email">Email</label>
-          <input id="email" type="text" value={session.user.email} disabled />
+          <input
+            id="email"
+            type="text"
+            value={session.session.user.email}
+            disabled
+          />
         </div>
         <div>
           <label htmlFor="username">Name</label>
