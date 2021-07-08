@@ -1,13 +1,19 @@
 import "./Account.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, ReactElement } from "react";
 import { supabase } from "../../supabaseClient.js";
 // import { Session } from "@supabase/supabase-js";
 
-const Account = ({ session }) => {
+type IProfile = {
+  website: string | null;
+  username: string | null;
+  avatar_url: string | null;
+};
+
+const Account = ({ ...session }): ReactElement => {
   const [loading, setLoading] = useState(true);
-  const [username, setUsername] = useState(null);
-  const [website, setWebsite] = useState(null);
-  const [avatar_url, setAvatarUrl] = useState(null);
+  const [username, setUsername] = useState<string | null>(null);
+  const [website, setWebsite] = useState<string | null>(null);
+  const [avatar_url, setAvatarUrl] = useState<string | null>(null);
 
   useEffect(() => {
     getProfile();
@@ -21,7 +27,7 @@ const Account = ({ session }) => {
       let { data, error, status } = await supabase
         .from("profiles")
         .select(`username, website, avatar_url`)
-        .eq("id", user.id)
+        .eq("id", user!.id)
         .single();
 
       if (error && status !== 406) {
@@ -40,13 +46,13 @@ const Account = ({ session }) => {
     }
   }
 
-  async function updateProfile({ username, website, avatar_url }) {
+  async function updateProfile({ username, website, avatar_url }: IProfile) {
     try {
       setLoading(true);
       const user = supabase.auth.user();
 
       const updates = {
-        id: user.id,
+        id: user!.id,
         username,
         website,
         avatar_url,

@@ -1,8 +1,8 @@
 import "./Auth.css";
 import React, { useState, useEffect, ReactElement } from "react";
-import { supabase } from "../../supabaseClient.js";
 import Login from "../Login/Login";
-import Account from "../Account/Account.jsx";
+import Account from "../Account/Account";
+import { supabase } from "../../supabaseClient.js";
 import { Session } from "@supabase/supabase-js";
 
 const Auth = (): ReactElement => {
