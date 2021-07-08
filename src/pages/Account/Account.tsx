@@ -1,7 +1,7 @@
 import "./Account.css";
 import { useState, useEffect, ReactElement } from "react";
 import { supabase } from "../../supabaseClient.js";
-// import { Session } from "@supabase/supabase-js";
+import { Session } from "@supabase/supabase-js";
 
 type IProfile = {
   website: string | null;
@@ -9,7 +9,7 @@ type IProfile = {
   avatar_url: string | null;
 };
 
-const Account = ({ ...session }): ReactElement => {
+const Account = ({ session }: { session: Session }): ReactElement => {
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState<string | null>(null);
   const [website, setWebsite] = useState<string | null>(null);
@@ -79,12 +79,7 @@ const Account = ({ ...session }): ReactElement => {
         <h1 className="header">Change Details</h1>
         <div>
           <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            type="text"
-            value={session.session.user.email}
-            disabled
-          />
+          <input id="email" type="text" value={session?.user?.email} disabled />
         </div>
         <div>
           <label htmlFor="username">Name</label>
