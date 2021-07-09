@@ -1,5 +1,5 @@
 import "./ResultPage.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, ReactElement } from "react";
 import { FaPlay as PlayIcon, FaPlus as PlusIcon } from "react-icons/fa";
 import { IoIosPeople as PeopleIcon } from "react-icons/io";
 import { Link } from "react-router-dom";
@@ -7,33 +7,33 @@ import ModalVideo from "react-modal-video";
 import Suggested from "../../components/ResultPage/Suggested/Suggested";
 import Extras from "../../components/ResultPage/Extras/Extras";
 import Details from "../../components/ResultPage/Details/Details";
-// import { RecommendationData } from "../Home";
 
-interface IResult {
+export interface IResult {
   id: string;
   location: any;
   props: any;
   logo: string;
 }
 
-interface IResultData {
+export interface IResultData {
   backdrop_path: string;
   homepage: string;
 }
 
-interface ILogo {
+export interface ILogo {
   iso_639_1: string;
   file_path: string;
 }
 
-interface IGenres {
+export interface IGenres {
   id: string;
   name: string;
 }
 
-interface IRating {
+export interface IRating {
   iso_3166_1: string;
   release_dates: string[] | any;
+  rating?: string | any;
 }
 
 interface ICrew {
@@ -41,7 +41,7 @@ interface ICrew {
   job: string;
 }
 
-const ResultPage = (props: IResult) => {
+const ResultPage = (props: IResult): ReactElement => {
   const [data, setData] = useState<any | IResultData[]>([]);
   const [duration, setDuration] = useState<string>("");
   const [director, setDirector] = useState<string>("");
@@ -166,7 +166,6 @@ const ResultPage = (props: IResult) => {
         }
       }
 
-      // const castArray: string[] = [];
       if (castArray.length > 0) setCast(castArray as []);
     };
 

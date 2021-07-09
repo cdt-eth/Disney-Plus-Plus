@@ -7,8 +7,8 @@ import "slick-carousel/slick/slick-theme.css";
 
 type ISuggestedShow = {
   id: number;
-  poster_path: string;
-  title: string;
+  poster_path?: string;
+  title?: string;
 };
 
 const settings = {

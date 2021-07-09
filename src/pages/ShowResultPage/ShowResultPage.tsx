@@ -1,30 +1,40 @@
 import "./ShowResultPage.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, ReactElement } from "react";
 import { FaPlay as PlayIcon, FaPlus as PlusIcon } from "react-icons/fa";
 import { IoIosPeople as PeopleIcon } from "react-icons/io";
 import { Link } from "react-router-dom";
 import ModalVideo from "react-modal-video";
-import Extras from "../../components/ResultPage/Extras/Extras.tsx";
+import Extras from "../../components/ResultPage/Extras/Extras";
 import ShowDetails from "../../components/ResultPage/ShowDetails/ShowDetails";
-import SuggestedShows from "../../components/ResultPage/SuggestedShows/SuggestedShows.tsx";
+import SuggestedShows from "../../components/ResultPage/SuggestedShows/SuggestedShows";
+import {
+  IResult,
+  IResultData,
+  ILogo,
+  IRating,
+  IGenres,
+} from "../ResultPage/ResultPage";
 
-export default function ShowResultPage(props) {
-  const [data, setData] = useState([]);
-  const [date, setDate] = useState("");
-  const [logo, setLogo] = useState("");
-  const [noLogo, setNoLogo] = useState(null);
-  const [creator, setCreator] = useState("");
-  const [castList, setCast] = useState([]);
-  const [rating, setRating] = useState("");
-  const [genreNames, setGenreNames] = useState([]);
+const ShowResultPage = (props: IResult): ReactElement => {
+  const [data, setData] = useState<any | IResultData[]>([]);
+  const [date, setDate] = useState<string>("");
+  const [logo, setLogo] = useState<string>("");
+  // const [noLogo, setNoLogo] = useState(null);
+  const [noLogo, setNoLogo] = useState<boolean>(false);
+  const [creator, setCreator] = useState<string>("");
+  const [castList, setCast] = useState<string[]>([]);
+  const [rating, setRating] = useState<string>("");
+  const [genreNames, setGenreNames] = useState<string[]>([]);
   const [trailer, setTrailer] = useState([]);
   const [extras, setExtras] = useState([]);
-  const [noExtras, setNoExtras] = useState(null);
-  const [noTrailer, setNoTrailer] = useState(null);
-  const [isOpen, setOpen] = useState(false);
-  const [showSuggested, setShowSuggested] = useState(true);
-  const [showExtras, setShowExtras] = useState(false);
-  const [showDetails, setShowDetails] = useState(false);
+  const [noExtras, setNoExtras] = useState<boolean>(false);
+  // const [noExtras, setNoExtras] = useState(null);
+  const [noTrailer, setNoTrailer] = useState<boolean>(false);
+  // const [noTrailer, setNoTrailer] = useState(null);
+  const [isOpen, setOpen] = useState<boolean>(false);
+  const [showSuggested, setShowSuggested] = useState<boolean>(true);
+  const [showExtras, setShowExtras] = useState<boolean>(false);
+  const [showDetails, setShowDetails] = useState<boolean>(false);
   const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
   const {
     // poster_path: poster,
@@ -49,7 +59,7 @@ export default function ShowResultPage(props) {
         setNoLogo(true);
       }
 
-      data.images.logos.map((logo) => {
+      data.images.logos.map((logo: ILogo) => {
         if (logo.iso_639_1 === "en") {
           setNoLogo(false);
           setLogo(logo.file_path);
@@ -63,8 +73,8 @@ export default function ShowResultPage(props) {
 
       // GENRES
       const apiGenres = data.genres;
-      const filtered = [];
-      apiGenres.map((res) => {
+      const filtered: string[] = [];
+      apiGenres.map((res: IGenres) => {
         if (genres.includes(res.id)) {
           filtered.push(res.name);
         }
@@ -91,7 +101,7 @@ export default function ShowResultPage(props) {
       }
 
       // RATING
-      data.content_ratings.results.map((res) => {
+      data.content_ratings.results.map((res: IRating) => {
         if (res.iso_3166_1 === "US") {
           setRating(res.rating);
         }
@@ -99,7 +109,7 @@ export default function ShowResultPage(props) {
       });
 
       // CREATORS
-      const creatorArray = [];
+      const creatorArray: string[] = [];
       let creator = data.created_by;
 
       for (var i = 0; i < 6; i++) {
@@ -109,10 +119,11 @@ export default function ShowResultPage(props) {
           creatorArray.push(creator[i].name);
         }
       }
-      if (creatorArray.length > 0) setCreator(creatorArray);
+
+      if (creatorArray.length > 0) setCreator(creatorArray as any);
 
       // CAST
-      const castArray = [];
+      const castArray: string[] = [];
       let castMember = data.credits.cast;
 
       for (var j = 0; j < 6; j++) {
@@ -267,4 +278,6 @@ export default function ShowResultPage(props) {
       </div>
     </div>
   );
-}
+};
+
+export default ShowResultPage;
