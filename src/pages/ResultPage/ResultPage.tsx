@@ -7,6 +7,8 @@ import ModalVideo from "react-modal-video";
 import Suggested from "../../components/ResultPage/Suggested/Suggested";
 import Extras from "../../components/ResultPage/Extras/Extras";
 import Details from "../../components/ResultPage/Details/Details";
+import { supabase } from "../../supabaseClient";
+import { Session } from "@supabase/supabase-js";
 
 export interface IResult {
   id: string;
@@ -74,7 +76,15 @@ const ResultPage = (props: IResult): ReactElement => {
   const date = release_date.substr(0, release_date.indexOf("-"));
   const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
 
+  const [session, setSession] = useState<Session | null>(null);
+
   useEffect(() => {
+    setSession(supabase.auth.session());
+
+    supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+
     const fetchMovieData = async () => {
       const res = await fetch(
         `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&append_to_response=videos,images,release_dates,credits`
@@ -98,8 +108,9 @@ const ResultPage = (props: IResult): ReactElement => {
       // GENRES
       const apiGenres = data.genres;
       const filtered: string[] = [];
+
       apiGenres.map((res: IGenres) => {
-        if (genres.includes(res.id)) {
+        if (genres !== undefined && genres.includes(res.id)) {
           filtered.push(res.name);
         }
         return filtered;
@@ -176,6 +187,20 @@ const ResultPage = (props: IResult): ReactElement => {
     setOpen(true);
   };
 
+  const handleClick = async () => {
+    // let id: any;
+
+    let { data, error } = await supabase.from("watchlist").insert({ id: id });
+    // console.log("ran");
+    // .eq("id", id)
+    // .single();
+
+    if (error) {
+      console.log("error:", error);
+      throw error;
+    }
+  };
+
   return (
     <div className="resultPage">
       <div className="resultBackground">
@@ -236,10 +261,15 @@ const ResultPage = (props: IResult): ReactElement => {
               </button>
             )}
 
-            <Link to="/watchlist" className="circleButton">
-              <PlusIcon />
-            </Link>
-
+            {!session ? (
+              <Link to="/login" className="circleButton">
+                <PlusIcon />
+              </Link>
+            ) : (
+              <div className="circleButton" onClick={handleClick}>
+                <PlusIcon />
+              </div>
+            )}
             <Link to="/login" className="circleButton">
               <PeopleIcon />
             </Link>

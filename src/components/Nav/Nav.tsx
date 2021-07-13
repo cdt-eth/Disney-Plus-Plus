@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { useState, useEffect, ReactElement } from "react";
 import Home from "../../pages/Home";
 import Search from "../../pages/Search/Search";
-import Watchlist from "../../pages/Watchlist/Watchlist";
+import Watchlist from "../../pages/Watchlist/Watchlist.jsx";
 import Originals from "../../pages/Originals/Originals";
 import Movies from "../../pages/Movies/Movies";
 import Series from "../../pages/Series/Series";
@@ -40,15 +40,15 @@ const Nav = (): ReactElement => {
     });
   }, []);
 
-  window.onscroll = function () {
-    scrollFunction();
-  };
+  // window.onscroll = function () {
+  //   scrollFunction();
+  // };
 
-  const scrollFunction = () => {
-    return window.pageYOffset > 50
-      ? (document.getElementById("nav")!.style.background = "black")
-      : (document.getElementById("nav")!.style.background = "");
-  };
+  // const scrollFunction = () => {
+  //   return window.pageYOffset > 50
+  //     ? (document.getElementById("nav")!.style.background = "black")
+  //     : (document.getElementById("nav")!.style.background = "");
+  // };
 
   return (
     <Router>
