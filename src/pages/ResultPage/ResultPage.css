@@ -134,6 +134,7 @@
   display: grid;
   width: 60px;
   height: 62px;
+  cursor: pointer;
   justify-content: center;
   align-content: center;
   font-size: 2rem;
