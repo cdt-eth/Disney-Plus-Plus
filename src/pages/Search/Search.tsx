@@ -8,7 +8,7 @@ import {
 } from "react";
 import Result from "../../components/Result/Result";
 
-type ISearchData = {
+export type ISearchData = {
   poster_path: string;
   id: string;
   title: string;
