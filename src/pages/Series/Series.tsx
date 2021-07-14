@@ -41,6 +41,7 @@ const Series = (): ReactElement => {
         { signal: signal }
       );
       const data = await res.json();
+      console.log(data);
       const results = data.results;
 
       if (results.length === 0) setNoResults(true);
