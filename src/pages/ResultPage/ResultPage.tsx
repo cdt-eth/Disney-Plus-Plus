@@ -188,12 +188,7 @@ const ResultPage = (props: IResult): ReactElement => {
   };
 
   const handleClick = async () => {
-    // let id: any;
-
     let { error } = await supabase.from("watchlist").insert({ id: id });
-    // console.log("ran");
-    // .eq("id", id)
-    // .single();
 
     if (error) {
       console.log("error:", error);
