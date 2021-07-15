@@ -1,6 +1,10 @@
 import "./ResultPage.css";
 import { useState, useEffect, ReactElement } from "react";
-import { FaPlay as PlayIcon, FaPlus as PlusIcon } from "react-icons/fa";
+import {
+  FaPlay as PlayIcon,
+  FaPlus as PlusIcon,
+  FaCheck as CheckIcon,
+} from "react-icons/fa";
 import { IoIosPeople as PeopleIcon } from "react-icons/io";
 import { Link } from "react-router-dom";
 import ModalVideo from "react-modal-video";
@@ -51,14 +55,12 @@ const ResultPage = (props: IResult): ReactElement => {
   const [rating, setRating] = useState<string>("");
   const [logo, setLogo] = useState<string>("");
   const [noLogo, setNoLogo] = useState<boolean>(false);
-  // const [noLogo, setNoLogo] = useState(null);
   const [genreNames, setGenreNames] = useState<string[]>([]);
   const [trailer, setTrailer] = useState([]);
   const [extras, setExtras] = useState([]);
   const [noExtras, setNoExtras] = useState<boolean>(false);
-  // const [noExtras, setNoExtras] = useState(null);
   const [noTrailer, setNoTrailer] = useState<boolean>(false);
-  // const [noTrailer, setNoTrailer] = useState(null);
+  const [added, setIsAdded] = useState<boolean>(false);
   const [isOpen, setOpen] = useState<boolean>(false);
   const [showSuggested, setShowSuggested] = useState<boolean>(true);
   const [showExtras, setShowExtras] = useState<boolean>(false);
@@ -187,9 +189,20 @@ const ResultPage = (props: IResult): ReactElement => {
     setOpen(true);
   };
 
-  const handleClick = async () => {
+  const addMovie = async () => {
     let { error } = await supabase.from("watchlist").insert({ id: id });
 
+    setIsAdded(!added);
+
+    if (error) {
+      console.log("error:", error);
+      throw error;
+    }
+  };
+
+  const deleteMovie = async () => {
+    let { error } = await supabase.from("watchlist").delete().match({ id: id });
+    setIsAdded(!added);
     if (error) {
       console.log("error:", error);
       throw error;
@@ -260,9 +273,13 @@ const ResultPage = (props: IResult): ReactElement => {
               <Link to="/login" className="circleButton">
                 <PlusIcon />
               </Link>
-            ) : (
-              <div className="circleButton" onClick={handleClick}>
+            ) : !added ? (
+              <div className="circleButton" onClick={addMovie}>
                 <PlusIcon />
+              </div>
+            ) : (
+              <div className="circleButton" onClick={deleteMovie}>
+                <CheckIcon />
               </div>
             )}
             <Link to="/login" className="circleButton">
