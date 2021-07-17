@@ -9,6 +9,7 @@ type ISuggestedShow = {
   id: number;
   poster_path?: string;
   title?: string;
+  name?: string;
 };
 
 const settings = {
@@ -77,7 +78,9 @@ const SuggestedShows = ({ id }: ISuggestedShow): ReactElement => {
             return (
               <Link
                 to={{
-                  pathname: `/show/${show.id}`,
+                  pathname: `/show/${show
+                    .name!.replace(/\s+/g, "-")
+                    .toLowerCase()}`,
                   state: { ...show },
                 }}
                 key={show.id}

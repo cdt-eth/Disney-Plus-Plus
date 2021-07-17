@@ -260,7 +260,7 @@ const ShowResultPage = (props: IResult): ReactElement => {
             </div>
           </nav>
           <div className="detailsWrapper">
-            {showSuggested && <SuggestedShows id={id} />}
+            {showSuggested && <SuggestedShows name={name} id={id} />}
             {showExtras && <Extras extras={extras} noExtras={noExtras} />}
             {showDetails && (
               <ShowDetails

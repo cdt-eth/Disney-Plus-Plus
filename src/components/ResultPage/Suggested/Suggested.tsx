@@ -66,7 +66,9 @@ const Suggested = ({ id }: ISuggested): ReactElement => {
             return (
               <Link
                 to={{
-                  pathname: `/movie/${movie.id}`,
+                  pathname: `/movie/${movie.title
+                    .replace(/\s+/g, "-")
+                    .toLowerCase()}`,
                   state: { ...movie },
                 }}
                 key={movie.title}

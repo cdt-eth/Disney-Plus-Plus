@@ -9,6 +9,7 @@ export interface IWatchlist {
   id: string;
   poster_path: string;
   alt: string;
+  title: string;
 }
 
 const Watchlist = (): ReactElement => {
@@ -63,7 +64,9 @@ const Watchlist = (): ReactElement => {
                   <div key={item.id} className="result">
                     <Link
                       to={{
-                        pathname: `/movie/${item.id}`,
+                        pathname: `/movie/${item.title
+                          .replace(/\s+/g, "-")
+                          .toLowerCase()}`,
                         state: { ...item },
                       }}
                     >
