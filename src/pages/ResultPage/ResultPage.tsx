@@ -81,6 +81,22 @@ const ResultPage = (props: IResult): ReactElement => {
   const [session, setSession] = useState<Session | null>(null);
 
   useEffect(() => {
+    const isMovieAdded = async () => {
+      let { data } = await supabase.from("watchlist").select("id");
+
+      data?.map((movieId) => {
+        if (movieId.id === id) {
+          setIsAdded(true);
+        }
+
+        return id;
+      });
+    };
+
+    isMovieAdded();
+  }, [id, added]);
+
+  useEffect(() => {
     setSession(supabase.auth.session());
 
     supabase.auth.onAuthStateChange((_event, session) => {
@@ -185,14 +201,10 @@ const ResultPage = (props: IResult): ReactElement => {
     fetchMovieData();
   }, [id, genres, API_KEY]);
 
-  const fetchRequest = () => {
-    setOpen(true);
-  };
-
   const addMovie = async () => {
     let { error } = await supabase.from("watchlist").insert({ id: id });
 
-    setIsAdded(!added);
+    setIsAdded(true);
 
     if (error) {
       console.log("error:", error);
@@ -202,11 +214,17 @@ const ResultPage = (props: IResult): ReactElement => {
 
   const deleteMovie = async () => {
     let { error } = await supabase.from("watchlist").delete().match({ id: id });
-    setIsAdded(!added);
+
+    setIsAdded(false);
+
     if (error) {
       console.log("error:", error);
       throw error;
     }
+  };
+
+  const fetchRequest = () => {
+    setOpen(true);
   };
 
   return (
@@ -282,6 +300,7 @@ const ResultPage = (props: IResult): ReactElement => {
                 <CheckIcon />
               </div>
             )}
+
             <Link to="/login" className="circleButton">
               <PeopleIcon />
             </Link>
