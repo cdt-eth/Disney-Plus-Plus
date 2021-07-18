@@ -79,7 +79,8 @@ const SuggestedShows = ({ id }: ISuggestedShow): ReactElement => {
               <Link
                 to={{
                   pathname: `/show/${show
-                    .name!.replace(/\s+/g, "-")
+                    .name!.replace(/[^a-z\d\s]+/gi, "")
+                    .replace(/\s+/g, "-")
                     .toLowerCase()}`,
                   state: { ...show },
                 }}

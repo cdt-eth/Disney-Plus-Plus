@@ -8,7 +8,12 @@ export default function Result(props) {
     <div className="result">
       <Link
         to={{
-          pathname: `/movie/${title.replace(/\s+/g, "-").toLowerCase()}`,
+          pathname: `/movie/${title
+            .replace(/[^a-z\d\s]+/gi, "")
+
+            .replace(/\s+/g, "-")
+
+            .toLowerCase()}`,
           state: { ...props },
         }}
       >

@@ -48,6 +48,7 @@ const Recommendations = ({
               <Link
                 to={{
                   pathname: `/movie/${movie.title
+                    .replace(/[^a-z\d\s]+/gi, "")
                     .replace(/\s+/g, "-")
                     .toLowerCase()}`,
                   state: { ...movie },

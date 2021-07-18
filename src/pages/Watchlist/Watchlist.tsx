@@ -65,6 +65,7 @@ const Watchlist = (): ReactElement => {
                     <Link
                       to={{
                         pathname: `/movie/${item.title
+                          .replace(/[^a-z\d\s]+/gi, "")
                           .replace(/\s+/g, "-")
                           .toLowerCase()}`,
                         state: { ...item },
