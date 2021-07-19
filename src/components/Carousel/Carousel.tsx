@@ -52,17 +52,7 @@ const Carousel = (): ReactElement => {
       <Slider {...settings}>
         {popular.map((p) => {
           return (
-            <Link
-              to={{
-                pathname: `/movie/${p.id}`,
-                // pathname: `/movie/${p.title
-                //   .replace(/[^a-z\d\s]+/gi, "")
-                //   .replace(/\s+/g, "-")
-                //   .toLowerCase()}`,
-                // state: { ...p },
-              }}
-              key={p.title}
-            >
+            <Link to={{ pathname: `/movie/${p.id}` }} key={p.title}>
               <div className="banner">
                 <img
                   src={

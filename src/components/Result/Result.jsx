@@ -6,17 +6,7 @@ export default function Result(props) {
 
   return (
     <div className="result">
-      <Link
-        to={{
-          pathname: `/movie/${id}`,
-          // pathname: `/movie/${id}/${title
-          //   .replace(/[^a-z\d\s]+/gi, "")
-          //   .replace(/\s+/g, "-")
-          //   .toLowerCase()}`,
-          // state: { id: id },
-          // state: { ...props },
-        }}
-      >
+      <Link to={{ pathname: `/movie/${id}` }}>
         <img
           src={
             poster

@@ -50,12 +50,13 @@ const Originals = (): ReactElement => {
   // const scrollFunction = () => {
   //   console.log("element", element);
 
-  //   if (element !== null) {
-  //     return document.body.scrollTop > 50 ||
-  //       document.documentElement.scrollTop > 50
-  //       ? (document.getElementById("originals")!.style.fontSize = "1.7rem")
-  //       : (document.getElementById("originals")!.style.fontSize = "2.7rem");
-  //   }
+  // if (element !== null) {
+  // return document.body.scrollTop > 50 ||
+  //   document.documentElement.scrollTop > 50
+  // return window.pageYOffset > 50
+  // ? (document.getElementById("originals")!.style.fontSize = "1.7rem")
+  // : (document.getElementById("originals")!.style.fontSize = "2.7rem");
+  // }
   // };
 
   return (

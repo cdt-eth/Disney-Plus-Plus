@@ -64,17 +64,7 @@ const Suggested = ({ id }: ISuggested): ReactElement => {
         <Slider {...settings}>
           {data.map((movie) => {
             return (
-              <Link
-                to={{
-                  pathname: `/movie/${movie.id}`,
-                  // pathname: `/movie/${movie.title
-                  //   .replace(/[^a-z\d\s]+/gi, "")
-                  //   .replace(/\s+/g, "-")
-                  //   .toLowerCase()}`,
-                  // state: { ...movie },
-                }}
-                key={movie.title}
-              >
+              <Link to={{ pathname: `/movie/${movie.id}` }} key={movie.title}>
                 <div className="banner recBanner">
                   <img
                     src={

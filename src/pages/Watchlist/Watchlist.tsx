@@ -62,16 +62,7 @@ const Watchlist = (): ReactElement => {
               data.map((item) => {
                 return (
                   <div key={item.id} className="result">
-                    <Link
-                      to={{
-                        pathname: `/movie/${item.id}`,
-                        // pathname: `/movie/${item.title
-                        //   .replace(/[^a-z\d\s]+/gi, "")
-                        //   .replace(/\s+/g, "-")
-                        //   .toLowerCase()}`,
-                        // state: { ...item },
-                      }}
-                    >
+                    <Link to={{ pathname: `/movie/${item.id}` }}>
                       <img
                         src={
                           item.poster_path
