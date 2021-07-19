@@ -41,15 +41,21 @@ const Originals = (): ReactElement => {
     return () => abortController.abort();
   }, [API_KEY]);
 
-  // window.onscroll = function () {
+  // window.onscroll = () => {
   //   scrollFunction();
   // };
 
+  // const element = document.getElementById("originals");
+
   // const scrollFunction = () => {
-  //   return document.body.scrollTop > 50 ||
-  //     document.documentElement.scrollTop > 50
-  //     ? (document.getElementById("originals").style.fontSize = "1.7rem")
-  //     : (document.getElementById("originals").style.fontSize = "2.7rem");
+  //   console.log("element", element);
+
+  //   if (element !== null) {
+  //     return document.body.scrollTop > 50 ||
+  //       document.documentElement.scrollTop > 50
+  //       ? (document.getElementById("originals")!.style.fontSize = "1.7rem")
+  //       : (document.getElementById("originals")!.style.fontSize = "2.7rem");
+  //   }
   // };
 
   return (
