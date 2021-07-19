@@ -16,9 +16,11 @@ import { Session } from "@supabase/supabase-js";
 
 export interface IResult {
   id: string;
-  location: any;
-  props: any;
-  logo: string;
+  location?: any;
+  props?: any;
+  logo?: string;
+  match?: any;
+  params?: any;
 }
 
 export interface IResultData {
@@ -48,7 +50,12 @@ interface ICrew {
 }
 
 const ResultPage = (props: IResult): ReactElement => {
+  // const ResultPage = ({ id }: any): ReactElement => {
   const [data, setData] = useState<any | IResultData[]>([]);
+  // const [loading, setIsLoading] = useState<boolean>(false);
+  const [title, setTitle] = useState<string>("");
+  const [releaseDate, setReleaseDate] = useState<string>("");
+  const [alt, setAlt] = useState<string>("");
   const [duration, setDuration] = useState<string>("");
   const [director, setDirector] = useState<string>("");
   const [castList, setCast] = useState<string[]>([]);
@@ -66,27 +73,18 @@ const ResultPage = (props: IResult): ReactElement => {
   const [showExtras, setShowExtras] = useState<boolean>(false);
   const [showDetails, setShowDetails] = useState<boolean>(false);
 
-  const {
-    overview,
-    title,
-    alt,
-    release_date,
-    genre_ids: genres,
-    id,
-  } = props.location.state;
-
-  const date = release_date.substr(0, release_date.indexOf("-"));
   const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
 
   const [session, setSession] = useState<Session | null>(null);
-
+  const id = props.match.params.id;
   useEffect(() => {
     const isMovieAdded = async () => {
+      // setIsLoading(true);
       let { data } = await supabase.from("watchlist").select("id");
-
       data?.map((movieId) => {
         if (movieId.id === id) {
           setIsAdded(true);
+          // setIsLoading(false);
         }
 
         return id;
@@ -105,10 +103,24 @@ const ResultPage = (props: IResult): ReactElement => {
 
     const fetchMovieData = async () => {
       const res = await fetch(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&append_to_response=videos,images,release_dates,credits`
+        `https://api.themoviedb.org/3/movie/${
+          props?.match?.params!.id
+        }?api_key=${API_KEY}&append_to_response=videos,images,release_dates,credits`
+        // `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&append_to_response=videos,images,release_dates,credits`
       );
       const data = await res.json();
       setData(data);
+
+      // TITLE
+      setTitle(data.title);
+
+      // ALT
+      setAlt(data.title);
+
+      // RELEASE DATE
+      setReleaseDate(
+        data.release_date.substr(0, data.release_date.indexOf("-"))
+      );
 
       // LOGO
       if (data.images.length === 0 || data.images.logos.length === 0) {
@@ -124,16 +136,10 @@ const ResultPage = (props: IResult): ReactElement => {
       });
 
       // GENRES
-      const apiGenres = data.genres;
-      const filtered: string[] = [];
-
-      apiGenres.map((res: IGenres) => {
-        if (genres !== undefined && genres.includes(res.id)) {
-          filtered.push(res.name);
-        }
-        return filtered;
+      data.genres.map((res: IGenres) => {
+        setGenreNames((array) => [...array, res.name]);
+        return res;
       });
-      setGenreNames(filtered);
 
       // TRAILER
       if (data.videos.results.length === 0) {
@@ -199,7 +205,7 @@ const ResultPage = (props: IResult): ReactElement => {
     };
 
     fetchMovieData();
-  }, [id, genres, API_KEY]);
+  }, [id, props.match.params, API_KEY]);
 
   const addMovie = async () => {
     let { error } = await supabase.from("watchlist").insert({ id: id });
@@ -253,7 +259,7 @@ const ResultPage = (props: IResult): ReactElement => {
           )}
 
           <div className="generalInfo">
-            {rating ? `${rating} • ` : ""} {date}{" "}
+            {rating ? `${rating} • ` : ""} {releaseDate}{" "}
             {genreNames.length > 0 ? `• ${genreNames.join(", ")}` : ""}
           </div>
 
@@ -291,7 +297,10 @@ const ResultPage = (props: IResult): ReactElement => {
               <Link to="/login" className="circleButton">
                 <PlusIcon />
               </Link>
-            ) : !added ? (
+            ) : // : loading ? (
+            // <div className="circleButton"> </div>
+            // )
+            !added ? (
               <div className="circleButton" onClick={addMovie}>
                 <PlusIcon />
               </div>
@@ -308,8 +317,8 @@ const ResultPage = (props: IResult): ReactElement => {
 
           <div className="overview">
             <h5>
-              {overview
-                ? overview.split(".")[0] + "."
+              {data.overview && data.overview.length > 0
+                ? data.overview.split(".")[0] + "."
                 : "No summary available."}
             </h5>
 
@@ -364,9 +373,9 @@ const ResultPage = (props: IResult): ReactElement => {
             {showExtras && <Extras extras={extras} noExtras={noExtras} />}
             {showDetails && (
               <Details
-                overview={overview}
+                overview={data.overview}
                 title={title}
-                date={date}
+                date={releaseDate}
                 genres={genreNames}
                 runtime={duration}
                 rating={rating}

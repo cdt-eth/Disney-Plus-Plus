@@ -66,11 +66,12 @@ const Suggested = ({ id }: ISuggested): ReactElement => {
             return (
               <Link
                 to={{
-                  pathname: `/movie/${movie.title
-                    .replace(/[^a-z\d\s]+/gi, "")
-                    .replace(/\s+/g, "-")
-                    .toLowerCase()}`,
-                  state: { ...movie },
+                  pathname: `/movie/${movie.id}`,
+                  // pathname: `/movie/${movie.title
+                  //   .replace(/[^a-z\d\s]+/gi, "")
+                  //   .replace(/\s+/g, "-")
+                  //   .toLowerCase()}`,
+                  // state: { ...movie },
                 }}
                 key={movie.title}
               >

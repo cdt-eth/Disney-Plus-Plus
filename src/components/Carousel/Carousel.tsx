@@ -54,11 +54,12 @@ const Carousel = (): ReactElement => {
           return (
             <Link
               to={{
-                pathname: `/movie/${p.title
-                  .replace(/[^a-z\d\s]+/gi, "")
-                  .replace(/\s+/g, "-")
-                  .toLowerCase()}`,
-                state: { ...p },
+                pathname: `/movie/${p.id}`,
+                // pathname: `/movie/${p.title
+                //   .replace(/[^a-z\d\s]+/gi, "")
+                //   .replace(/\s+/g, "-")
+                //   .toLowerCase()}`,
+                // state: { ...p },
               }}
               key={p.title}
             >

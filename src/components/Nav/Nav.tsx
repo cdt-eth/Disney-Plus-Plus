@@ -40,15 +40,15 @@ const Nav = (): ReactElement => {
     });
   }, []);
 
-  window.onscroll = function () {
-    scrollFunction();
-  };
+  // window.onscroll = function () {
+  //   scrollFunction();
+  // };
 
-  const scrollFunction = () => {
-    return window.pageYOffset > 50
-      ? (document.getElementById("nav")!.style.background = "black")
-      : (document.getElementById("nav")!.style.background = "");
-  };
+  // const scrollFunction = () => {
+  //   return window.pageYOffset > 50
+  //     ? (document.getElementById("nav")!.style.background = "black")
+  //     : (document.getElementById("nav")!.style.background = "");
+  // };
 
   return (
     <Router>

@@ -64,11 +64,12 @@ const Watchlist = (): ReactElement => {
                   <div key={item.id} className="result">
                     <Link
                       to={{
-                        pathname: `/movie/${item.title
-                          .replace(/[^a-z\d\s]+/gi, "")
-                          .replace(/\s+/g, "-")
-                          .toLowerCase()}`,
-                        state: { ...item },
+                        pathname: `/movie/${item.id}`,
+                        // pathname: `/movie/${item.title
+                        //   .replace(/[^a-z\d\s]+/gi, "")
+                        //   .replace(/\s+/g, "-")
+                        //   .toLowerCase()}`,
+                        // state: { ...item },
                       }}
                     >
                       <img
