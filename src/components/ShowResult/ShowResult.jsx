@@ -1,19 +1,11 @@
 import { Link } from "react-router-dom";
 
 export default function ShowResult(props) {
-  const { poster_path: poster, alt, name } = props;
+  const { poster_path: poster, alt, id } = props;
 
   return (
     <div className="result">
-      <Link
-        to={{
-          pathname: `/show/${name
-            .replace(/[^a-z\d\s]+/gi, "")
-            .replace(/\s+/g, "-")
-            .toLowerCase()}`,
-          state: { ...props },
-        }}
-      >
+      <Link to={{ pathname: `/show/${id}` }}>
         <img
           src={
             poster

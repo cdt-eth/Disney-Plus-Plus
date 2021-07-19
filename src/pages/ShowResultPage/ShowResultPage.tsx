@@ -18,8 +18,9 @@ import {
 const ShowResultPage = (props: IResult): ReactElement => {
   const [data, setData] = useState<any | IResultData[]>([]);
   const [date, setDate] = useState<string>("");
+  const [name, setName] = useState<string>("");
+  const [alt, setAlt] = useState<string>("");
   const [logo, setLogo] = useState<string>("");
-  // const [noLogo, setNoLogo] = useState(null);
   const [noLogo, setNoLogo] = useState<boolean>(false);
   const [creator, setCreator] = useState<string>("");
   const [castList, setCast] = useState<string[]>([]);
@@ -28,23 +29,14 @@ const ShowResultPage = (props: IResult): ReactElement => {
   const [trailer, setTrailer] = useState([]);
   const [extras, setExtras] = useState([]);
   const [noExtras, setNoExtras] = useState<boolean>(false);
-  // const [noExtras, setNoExtras] = useState(null);
   const [noTrailer, setNoTrailer] = useState<boolean>(false);
-  // const [noTrailer, setNoTrailer] = useState(null);
   const [isOpen, setOpen] = useState<boolean>(false);
   const [showSuggested, setShowSuggested] = useState<boolean>(true);
   const [showExtras, setShowExtras] = useState<boolean>(false);
   const [showDetails, setShowDetails] = useState<boolean>(false);
   const API_KEY = process.env.REACT_APP_OPEN_MOVIE_DB_API_KEY;
-  const {
-    // poster_path: poster,
-    overview,
-    alt,
-    genre_ids: genres,
-    id,
-    name,
-    first_air_date,
-  } = props.location.state;
+
+  const id = props.match.params.id;
 
   useEffect(() => {
     const fetchShowData = async () => {
@@ -53,6 +45,12 @@ const ShowResultPage = (props: IResult): ReactElement => {
       );
       const data = await res.json();
       setData(data);
+
+      // TITLE
+      setName(data.name);
+
+      // ALT
+      setAlt(data.name);
 
       // LOGO
       if (data.images.length === 0 || data.images.logos.length === 0) {
@@ -68,19 +66,13 @@ const ShowResultPage = (props: IResult): ReactElement => {
       });
 
       // DATE
-      const date = first_air_date.substr(0, first_air_date.indexOf("-"));
-      setDate(date);
+      setDate(data.first_air_date.substr(0, data.first_air_date.indexOf("-")));
 
       // GENRES
-      const apiGenres = data.genres;
-      const filtered: string[] = [];
-      apiGenres.map((res: IGenres) => {
-        if (genres.includes(res.id)) {
-          filtered.push(res.name);
-        }
-        return filtered;
+      data.genres.map((res: IGenres) => {
+        setGenreNames((array) => [...array, res.name]);
+        return res;
       });
-      setGenreNames(filtered);
 
       // TRAILER
       if (data.videos.results.length === 0) {
@@ -105,7 +97,7 @@ const ShowResultPage = (props: IResult): ReactElement => {
         if (res.iso_3166_1 === "US") {
           setRating(res.rating);
         }
-        return rating;
+        return res;
       });
 
       // CREATORS
@@ -137,7 +129,7 @@ const ShowResultPage = (props: IResult): ReactElement => {
     };
 
     fetchShowData();
-  }, [id, genres, first_air_date, rating, API_KEY]);
+  }, [id, API_KEY]);
 
   const fetchRequest = () => {
     setOpen(true);
@@ -208,8 +200,8 @@ const ShowResultPage = (props: IResult): ReactElement => {
 
           <div className="overview">
             <h5>
-              {overview
-                ? overview.split(".")[0] + "."
+              {data.overview
+                ? data.overview.split(".")[0] + "."
                 : "No summary available."}
             </h5>
 
@@ -264,7 +256,7 @@ const ShowResultPage = (props: IResult): ReactElement => {
             {showExtras && <Extras extras={extras} noExtras={noExtras} />}
             {showDetails && (
               <ShowDetails
-                overview={overview}
+                overview={data.overview}
                 name={name}
                 date={date}
                 genres={genreNames}

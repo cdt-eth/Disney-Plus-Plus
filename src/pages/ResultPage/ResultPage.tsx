@@ -50,7 +50,6 @@ interface ICrew {
 }
 
 const ResultPage = (props: IResult): ReactElement => {
-  // const ResultPage = ({ id }: any): ReactElement => {
   const [data, setData] = useState<any | IResultData[]>([]);
   // const [loading, setIsLoading] = useState<boolean>(false);
   const [title, setTitle] = useState<string>("");
@@ -77,6 +76,7 @@ const ResultPage = (props: IResult): ReactElement => {
 
   const [session, setSession] = useState<Session | null>(null);
   const id = props.match.params.id;
+
   useEffect(() => {
     const isMovieAdded = async () => {
       // setIsLoading(true);
@@ -106,7 +106,6 @@ const ResultPage = (props: IResult): ReactElement => {
         `https://api.themoviedb.org/3/movie/${
           props?.match?.params!.id
         }?api_key=${API_KEY}&append_to_response=videos,images,release_dates,credits`
-        // `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&append_to_response=videos,images,release_dates,credits`
       );
       const data = await res.json();
       setData(data);
