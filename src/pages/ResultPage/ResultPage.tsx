@@ -79,16 +79,9 @@ const ResultPage = (props: IResult): ReactElement => {
 
   useEffect(() => {
     const isMovieAdded = async () => {
-      // setIsLoading(true);
-      let { data } = await supabase.from("watchlist").select("id");
-      data?.map((movieId) => {
-        if (movieId.id === id) {
-          setIsAdded(true);
-          // setIsLoading(false);
-        }
+      const { data } = await supabase.from("watchlist").select().eq("id", id);
 
-        return id;
-      });
+      if (data!.length > 0) setIsAdded(true);
     };
 
     isMovieAdded();
