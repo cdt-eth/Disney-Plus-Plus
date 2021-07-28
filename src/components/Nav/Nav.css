@@ -12,6 +12,7 @@
   padding: 0px 30px;
   display: grid;
   grid-template-columns: 1fr 8fr 1fr;
+  grid-template-columns: 1fr 5fr 1fr;
   column-gap: 30px;
   align-items: center;
   text-align: center;
@@ -85,18 +86,24 @@
   text-decoration: none;
   cursor: pointer;
   color: white;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  align-items: center;
+  /* display: grid; */
+  /* grid-template-columns: repeat(2, 1fr); */
+  /* align-items: center; */
+  display: inline-block;
+  margin: auto;
 }
 
 .login p {
-  justify-self: end;
+  /* justify-self: end; */
   padding-right: 7px;
   font-weight: 200;
+  float: left;
+  margin: 0;
+  margin-top: 7px;
 }
 
 .login svg {
+  float: left;
   font-size: 2.2rem;
 }
 
@@ -152,6 +159,7 @@
 
   .logo {
     width: 20%;
+    width: auto;
     margin: auto;
     padding-top: 10px;
   }
